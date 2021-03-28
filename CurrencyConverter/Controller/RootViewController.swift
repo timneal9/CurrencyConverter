@@ -13,8 +13,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var CurrencyTableView: UITableView!
     
     let currencyArray = ["USA", "GBP"]
-//        ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
-//
+    
     var currencies: [Currency] = []
     let cellSpacingHeight: CGFloat = 8
     
@@ -34,13 +33,13 @@ class RootViewController: UIViewController {
     
     func createArray() -> [Currency] {
         
-        var tempCurrencies: [Currency] = []
+        var currencies: [Currency] = []
         
         for item in currencyArray {
             let newCurrency = Currency(image: item, country: item, amountLabel: "0.00")
-            tempCurrencies.append(newCurrency)
+            currencies.append(newCurrency)
         }
-        return tempCurrencies
+        return currencies
     }
     
 }
@@ -67,7 +66,7 @@ extension RootViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let currency = currencies[indexPath.row]
+        let currency = currencies[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyTableViewCell
         
         cell.setCurrency(currency: currency)
