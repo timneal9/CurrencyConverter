@@ -1,5 +1,5 @@
 //
-//  CurrencyCellModel.swift
+//  ExchangeRateData.swift
 //  CurrencyConverter
 //
 //  Created by Tim Neal on 3/27/21.
@@ -8,8 +8,6 @@
 
 import Foundation
 
-struct Currency {
-    var image: String
-    var country: String
-    var amountLabel: String
+struct ExchangeRateData: Codable {
+    let rates: [String: Float]
 }

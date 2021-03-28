@@ -17,6 +17,8 @@ class RootViewController: UIViewController {
 //
     var currencies: [Currency] = []
     let cellSpacingHeight: CGFloat = 8
+    
+    let currencyExchangeManager = CurrencyExchangeManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,8 @@ class RootViewController: UIViewController {
         CurrencyTableView.tableFooterView = UIView()
         currencies = createArray()
         print(currencies)
+        
+        currencyExchangeManager.getExchangeRate(for: "USD")
     }
     
     func createArray() -> [Currency] {
