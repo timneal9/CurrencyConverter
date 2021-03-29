@@ -12,7 +12,7 @@ class RootViewController: UIViewController {
     
     @IBOutlet weak var CurrencyTableView: UITableView!
     
-    let currencyArray = ["USA", "GBP"]
+    let currencyArray = ["USD", "GBP", "MXN", "EUR", "NZD"]
     
     var currencies: [Currency] = []
     let cellSpacingHeight: CGFloat = 8
@@ -47,7 +47,7 @@ class RootViewController: UIViewController {
 extension RootViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,13 +66,27 @@ extension RootViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let currency = currencies[indexPath.section]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyTableViewCell
-        
-        cell.setCurrency(currency: currency)
-        cell.layer.cornerRadius = 4
-        
-        return cell
+        if indexPath.section <= 1 {
+            
+            let currency = currencies[indexPath.section]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyTableViewCell
+            cell.setCurrency(currency: currency)
+            cell.layer.cornerRadius = 4
+
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeSelectionCell") as! ChangeSelectionCell
+            
+            cell.setSelections(currency: CurrencyOption(
+                                leftCountry: currencies[2].country,
+                                middleCountry: currencies[3].country,
+                                rightCountry: currencies[4].country))
+
+            cell.layer.cornerRadius = 4
+            return cell
+        }
     }
     
 }
