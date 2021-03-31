@@ -1,15 +1,16 @@
 //
-//  CurrencyCellModel.swift
+//  CurrencyViewModel.swift
 //  CurrencyConverter
 //
-//  Created by Tim Neal on 3/27/21.
+//  Created by Tim Neal on 3/30/21.
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
 import Foundation
 
 struct Currency {
-    var image: String
-    var country: String
+    var currencyCode: String
+    var currencyName: String
+    var countryName: String
     var amountLabel: String
 }

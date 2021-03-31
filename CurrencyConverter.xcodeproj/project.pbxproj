@@ -16,9 +16,11 @@
 		26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */; };
 		26BAB1C326111B71003376B3 /* ChangeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1C226111B71003376B3 /* ChangeSelectionCell.swift */; };
 		26BAB1C726111F29003376B3 /* SelectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1C626111F29003376B3 /* SelectionCellModel.swift */; };
+		26BAB1D72613D030003376B3 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */; };
+		26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */; };
+		26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */; };
+		26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */; };
 		26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1842260FBBB500BA1F7F /* RootViewController.swift */; };
-		26FB184A260FFA3A00BA1F7F /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1849260FFA3A00BA1F7F /* CurrencyTableViewCell.swift */; };
-		26FB184E260FFCC900BA1F7F /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB184D260FFCC900BA1F7F /* CurrencyCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +35,11 @@
 		26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateData.swift; sourceTree = "<group>"; };
 		26BAB1C226111B71003376B3 /* ChangeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSelectionCell.swift; sourceTree = "<group>"; };
 		26BAB1C626111F29003376B3 /* SelectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCellModel.swift; sourceTree = "<group>"; };
+		26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFavoritesViewController.swift; sourceTree = "<group>"; };
+		26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListCell.xib; sourceTree = "<group>"; };
+		26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
 		26FB1842260FBBB500BA1F7F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		26FB1849260FFA3A00BA1F7F /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
-		26FB184D260FFCC900BA1F7F /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,7 @@
 		2675AD89260D637E000360AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26FB184D260FFCC900BA1F7F /* CurrencyCellModel.swift */,
+				26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */,
 				26BAB1C626111F29003376B3 /* SelectionCellModel.swift */,
 				26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */,
 				26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */,
@@ -95,8 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				26BAB1C226111B71003376B3 /* ChangeSelectionCell.swift */,
-				26FB1849260FFA3A00BA1F7F /* CurrencyTableViewCell.swift */,
+				26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */,
 				2675AD7B260D6347000360AA /* Main.storyboard */,
+				26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				26FB1842260FBBB500BA1F7F /* RootViewController.swift */,
+				26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */,
 				2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */,
 				2675AD7F260D634A000360AA /* Assets.xcassets in Resources */,
 				2675AD7D260D6347000360AA /* Main.storyboard in Resources */,
@@ -180,14 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */,
 				26BAB1C326111B71003376B3 /* ChangeSelectionCell.swift in Sources */,
-				26FB184A260FFA3A00BA1F7F /* CurrencyTableViewCell.swift in Sources */,
+				26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */,
+				26BAB1D72613D030003376B3 /* CurrencyViewModel.swift in Sources */,
 				26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */,
 				26BAB1BC26104433003376B3 /* CurrencyExchangeManager.swift in Sources */,
 				26BAB1C726111F29003376B3 /* SelectionCellModel.swift in Sources */,
 				2675AD76260D6347000360AA /* AppDelegate.swift in Sources */,
 				26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */,
-				26FB184E260FFCC900BA1F7F /* CurrencyCellModel.swift in Sources */,
 				2675AD78260D6347000360AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
