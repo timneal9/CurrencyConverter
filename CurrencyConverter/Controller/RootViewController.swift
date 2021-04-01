@@ -17,11 +17,45 @@ class RootViewController: UIViewController {
     @IBOutlet weak var convertedCurrencyCodeLabel: UILabel!
     @IBOutlet weak var convertedFlagImage: UIImageView!
     
+    
+    @IBOutlet weak var leftCountryLabel: UILabel!
+    @IBOutlet weak var middleCountryLabel: UILabel!
+    @IBOutlet weak var rightCountryLabel: UILabel!
+    @IBOutlet weak var leftCountryImage: UIImageView!
+    @IBOutlet weak var middleCountryImage: UIImageView!
+    @IBOutlet weak var rightCountryImage: UIImageView!
+    
 //    let currencyExchangeManager = CurrencyExchangeManager()
     var baseAmount: String = ""
     var decimalActive: Bool = false
     var decimalString: String = ".00"
     var decimalActiveCount: Int = 0
+    
+    var currencies = [
+        Currency(currencyCode: "NZD", currencyName: "New Zealand Dollar", countryName: "New Zealand", amountLabel: "0.00"),
+        Currency(currencyCode: "MXN", currencyName: "Mexican Peso", countryName: "Mexico", amountLabel: "0.00"),
+        Currency(currencyCode: "EUR", currencyName: "Euro", countryName: "European Union", amountLabel: "0.00")
+    ]
+    
+    func setBaseCurrencyUI(currency: Currency) {
+        baseCurrencyCodeLabel.text = currency.currencyCode
+        baseFlagImage.image = UIImage(named: currency.currencyCode)
+    }
+    
+    func setConvertedUI(currency: Currency) {
+        convertedCurrencyCodeLabel.text = currency.currencyCode
+        convertedFlagImage.image = UIImage(named: currency.currencyCode)
+    }
+    
+    func setFavoritesUI(currencies: [Currency]) {
+        leftCountryLabel.text = currencies[0].currencyCode
+        middleCountryLabel.text = currencies[1].currencyCode
+        rightCountryLabel.text = currencies[2].currencyCode
+        
+        leftCountryImage.image = UIImage(named: currencies[0].currencyCode)
+        middleCountryImage.image = UIImage(named: currencies[1].currencyCode)
+        rightCountryImage.image = UIImage(named: currencies[2].currencyCode)
+    }
     
     func numButtonTapped(num: String) {
         if decimalActive {
@@ -89,6 +123,11 @@ class RootViewController: UIViewController {
 //        currencies = createArray()
 //
 //        currencyExchangeManager.getExchangeRate(for: "USD")
+        let usd = Currency(currencyCode: "USD", currencyName: "United States Dollar", countryName: "United States", amountLabel: "0.00")
+        let gbp = Currency(currencyCode: "GBP", currencyName: "Pound Sterling", countryName: "Great Britian", amountLabel: "0.00")
+        setBaseCurrencyUI(currency: usd)
+        setConvertedUI(currency: gbp)
+        setFavoritesUI(currencies: currencies)
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {

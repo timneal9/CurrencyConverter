@@ -374,6 +374,12 @@
                         <outlet property="convertedAmountLabel" destination="YXV-Wx-gOJ" id="lst-8a-Oac"/>
                         <outlet property="convertedCurrencyCodeLabel" destination="TUA-oY-rM2" id="iu5-Aq-AR1"/>
                         <outlet property="convertedFlagImage" destination="knz-KT-0Tc" id="Mub-Yp-6Ut"/>
+                        <outlet property="leftCountryImage" destination="H5i-BT-ZB4" id="Rnk-Hh-cNc"/>
+                        <outlet property="leftCountryLabel" destination="eAu-DV-gI5" id="g9G-OP-dsp"/>
+                        <outlet property="middleCountryImage" destination="Ly3-zr-gGp" id="2GH-p6-Ynj"/>
+                        <outlet property="middleCountryLabel" destination="AFZ-8T-4Sa" id="I61-do-u3S"/>
+                        <outlet property="rightCountryImage" destination="4NH-dq-dGN" id="bC2-J9-brd"/>
+                        <outlet property="rightCountryLabel" destination="TFK-rg-A1G" id="ZIw-Pl-o5u"/>
                         <segue destination="iMi-c9-KOX" kind="presentation" identifier="HomeToChange" id="ToB-IA-w62"/>
                     </connections>
                 </viewController>
