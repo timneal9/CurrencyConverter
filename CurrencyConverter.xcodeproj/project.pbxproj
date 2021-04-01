@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26422DDB26165D7E0016E5C4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26422DDA26165D7E0016E5C4 /* Notifications.swift */; };
 		2675AD76260D6347000360AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675AD75260D6347000360AA /* AppDelegate.swift */; };
 		2675AD78260D6347000360AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675AD77260D6347000360AA /* SceneDelegate.swift */; };
 		2675AD7D260D6347000360AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD7B260D6347000360AA /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26422DDA26165D7E0016E5C4 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		2675AD72260D6347000360AA /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2675AD75260D6347000360AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2675AD77260D6347000360AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				2675AD7E260D634A000360AA /* Assets.xcassets */,
 				2675AD80260D634A000360AA /* LaunchScreen.storyboard */,
 				2675AD83260D634A000360AA /* Info.plist */,
+				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */,
 				26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */,
+				26422DDB26165D7E0016E5C4 /* Notifications.swift in Sources */,
 				26BAB1D72613D030003376B3 /* CurrencyViewModel.swift in Sources */,
 				26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */,
 				26DD70B72615900F00818946 /* Currencies.swift in Sources */,

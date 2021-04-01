@@ -31,7 +31,7 @@ struct CurrencyExchangeManager {
                 }
                 if let safeData = data {
                     let rates = self.parseJSON(safeData)
-                    print(rates)
+//                    print(rates)
                 }
             }
             task.resume()

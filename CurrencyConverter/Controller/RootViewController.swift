@@ -26,16 +26,18 @@ class RootViewController: UIViewController {
     @IBOutlet weak var rightCountryImage: UIImageView!
     
     let currencyExchangeManager = CurrencyExchangeManager()
+    let currenciesModel = Currencies()
     var baseAmount: String = ""
     var decimalActive: Bool = false
     var decimalString: String = ".00"
     var decimalActiveCount: Int = 0
     
-    var currencies = [
-        Currency(currencyCode: "NZD", currencyName: "New Zealand Dollar", countryName: "New Zealand", amountLabel: "0.00"),
-        Currency(currencyCode: "MXN", currencyName: "Mexican Peso", countryName: "Mexico", amountLabel: "0.00"),
-        Currency(currencyCode: "EUR", currencyName: "Euro", countryName: "European Union", amountLabel: "0.00")
-    ]
+    
+//    var currencies = [
+//        Currency(currencyCode: "NZD", currencyName: "New Zealand Dollar", countryName: "New Zealand", amountLabel: "0.00"),
+//        Currency(currencyCode: "MXN", currencyName: "Mexican Peso", countryName: "Mexico", amountLabel: "0.00"),
+//        Currency(currencyCode: "EUR", currencyName: "Euro", countryName: "European Union", amountLabel: "0.00")
+//    ]
     
     func setBaseCurrencyUI(currency: Currency) {
         baseCurrencyCodeLabel.text = currency.currencyCode
@@ -48,13 +50,15 @@ class RootViewController: UIViewController {
     }
     
     func setFavoritesUI(currencies: [Currency]) {
-        leftCountryLabel.text = currencies[0].currencyCode
-        middleCountryLabel.text = currencies[1].currencyCode
-        rightCountryLabel.text = currencies[2].currencyCode
-        
-        leftCountryImage.image = UIImage(named: currencies[0].currencyCode)
-        middleCountryImage.image = UIImage(named: currencies[1].currencyCode)
-        rightCountryImage.image = UIImage(named: currencies[2].currencyCode)
+//        print(currencies)
+//        print(currencies[0].currencyCode)
+        leftCountryLabel?.text = currencies[0].currencyCode
+        middleCountryLabel?.text = currencies[1].currencyCode
+        rightCountryLabel?.text = currencies[2].currencyCode
+
+        leftCountryImage?.image = UIImage(named: currencies[0].currencyCode)
+        middleCountryImage?.image = UIImage(named: currencies[1].currencyCode)
+        rightCountryImage?.image = UIImage(named: currencies[2].currencyCode)
     }
     
     func numButtonTapped(num: String) {
@@ -117,13 +121,19 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
 
 //        currencies = createArray()
-
-        currencyExchangeManager.getExchangeRate(for: "USD")
+//        currencyExchangeManager.getExchangeRate(for: "USD")
+        
         let usd = Currency(currencyCode: "USD", currencyName: "United States Dollar", countryName: "United States", amountLabel: "0.00")
         let gbp = Currency(currencyCode: "GBP", currencyName: "Pound Sterling", countryName: "Great Britian", amountLabel: "0.00")
         setBaseCurrencyUI(currency: usd)
         setConvertedUI(currency: gbp)
-        setFavoritesUI(currencies: currencies)
+        setFavoritesUI(currencies: currenciesModel.favorites)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
+    }
+    
+    @objc func notificationReceived(_ notification: Notification) {
+        setFavoritesUI(currencies: currenciesModel.favorites)
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {

@@ -12,35 +12,50 @@ import UIKit
 class ChangeFavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-  
-    let currencies = Currencies()
+    @IBOutlet weak var leftCountryLabel: UILabel!
+    @IBOutlet weak var middleCountryLabel: UILabel!
+    @IBOutlet weak var rightCountryLabel: UILabel!
+    @IBOutlet weak var leftCountryImage: UIImageView!
+    @IBOutlet weak var middleCountryImage: UIImageView!
+    @IBOutlet weak var rightCountryImage: UIImageView!
+    
+    let currenciesDataModel = Currencies()
+    let rootViewController = RootViewController()
     let cellSpacingHeight: CGFloat = 8
-//    var currencies: [Currency] = []
+    
+    func setFavorites() {
+        currenciesDataModel.favorites = currenciesDataModel.favorites
+    }
+    
+    func setFavoritesUI(currencies: [Currency]) {
+        leftCountryLabel.text = currencies[0].currencyCode
+        middleCountryLabel.text = currencies[1].currencyCode
+        rightCountryLabel.text = currencies[2].currencyCode
+        
+        leftCountryImage.image = UIImage(named: currencies[0].currencyCode)
+        middleCountryImage.image = UIImage(named: currencies[1].currencyCode)
+        rightCountryImage.image = UIImage(named: currencies[2].currencyCode)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setFavorites()
+        setFavoritesUI(currencies: currenciesDataModel.favorites)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
         tableView.register(UINib(nibName: "CurrencyListCell", bundle: nil), forCellReuseIdentifier: "ReusableCurrencyListCell")
     }
-
-//    func createArray() -> [Currency] {
-//
-//        var currencies: [Currency] = []
-//        for currency in currencyArray {
-//            let newCurrency = Currency(currencyCode: currency.key, currencyName: currency.value, amountLabel: "0.00")
-//            currencies.append(newCurrency)
-//        }
-//        return currencies
-//    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notifications.publishNotification, object: nil, userInfo: nil)
+    }
 }
 
 extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return currencies.currenciesObjects.count
+        return currenciesDataModel.currencyObjects.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +74,7 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let currency = currencies.currenciesObjects[indexPath.section]
+        let currency = currenciesDataModel.currencyObjects[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCurrencyListCell") as! CurrencyListCell
 
@@ -72,8 +87,16 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currency = currencies.currenciesObjects[indexPath.section]
-        print("Row selected \(currency)")
+        let currency = currenciesDataModel.currencyObjects[indexPath.section]
+        if !currenciesDataModel.favorites.contains(currency) {
+            currenciesDataModel.favorites.insert(currency, at: 0)
+            currenciesDataModel.favorites.removeLast()
+        } else {
+            let index = currenciesDataModel.favorites.firstIndex(of: currency)
+            currenciesDataModel.favorites.remove(at: index ?? 2)
+            currenciesDataModel.favorites.insert(currency, at: 0)
+        }
+        setFavoritesUI(currencies: currenciesDataModel.favorites)
     }
 
 }

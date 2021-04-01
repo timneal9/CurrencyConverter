@@ -45,7 +45,10 @@ class Currencies {
                          "EUR":"European Union"
     ]
     
-    var currenciesObjects = [
+    var favorites = [Currency(currencyCode: "MXN", currencyName: "Mexican Peso", countryName: "Mexico", amountLabel: "0.00"), Currency(currencyCode: "NZD", currencyName: "New Zealand Dollar", countryName: "New Zealand", amountLabel: "0.00"), Currency(currencyCode: "EUR", currencyName: "Euro", countryName: "European Union", amountLabel: "0.00")
+    ]
+    
+    var currencyObjects = [
         Currency(currencyCode: "CAD", currencyName: "Canadian Dollar", countryName: "Canada", amountLabel: "0.00"),
         Currency(currencyCode: "HKD", currencyName: "Hong Kong Dollar", countryName: "Hong Kong", amountLabel: "0.00"),
         Currency(currencyCode: "ISK", currencyName: "Iceland Krona", countryName: "Iceland", amountLabel: "0.00"),
