@@ -8,12 +8,12 @@
 
 import Foundation
 
-func didUpdateRates(selectedCountry: String, rates: [String: Float]) {
-    var ratesCache: [String: [String: Float]] = [:]
-    ratesCache[selectedCountry] = rates
-    print(ratesCache)
-    print(ratesCache["USD"]?["EUR"] ?? 0.00)
-}
+//func didUpdateRates(selectedCountry: String, rates: [String: Float]) {
+//    var ratesCache: [String: [String: Float]] = [:]
+//    ratesCache[selectedCountry] = rates
+//    print(ratesCache)
+//    print(ratesCache["USD"]?["EUR"] ?? 0.00)
+//}
 
 struct CurrencyExchangeManager {
     
@@ -21,7 +21,7 @@ struct CurrencyExchangeManager {
     
     func getExchangeRate(for country: String) {
         let urlString = "\(baseURL)\(country)"
-
+        
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
@@ -31,7 +31,7 @@ struct CurrencyExchangeManager {
                 }
                 if let safeData = data {
                     let rates = self.parseJSON(safeData)
-                    didUpdateRates(selectedCountry: country, rates: rates)
+                    print(rates)
                 }
             }
             task.resume()

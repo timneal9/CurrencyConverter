@@ -25,7 +25,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
     
-//    let currencyExchangeManager = CurrencyExchangeManager()
+    let currencyExchangeManager = CurrencyExchangeManager()
     var baseAmount: String = ""
     var decimalActive: Bool = false
     var decimalString: String = ".00"
@@ -107,7 +107,6 @@ class RootViewController: UIViewController {
         let baseText = baseAmountLabel.text ?? "0.0"
         let baseTextDouble = Double(baseText) ?? 0.0
         var convertedText = String(format: "%.2f", (baseTextDouble * 2.0))
-        print(convertedText)
         if convertedText.count <= 2 {
             convertedText.append("0")
         }
@@ -116,13 +115,10 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        CurrencyTableView.delegate = self
-//        CurrencyTableView.dataSource = self
-//        CurrencyTableView.tableFooterView = UIView()
+
 //        currencies = createArray()
-//
-//        currencyExchangeManager.getExchangeRate(for: "USD")
+
+        currencyExchangeManager.getExchangeRate(for: "USD")
         let usd = Currency(currencyCode: "USD", currencyName: "United States Dollar", countryName: "United States", amountLabel: "0.00")
         let gbp = Currency(currencyCode: "GBP", currencyName: "Pound Sterling", countryName: "Great Britian", amountLabel: "0.00")
         setBaseCurrencyUI(currency: usd)
