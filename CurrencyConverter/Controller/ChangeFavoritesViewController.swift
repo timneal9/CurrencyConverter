@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ChangeFavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var leftCountryLabel: UILabel!
     @IBOutlet weak var middleCountryLabel: UILabel!
     @IBOutlet weak var rightCountryLabel: UILabel!
@@ -23,24 +24,67 @@ class ChangeFavoritesViewController: UIViewController {
     let rootViewController = RootViewController()
     let cellSpacingHeight: CGFloat = 8
     
+//    var savedCurrencies:[CurrencyEntity]?
+    var savedFavorites:[Favorite]?
+    
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    var searchResults: Results<Item>?
+    
     func setFavorites() {
-        currenciesDataModel.favorites = currenciesDataModel.favorites
+        var currentFavorites: [String] = []
+        for i in 0...2 {
+            currentFavorites.append(savedFavorites?[i].currencyCode ?? "Err")
+        }
+        setFavoritesUI(currencies: currentFavorites)
+        
+        
     }
     
-    func setFavoritesUI(currencies: [Currency]) {
-        leftCountryLabel.text = currencies[0].currencyCode
-        middleCountryLabel.text = currencies[1].currencyCode
-        rightCountryLabel.text = currencies[2].currencyCode
+    func setFavoritesUI(currencies: [String]) {
+        leftCountryLabel.text = currencies[0]
+        middleCountryLabel.text = currencies[1]
+        rightCountryLabel.text = currencies[2]
         
-        leftCountryImage.image = UIImage(named: currencies[0].currencyCode)
-        middleCountryImage.image = UIImage(named: currencies[1].currencyCode)
-        rightCountryImage.image = UIImage(named: currencies[2].currencyCode)
+        leftCountryImage.image = UIImage(named: currencies[0])
+        middleCountryImage.image = UIImage(named: currencies[1])
+        rightCountryImage.image = UIImage(named: currencies[2])
+        
     }
+    
+//    func fetchCurrencies() {
+//        print("fetching currencies...")
+//        let request: NSFetchRequest<CurrencyEntity> = CurrencyEntity.fetchRequest()
+//        do {
+//            self.savedCurrencies = try context.fetch(request)
+//        } catch {
+//            print("Error fetching \(error)")
+//        }
+//    }
+    
+//    func fetchFavorites() {
+//        print("fetching favorites...")
+//        let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+//        do {
+//            self.savedFavorites = try context.fetch(request)
+//        } catch {
+//            print("Error fetching \(error)")
+//        }
+//    }
+//
+//    func saveCurrencies() {
+//        print("saving currenices...")
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Error saving \(error)")
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFavorites()
-        setFavoritesUI(currencies: currenciesDataModel.favorites)
+//        fetchCurrencies()
+//        fetchFavorites()
+//        setFavorites()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
@@ -48,7 +92,7 @@ class ChangeFavoritesViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: Notifications.publishNotification, object: nil, userInfo: nil)
+//        NotificationCenter.default.post(name: Notifications.publishNotification, object: nil, userInfo: nil)
     }
 }
 
@@ -88,15 +132,51 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currency = currenciesDataModel.currencyObjects[indexPath.section]
-        if !currenciesDataModel.favorites.contains(currency) {
-            currenciesDataModel.favorites.insert(currency, at: 0)
+        if !currenciesDataModel.favorites.contains(currency.currencyCode) {
+            currenciesDataModel.favorites.insert(currency.currencyCode, at: 0)
             currenciesDataModel.favorites.removeLast()
         } else {
-            let index = currenciesDataModel.favorites.firstIndex(of: currency)
+            let index = currenciesDataModel.favorites.firstIndex(of: currency.currencyCode)
             currenciesDataModel.favorites.remove(at: index ?? 2)
-            currenciesDataModel.favorites.insert(currency, at: 0)
+            currenciesDataModel.favorites.insert(currency.currencyCode, at: 0)
         }
+        
         setFavoritesUI(currencies: currenciesDataModel.favorites)
+        print(currenciesDataModel.favorites)
+        
+        for i in 0...2 {
+            savedFavorites?[i].currencyCode = currenciesDataModel.favorites[i]
+        }
+        
+
+        
+//        saveCurrencies()
+
     }
 
 }
+
+//extension ChangeFavoritesViewController: UISearchBarDelegate {
+//    func searchItems(_ searchBar: UISearchBar) {
+//        searchResults = currencies?.filter("title CONTAINS[cd] %@", searchBar.text!)
+//            .sorted(byKeyPath: "dateCreated", ascending: true)
+//
+//        tableView.reloadData()
+//    }
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchItems(searchBar)
+//    }
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text?.count == 0 {
+//            loadItems()
+//
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//        } else {
+//            searchItems(searchBar)
+//        }
+//    }
+//}
