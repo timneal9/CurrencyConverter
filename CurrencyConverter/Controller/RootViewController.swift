@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     @IBOutlet weak var baseAmountLabel: UILabel!
     @IBOutlet weak var baseCurrencyCodeLabel: UILabel!
     @IBOutlet weak var baseFlagImage: UIImageView!
@@ -25,12 +25,6 @@ class RootViewController: UIViewController {
     @IBOutlet weak var leftCountryImage: UIImageView!
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
-    
-//    var items = [CurrencyEntity]()
-//    var savedFavorites:[Favorite]?
-    
-    // access to AppDelegate as an object
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //    let currencyExchangeManager = CurrencyExchangeManager()
 
@@ -57,6 +51,7 @@ class RootViewController: UIViewController {
         leftCountryImage?.image = UIImage(named: currencies[0])
         middleCountryImage?.image = UIImage(named: currencies[1])
         rightCountryImage?.image = UIImage(named: currencies[2])
+        
     }
     
     func numButtonTapped(num: String) {
@@ -114,78 +109,43 @@ class RootViewController: UIViewController {
         }
         convertedAmountLabel.text = convertedText
     }
-    
-//    func fetchCurrencies() {
-//        let request: NSFetchRequest<CurrencyEntity> = CurrencyEntity.fetchRequest()
-//
-//        do {
-//            items = try context.fetch(request)
-//        } catch {
-//            print("Error fetching data from context \(error)")
-//        }
-//
-//        // lets see what is being fetched, and placed into items
-//        for item in items {
-//            print(item.currencyCode!, item.favorite)
-//        }
-//    }
-    
-//    func fetchFavorites() {
-//        let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-//        do {
-//            self.savedFavorites = try context.fetch(request)
-//        } catch {
-//            print("Error fetching \(error)")
-//        }
-//    }
-    
-    // transfers what is in our scratchpad to permenant data storage
-//    func saveCurrencies() {
-//        print("saving currenices...")
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving currencies \(error)")
-//        }
-//    }
-    
-//    func setFavorites() {
-//        var currentFavorites: [String] = []
-//        for i in 0...2 {
-//            currentFavorites.append(savedFavorites?[i].currencyCode ?? "Err")
-//        }
-//        setFavoritesUI(currencies: currentFavorites)
-//    }
-    
-//    @objc func notificationReceived(_ notification: Notification) {
-//        saveCurrencies()
-//        fetchFavorites()
-//        setFavorites()
-//        let currency = currenciesDataModel.currencyObjects[indexPath.section]
-//        setFavoritesUI(currencies: currenciesDataModel.favorites)
-//        print(currenciesDataModel.favorites)
-//        print(savedFavorites?[0].currencyCode)
-        
-//    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-//        fetchCurrencies()
-//        fetchFavorites()
-//        setFavorites()
-//        print(savedCurrencies)
-//        currencies = createArray()
+        setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        
+        print([
+            AppDelegate.shared().leftFavorite,
+            AppDelegate.shared().middleFavorite,
+            AppDelegate.shared().rightFavorite
+        ])
+        
+        setFavoritesUI(currencies: [
+            AppDelegate.shared().leftFavorite,
+            AppDelegate.shared().middleFavorite,
+            AppDelegate.shared().rightFavorite
+        ])
+
 //        currencyExchangeManager.getExchangeRate(for: "USD")
         
-        setBaseCurrencyUI(currencyCode: "USD")
-        setConvertedUI(currencyCode: "GBP")
-//        setFavoritesUI(currencies: currenciesDataModel.favorites)
-//        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
+        
+    }
+    
+    @objc func notificationReceived(_ notification: Notification) {
+        
+        setFavoritesUI(currencies: [
+            AppDelegate.shared().leftFavorite,
+            AppDelegate.shared().middleFavorite,
+            AppDelegate.shared().rightFavorite
+        ])
+        
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
+        AppDelegate.shared().setSavedCurrencyValues()
         self.performSegue(withIdentifier: "HomeToChange", sender: self)
     }
     @IBAction func oneNumButtonTapped(_ sender: UIButton) {
@@ -225,53 +185,71 @@ class RootViewController: UIViewController {
         deleteNum()
     }
     @IBAction func leftCountryButton(_ sender: UIButton) {
-        print("left country tapped")
-//        let tappedCountry = savedFavorites?[0].currencyCode ?? "Err"
-//        let currentConvertedCountry = convertedCurrencyCodeLabel.text ?? "Err"
-//        savedFavorites?[0].currencyCode = currentConvertedCountry
-//        setConvertedUI(currencyCode: tappedCountry)
-//        leftCountryImage.image = UIImage(named: currentConvertedCountry)
-//        leftCountryLabel.text = currentConvertedCountry
         
-//        print(items[0].favorite)
-//        items[0].favorite = !(items[0].favorite)
-//        print(items[0].favorite)
-//        print(items[0].countryName)
-//
-//        self.saveCurrencies()
+        let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
+        let tappedCurrency = AppDelegate.shared().leftFavorite
+        
+        AppDelegate.shared().convertedCurrency = tappedCurrency
+        AppDelegate.shared().leftFavorite = currentConvertedCurrency
+        
+        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryLabel.text = AppDelegate.shared().leftFavorite
+        
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        
     }
     
     @IBAction func middleCountryButton(_ sender: UIButton) {
-        print("middle country tapped")
-//        let tappedCountry = savedFavorites?[1].currencyCode ?? "Err"
-//        let currentConvertedCountry = convertedCurrencyCodeLabel.text ?? "Err"
-//        savedFavorites?[1].currencyCode = currentConvertedCountry
-//        setConvertedUI(currencyCode: tappedCountry)
-//        middleCountryImage.image = UIImage(named: currentConvertedCountry)
-//        middleCountryLabel.text = currentConvertedCountry
-//
-//        saveCurrencies()
+        
+        let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
+        let tappedCurrency = AppDelegate.shared().middleFavorite
+        
+        
+        AppDelegate.shared().convertedCurrency = tappedCurrency
+        AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
+        AppDelegate.shared().leftFavorite = currentConvertedCurrency
+        
+        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryLabel.text = AppDelegate.shared().leftFavorite
+        middleCountryImage.image = UIImage(named: AppDelegate.shared().middleFavorite)
+        middleCountryLabel.text = AppDelegate.shared().middleFavorite
+
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        
     }
     
     @IBAction func rightCountryButton(_ sender: UIButton) {
-        print("right country tapped")
-//        let tappedCountry = savedFavorites?[2].currencyCode ?? "Err"
-//        let currentConvertedCountry = convertedCurrencyCodeLabel.text ?? "Err"
-//        savedFavorites?[2].currencyCode = currentConvertedCountry
-//        setConvertedUI(currencyCode: tappedCountry)
-//        rightCountryImage.image = UIImage(named: currentConvertedCountry)
-//        rightCountryLabel.text = currentConvertedCountry
-//
-//        saveCurrencies()
+        
+        let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
+        let tappedCurrency = AppDelegate.shared().rightFavorite
+        
+        
+        AppDelegate.shared().convertedCurrency = tappedCurrency
+        AppDelegate.shared().rightFavorite = AppDelegate.shared().middleFavorite
+        AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
+        AppDelegate.shared().leftFavorite = currentConvertedCurrency
+        
+        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryLabel.text = AppDelegate.shared().leftFavorite
+        middleCountryImage.image = UIImage(named: AppDelegate.shared().middleFavorite)
+        middleCountryLabel.text = AppDelegate.shared().middleFavorite
+        rightCountryImage.image = UIImage(named: AppDelegate.shared().rightFavorite)
+        rightCountryLabel.text = AppDelegate.shared().rightFavorite
+
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        
     }
     
     @IBAction func swapCurrencies(_ sender: UIButton) {
         print("Swap button tapped")
         
-//        let currentBaseCountry = baseCurrencyCodeLabel.text!
-//        let currentConvertedCountry = convertedCurrencyCodeLabel.text!
-//
-//        setBaseCurrencyUI(currencyCode: currentConvertedCountry)
-//        setConvertedUI(currencyCode: currentBaseCountry)
+        let currentBaseCountry = baseCurrencyCodeLabel.text!
+        let currentConvertedCountry = convertedCurrencyCodeLabel.text!
+        
+        AppDelegate.shared().baseCurrency = currentConvertedCountry
+        AppDelegate.shared().convertedCurrency = currentBaseCountry
+
+        setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
     }
 }

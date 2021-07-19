@@ -458,7 +458,7 @@
                         <outlet property="middleCountryLabel" destination="AFZ-8T-4Sa" id="I61-do-u3S"/>
                         <outlet property="rightCountryImage" destination="4NH-dq-dGN" id="bC2-J9-brd"/>
                         <outlet property="rightCountryLabel" destination="TFK-rg-A1G" id="ZIw-Pl-o5u"/>
-                        <segue destination="iMi-c9-KOX" kind="presentation" identifier="HomeToChange" id="Vjd-02-Zsu"/>
+                        <segue destination="iMi-c9-KOX" kind="presentation" identifier="HomeToChange" modalPresentationStyle="pageSheet" id="Vjd-02-Zsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
