@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Currency: Equatable {
+struct CurrencyOld: Equatable {
     var currencyCode: String
     var currencyName: String
     var countryName: String
