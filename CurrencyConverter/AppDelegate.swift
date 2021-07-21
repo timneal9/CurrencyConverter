@@ -12,11 +12,13 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var baseCurrency: String = "USD"
-    var convertedCurrency: String = "EUR"
-    var leftFavorite: String = "GBP"
-    var middleFavorite: String = "CAD"
-    var rightFavorite: String = "MXN"
+    let defaults = UserDefaults.standard
+    let currencyExchangeManager = CurrencyExchangeManager()
+    var baseCurrency:       String = "USD"
+    var convertedCurrency:  String = "EUR"
+    var leftFavorite:       String = "GBP"
+    var middleFavorite:     String = "CAD"
+    var rightFavorite:      String = "MXN"
     
     static func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -24,11 +26,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        baseCurrency = UserDefaults.standard.string(forKey: "baseCurrency") ?? "USD"
-        convertedCurrency = UserDefaults.standard.string(forKey: "convertedCurrency") ?? "EUR"
-        leftFavorite = UserDefaults.standard.string(forKey: "leftFavorite") ?? "GBP"
-        middleFavorite = UserDefaults.standard.string(forKey: "middleFavorite") ?? "CAD"
-        rightFavorite = UserDefaults.standard.string(forKey: "rightFavorite") ?? "MXN"
+        baseCurrency        = defaults.string(forKey: "baseCurrency") ?? "USD"
+        convertedCurrency   = defaults.string(forKey: "convertedCurrency") ?? "EUR"
+        leftFavorite        = defaults.string(forKey: "leftFavorite") ?? "GBP"
+        middleFavorite      = defaults.string(forKey: "middleFavorite") ?? "CAD"
+        rightFavorite       = defaults.string(forKey: "rightFavorite") ?? "MXN"
+        
+        let today = Date()
+        var lastCalledDate: Date
+        
+        if (defaults.object(forKey: "ratesLastUpdated") != nil) {
+            lastCalledDate = (defaults.object(forKey: "ratesLastUpdated") as! Date)
+            print("API was last called on: \(lastCalledDate)")
+        } else {
+            print("ratesLastUpdated returned as nil. Calling API...")
+            lastCalledDate = today
+            defaults.setValue(lastCalledDate, forKey: "ratesLastUpdated")
+            
+            callAPI()
+        }
+        
+        let diffInDays = Calendar.current.dateComponents([.day], from: lastCalledDate, to: today).day ?? 0
+        
+        // If more than x days since last API call, call API
+        let premiumUser = true
+        let maxDays: Int
+        if premiumUser {
+            maxDays = 1
+        } else {
+            maxDays = 7
+        }
+        if diffInDays > maxDays {
+            lastCalledDate = today
+            defaults.setValue(lastCalledDate, forKey: "ratesLastUpdated")
+            
+            print("API was last called more than \(maxDays) days ago. Calling API...")
+            
+            callAPI()
+        }
         
         return true
     }
@@ -37,27 +72,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setSavedCurrencyValues()
         }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        setSavedCurrencyValues()
-    }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         setSavedCurrencyValues()
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        setSavedCurrencyValues()
+    
+    func callAPI() {
+        currencyExchangeManager.getExchangeRate()
     }
     
     func setSavedCurrencyValues() {
-        UserDefaults.standard.setValue(baseCurrency, forKey: "baseCurrency")
-        UserDefaults.standard.setValue(convertedCurrency, forKey: "convertedCurrency")
-        UserDefaults.standard.setValue(leftFavorite, forKey: "leftFavorite")
-        UserDefaults.standard.setValue(middleFavorite, forKey: "middleFavorite")
-        UserDefaults.standard.setValue(rightFavorite, forKey: "rightFavorite")
+        defaults.setValue(baseCurrency, forKey:         "baseCurrency")
+        defaults.setValue(convertedCurrency, forKey:    "convertedCurrency")
+        defaults.setValue(leftFavorite, forKey:         "leftFavorite")
+        defaults.setValue(middleFavorite, forKey:       "middleFavorite")
+        defaults.setValue(rightFavorite, forKey:        "rightFavorite")
     }
 
     lazy var persistentContainer: NSPersistentContainer = {

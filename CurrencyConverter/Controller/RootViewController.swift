@@ -26,8 +26,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
     
-//    let currencyExchangeManager = CurrencyExchangeManager()
-
+    let rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
     var baseAmount: String = ""
     var decimalActive: Bool = false
     var decimalString: String = ".00"
@@ -41,6 +40,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     func setConvertedUI(currencyCode: String) {
         convertedCurrencyCodeLabel.text = currencyCode
         convertedFlagImage.image = UIImage(named: currencyCode)
+        updateConvertedAmount()
     }
     
     func setFavoritesUI(currencies: [String]) {
@@ -102,12 +102,20 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func updateConvertedAmount() {
         let baseText = baseAmountLabel.text ?? "0.0"
-        let baseTextDouble = Double(baseText) ?? 0.0
-        var convertedText = String(format: "%.2f", (baseTextDouble * 2.0))
-        if convertedText.count <= 2 {
-            convertedText.append("0")
+        let baseTextFloat = Float(baseText) ?? 0.0
+        let baseRateCode = baseCurrencyCodeLabel.text ?? "USD"
+        let conversionRateCode = convertedCurrencyCodeLabel.text ?? "USD"
+        guard let baseRate = rates?[baseRateCode] as? Float else { return }
+        guard let conversionRate = rates?[conversionRateCode] as? Float else { return }
+        
+        let multiplier = conversionRate / baseRate
+        let result = baseTextFloat * multiplier
+        var formattedResult = String(format: "%.2f", result)
+        
+        if formattedResult.count <= 2 {
+            formattedResult.append("0")
         }
-        convertedAmountLabel.text = convertedText
+        convertedAmountLabel.text = formattedResult
     }
   
     override func viewDidLoad() {
@@ -116,22 +124,13 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
         
-        print([
-            AppDelegate.shared().leftFavorite,
-            AppDelegate.shared().middleFavorite,
-            AppDelegate.shared().rightFavorite
-        ])
-        
         setFavoritesUI(currencies: [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
             AppDelegate.shared().rightFavorite
         ])
-
-//        currencyExchangeManager.getExchangeRate(for: "USD")
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
-        
     }
     
     @objc func notificationReceived(_ notification: Notification) {
@@ -141,11 +140,10 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
             AppDelegate.shared().middleFavorite,
             AppDelegate.shared().rightFavorite
         ])
-        
+        AppDelegate.shared().setSavedCurrencyValues()
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        AppDelegate.shared().setSavedCurrencyValues()
         self.performSegue(withIdentifier: "HomeToChange", sender: self)
     }
     @IBAction func oneNumButtonTapped(_ sender: UIButton) {
@@ -196,7 +194,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         leftCountryLabel.text = AppDelegate.shared().leftFavorite
         
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
-        
+        AppDelegate.shared().setSavedCurrencyValues()
     }
     
     @IBAction func middleCountryButton(_ sender: UIButton) {
@@ -215,7 +213,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         middleCountryLabel.text = AppDelegate.shared().middleFavorite
 
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
-        
+        AppDelegate.shared().setSavedCurrencyValues()
     }
     
     @IBAction func rightCountryButton(_ sender: UIButton) {
@@ -237,19 +235,20 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         rightCountryLabel.text = AppDelegate.shared().rightFavorite
 
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        AppDelegate.shared().setSavedCurrencyValues()
         
     }
     
     @IBAction func swapCurrencies(_ sender: UIButton) {
-        print("Swap button tapped")
         
-        let currentBaseCountry = baseCurrencyCodeLabel.text!
-        let currentConvertedCountry = convertedCurrencyCodeLabel.text!
+        let currentBaseCountry = AppDelegate.shared().baseCurrency
+        let currentConvertedCountry = AppDelegate.shared().convertedCurrency
         
         AppDelegate.shared().baseCurrency = currentConvertedCountry
         AppDelegate.shared().convertedCurrency = currentBaseCountry
 
         setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        AppDelegate.shared().setSavedCurrencyValues()
     }
 }
