@@ -37,13 +37,13 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     }
     
     func fetchCurrencies() {
-        print("fetching currencies...")
         let request: NSFetchRequest<CurrencyEntity> = CurrencyEntity.fetchRequest()
         do {
             self.currencyArray = try context.fetch(request)
         } catch {
             print("Error fetching \(error)")
         }
+        currencyArray = currencyArray.sorted(by: { $0.countryName! < $1.countryName! })
     }
     
     override func viewDidLoad() {
@@ -136,6 +136,7 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
             AppDelegate.shared().middleFavorite,
             AppDelegate.shared().rightFavorite
         ])
+        AppDelegate.shared().setSavedCurrencyValues()
     }
 }
 

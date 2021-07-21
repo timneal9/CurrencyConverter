@@ -8,21 +8,13 @@
 
 import Foundation
 
-//func didUpdateRates(selectedCountry: String, rates: [String: Float]) {
-//    var ratesCache: [String: [String: Float]] = [:]
-//    ratesCache[selectedCountry] = rates
-//    print(ratesCache)
-//    print(ratesCache["USD"]?["EUR"] ?? 0.00)
-//}
-
 struct CurrencyExchangeManager {
     
-    let baseURL = "https://api.exchangeratesapi.io/latest?base="
+    let baseURL = "https://api.exchangerate.host/latest"
     
-    func getExchangeRate(for country: String) {
-        let urlString = "\(baseURL)\(country)"
+    func getExchangeRate() {
         
-        if let url = URL(string: urlString) {
+        if let url = URL(string: baseURL) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
@@ -31,7 +23,7 @@ struct CurrencyExchangeManager {
                 }
                 if let safeData = data {
                     let rates = self.parseJSON(safeData)
-//                    print(rates)
+                    saveRates(rates: rates)
                 }
             }
             task.resume()
@@ -49,4 +41,9 @@ struct CurrencyExchangeManager {
             return ["": 0.00]
         }
     }
+    
+    func saveRates(rates: [String: Float]) {
+        UserDefaults.standard.setValue(rates, forKey: "ratesDictionary")
+    }
+    
 }
