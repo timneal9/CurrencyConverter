@@ -16,12 +16,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ckp-iC-yuR">
-                        <rect key="frame" x="16" y="56.5" width="72" height="46.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USD" translatesAutoresizingMaskIntoConstraints="NO" id="Ckp-iC-yuR">
+                        <rect key="frame" x="16" y="44" width="72" height="72"/>
                         <color key="tintColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="72" id="nMg-df-N30"/>
-                            <constraint firstAttribute="height" constant="48" id="uyq-hX-2Xa"/>
+                            <constraint firstAttribute="height" constant="72" id="uyq-hX-2Xa"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-SW-ksg">
@@ -71,7 +71,7 @@
                     <constraint firstAttribute="trailing" secondItem="p1C-fO-Ayh" secondAttribute="trailing" constant="50" id="Mas-kC-oTg"/>
                     <constraint firstAttribute="trailing" secondItem="7u1-YL-At8" secondAttribute="trailing" constant="7" id="WWd-fe-Pam"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="top" secondItem="p1C-fO-Ayh" secondAttribute="bottom" constant="7" id="h5u-wB-Rrt"/>
-                    <constraint firstAttribute="bottom" secondItem="Ckp-iC-yuR" secondAttribute="bottom" constant="16" id="hvA-Cp-de4"/>
+                    <constraint firstAttribute="bottom" secondItem="Ckp-iC-yuR" secondAttribute="bottom" constant="4" id="hvA-Cp-de4"/>
                     <constraint firstItem="Ckp-iC-yuR" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="uhA-Gh-PMP"/>
                 </constraints>
             </tableViewCellContentView>
@@ -86,7 +86,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="flag" catalog="system" width="128" height="121"/>
+        <image name="USD" width="128" height="128"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

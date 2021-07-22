@@ -16,13 +16,9 @@
 		2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD80260D634A000360AA /* LaunchScreen.storyboard */; };
 		26BAB1BC26104433003376B3 /* CurrencyExchangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */; };
 		26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */; };
-		26BAB1C726111F29003376B3 /* SelectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1C626111F29003376B3 /* SelectionCellModel.swift */; };
-		26BAB1D72613D030003376B3 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */; };
 		26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */; };
 		26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */; };
 		26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */; };
-		26DB47152616A62800EEAC82 /* PreLoadedCurrencyData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26DB47142616A62800EEAC82 /* PreLoadedCurrencyData.plist */; };
-		26DD70B72615900F00818946 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DD70B62615900F00818946 /* Currencies.swift */; };
 		26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1842260FBBB500BA1F7F /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,13 +34,9 @@
 		2675AD83260D634A000360AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeManager.swift; sourceTree = "<group>"; };
 		26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateData.swift; sourceTree = "<group>"; };
-		26BAB1C626111F29003376B3 /* SelectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCellModel.swift; sourceTree = "<group>"; };
-		26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFavoritesViewController.swift; sourceTree = "<group>"; };
 		26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListCell.xib; sourceTree = "<group>"; };
 		26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
-		26DB47142616A62800EEAC82 /* PreLoadedCurrencyData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PreLoadedCurrencyData.plist; sourceTree = "<group>"; };
-		26DD70B62615900F00818946 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		26FB1842260FBBB500BA1F7F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,9 +78,7 @@
 				2675AD7E260D634A000360AA /* Assets.xcassets */,
 				2675AD80260D634A000360AA /* LaunchScreen.storyboard */,
 				2675AD83260D634A000360AA /* Info.plist */,
-				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
 				26422DE9261683A90016E5C4 /* CurrencyDataModel.xcdatamodeld */,
-				26DB47142616A62800EEAC82 /* PreLoadedCurrencyData.plist */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -96,11 +86,8 @@
 		2675AD89260D637E000360AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26BAB1D62613D030003376B3 /* CurrencyViewModel.swift */,
-				26BAB1C626111F29003376B3 /* SelectionCellModel.swift */,
 				26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */,
 				26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */,
-				26DD70B62615900F00818946 /* Currencies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +107,7 @@
 			children = (
 				26FB1842260FBBB500BA1F7F /* RootViewController.swift */,
 				26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */,
+				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,7 +173,6 @@
 				26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */,
 				2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */,
 				2675AD7F260D634A000360AA /* Assets.xcassets in Resources */,
-				26DB47152616A62800EEAC82 /* PreLoadedCurrencyData.plist in Resources */,
 				2675AD7D260D6347000360AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,11 +187,8 @@
 				26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */,
 				26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */,
 				26422DDB26165D7E0016E5C4 /* Notifications.swift in Sources */,
-				26BAB1D72613D030003376B3 /* CurrencyViewModel.swift in Sources */,
 				26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */,
-				26DD70B72615900F00818946 /* Currencies.swift in Sources */,
 				26BAB1BC26104433003376B3 /* CurrencyExchangeManager.swift in Sources */,
-				26BAB1C726111F29003376B3 /* SelectionCellModel.swift in Sources */,
 				26422DEB261683AA0016E5C4 /* CurrencyDataModel.xcdatamodeld in Sources */,
 				2675AD76260D6347000360AA /* AppDelegate.swift in Sources */,
 				26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */,
