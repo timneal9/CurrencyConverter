@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1200px-Flag_of_the_United_Kingdom.svg.png",
+      "filename" : "GBP.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "GBP@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "GBP@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1200px-Flag_of_Mexico.svg.png",
+      "filename" : "MXN.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "MXN@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "MXN@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

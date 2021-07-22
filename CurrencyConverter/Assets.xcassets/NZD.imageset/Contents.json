@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1200px-Flag_of_New_Zealand.svg.png",
+      "filename" : "NZD.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "NZD@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "NZD@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
