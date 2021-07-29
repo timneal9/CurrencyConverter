@@ -26,6 +26,13 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
     
+    @IBOutlet weak var baseCurrencyUIView: UIView!
+    @IBOutlet weak var convertedCurrencyUIView: UIView!
+
+    @IBOutlet weak var leftFavView: UIStackView!
+    @IBOutlet weak var middleFavView: UIStackView!
+    @IBOutlet weak var rightFavView: UIStackView!
+    
     let rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
     var baseAmount: String = ""
     var decimalActive: Bool = false
@@ -130,6 +137,23 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
             AppDelegate.shared().rightFavorite
         ])
         
+        let baseTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
+        let convertedTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
+        let leftFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(leftCountryTapped(tapGestureRecognizer:)))
+        let middleFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(middleCountryTapped(tapGestureRecognizer:)))
+        let rightFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rightCountryTapped(tapGestureRecognizer:)))
+        
+        baseCurrencyUIView.isUserInteractionEnabled = true
+        baseCurrencyUIView.addGestureRecognizer(baseTapGestureRecognizer)
+        convertedCurrencyUIView.isUserInteractionEnabled = true
+        convertedCurrencyUIView.addGestureRecognizer(convertedTapGestureRecognizer)
+        leftFavView.isUserInteractionEnabled = true
+        leftFavView.addGestureRecognizer(leftFavTapGestureRecognizer)
+        rightFavView.isUserInteractionEnabled = true
+        rightFavView.addGestureRecognizer(rightFavTapGestureRecognizer)
+        middleFavView.isUserInteractionEnabled = true
+        middleFavView.addGestureRecognizer(middleFavTapGestureRecognizer)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
     }
     
@@ -182,8 +206,8 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBAction func deleteNumButtonTapped(_ sender: UIButton) {
         deleteNum()
     }
-    @IBAction func leftCountryButton(_ sender: UIButton) {
-        
+    
+    @objc func leftCountryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
         let tappedCurrency = AppDelegate.shared().leftFavorite
         
@@ -197,11 +221,9 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().setSavedCurrencyValues()
     }
     
-    @IBAction func middleCountryButton(_ sender: UIButton) {
-        
+    @objc func middleCountryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
         let tappedCurrency = AppDelegate.shared().middleFavorite
-        
         
         AppDelegate.shared().convertedCurrency = tappedCurrency
         AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
@@ -216,11 +238,9 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().setSavedCurrencyValues()
     }
     
-    @IBAction func rightCountryButton(_ sender: UIButton) {
-        
+    @objc func rightCountryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
         let tappedCurrency = AppDelegate.shared().rightFavorite
-        
         
         AppDelegate.shared().convertedCurrency = tappedCurrency
         AppDelegate.shared().rightFavorite = AppDelegate.shared().middleFavorite
@@ -239,8 +259,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         
     }
     
-    @IBAction func swapCurrencies(_ sender: UIButton) {
-        
+    @objc func swapCurrencies(tapGestureRecognizer: UITapGestureRecognizer) {
         let currentBaseCountry = AppDelegate.shared().baseCurrency
         let currentConvertedCountry = AppDelegate.shared().convertedCurrency
         

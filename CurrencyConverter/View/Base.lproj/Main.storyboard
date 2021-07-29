@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PS8-Ey-cpi">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,41 +14,44 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s6p-Pq-uTp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Tkf-xw-uGV" userLabel="All Stack View">
-                                <rect key="frame" x="7" y="51" width="348" height="838"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tkf-xw-uGV" userLabel="All Stack View">
+                                <rect key="frame" x="7" y="7" width="306" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dch-6M-s4b" userLabel="Top Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="348" height="407"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="306" height="319"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-d4-iFc" userLabel="Base Currency View">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="130.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="101"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-44-38M" userLabel="Base Currency Stack">
-                                                        <rect key="frame" x="16" y="22.333333333333329" width="316" height="86"/>
+                                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pM2-5q-Nkz" userLabel="Base Currency Stack View">
+                                                        <rect key="frame" x="16" y="7.5" width="274" height="86"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0rw-Br-dOK" userLabel="Base flag stack">
+                                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-vz-yy7" userLabel="Base Flag Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-Jq-6FB">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-Jq-6FB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                                        <accessibility key="accessibilityConfiguration" identifier="baseCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-5l-P0A">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-5l-P0A">
                                                                         <rect key="frame" x="0.0" y="38" width="72" height="48"/>
+                                                                        <accessibility key="accessibilityConfiguration" identifier="baseCurrencyFlagImage"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="48" id="hkk-rl-Wp5"/>
-                                                                            <constraint firstAttribute="width" constant="72" id="py9-TV-pq5"/>
+                                                                            <constraint firstAttribute="width" constant="72" identifier="baseFlagWidth" id="EiX-6a-6gZ"/>
+                                                                            <constraint firstAttribute="height" constant="48" identifier="baseFlagHeight" id="vqQ-7S-85k"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-F9-j5k">
-                                                                <rect key="frame" x="72" y="0.0" width="244" height="86"/>
+                                                                <rect key="frame" x="80" y="0.0" width="194" height="86"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="baseCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -57,41 +60,45 @@
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <accessibility key="accessibilityConfiguration">
+                                                <accessibility key="accessibilityConfiguration" identifier="baseCurrencyView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    <bool key="isElement" value="NO"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="4dR-44-38M" secondAttribute="trailing" constant="16" id="ZJ3-Kq-ofX"/>
-                                                    <constraint firstItem="4dR-44-38M" firstAttribute="centerY" secondItem="UCz-d4-iFc" secondAttribute="centerY" id="dpT-Iq-BFT"/>
-                                                    <constraint firstItem="4dR-44-38M" firstAttribute="leading" secondItem="UCz-d4-iFc" secondAttribute="leading" constant="16" id="zFU-xj-2g1"/>
+                                                    <constraint firstItem="pM2-5q-Nkz" firstAttribute="leading" secondItem="UCz-d4-iFc" secondAttribute="leading" priority="750" constant="16" identifier="Base currency stack leading" id="35G-sS-4hl"/>
+                                                    <constraint firstItem="pM2-5q-Nkz" firstAttribute="centerY" secondItem="UCz-d4-iFc" secondAttribute="centerY" identifier="Base currency stack Y alignment" id="94C-hX-E26"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pM2-5q-Nkz" secondAttribute="trailing" priority="750" constant="16" identifier="Base currency trailing" id="wjR-cg-FYD"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ult-km-HeL" userLabel="Converted Currency View">
-                                                <rect key="frame" x="0.0" y="138.33333333333331" width="348" height="130.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="109" width="306" height="101"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPh-g2-XJ5" userLabel="Converted Currency Stack">
-                                                        <rect key="frame" x="16" y="22.333333333333314" width="316" height="86"/>
+                                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qPh-g2-XJ5" userLabel="Converted Currency Stack">
+                                                        <rect key="frame" x="16" y="7.5" width="274" height="86"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-cn-yUY" userLabel="Converted flag Stack">
+                                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-cn-yUY" userLabel="Converted flag Stack">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-oY-rM2">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-oY-rM2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                                        <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="knz-KT-0Tc">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="knz-KT-0Tc">
                                                                         <rect key="frame" x="0.0" y="38" width="72" height="48"/>
+                                                                        <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyFlagImage"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="72" id="Gt5-U0-37p"/>
-                                                                            <constraint firstAttribute="height" constant="48" id="cEj-3D-Auz"/>
+                                                                            <constraint firstAttribute="width" constant="72" identifier="convertedFlagWidth" id="M3X-xG-hox"/>
+                                                                            <constraint firstAttribute="height" constant="48" identifier="convertedFlagHeight" id="YZ9-Px-lit"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Wx-gOJ">
-                                                                <rect key="frame" x="72" y="0.0" width="244" height="86"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Wx-gOJ">
+                                                                <rect key="frame" x="80" y="0.0" width="194" height="86"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -100,27 +107,27 @@
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <accessibility key="accessibilityConfiguration">
+                                                <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="qPh-g2-XJ5" secondAttribute="trailing" constant="16" id="6nA-dq-GJd"/>
-                                                    <constraint firstItem="qPh-g2-XJ5" firstAttribute="centerY" secondItem="ult-km-HeL" secondAttribute="centerY" id="Y8a-n2-PtC"/>
-                                                    <constraint firstItem="qPh-g2-XJ5" firstAttribute="leading" secondItem="ult-km-HeL" secondAttribute="leading" constant="16" id="aSX-6O-YFH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qPh-g2-XJ5" secondAttribute="trailing" priority="999" constant="16" identifier="convertedCurrencyStackVerticalTrailing" id="6nA-dq-GJd"/>
+                                                    <constraint firstItem="qPh-g2-XJ5" firstAttribute="leading" secondItem="ult-km-HeL" secondAttribute="leading" priority="999" constant="16" identifier="convertedCurrencyStackVerticalLeading" id="aSX-6O-YFH"/>
+                                                    <constraint firstItem="qPh-g2-XJ5" firstAttribute="centerY" secondItem="ult-km-HeL" secondAttribute="centerY" identifier="convertedCurrencyStackVerticalAlign" id="kQ3-GC-HKj"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-Wh-k7o" userLabel="Fav Currency View">
-                                                <rect key="frame" x="0.0" y="276.66666666666669" width="348" height="130.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="218" width="306" height="101"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-Xg-svc" userLabel="Fav Stack View">
-                                                        <rect key="frame" x="16" y="19.666666666666686" width="316" height="86"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-Xg-svc" userLabel="Fav Stack View">
+                                                        <rect key="frame" x="16" y="7.5" width="274" height="86"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
+                                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-DV-gI5">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-DV-gI5">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteLeftCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
@@ -130,22 +137,28 @@
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-BT-ZB4">
                                                                         <rect key="frame" x="0.0" y="38" width="72" height="48"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteLeftCountryImage">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                         </accessibility>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="48" id="BWm-MG-uCz"/>
-                                                                            <constraint firstAttribute="width" constant="72" id="JiL-Op-9nY"/>
+                                                                            <constraint firstAttribute="height" constant="48" id="BWm-MG-uCz">
+                                                                                <variation key="widthClass=compact" constant="48"/>
+                                                                                <variation key="heightClass=regular-widthClass=compact" constant="48"/>
+                                                                            </constraint>
+                                                                            <constraint firstAttribute="width" constant="72" id="JiL-Op-9nY">
+                                                                                <variation key="widthClass=compact" constant="72"/>
+                                                                                <variation key="heightClass=regular-widthClass=compact" constant="72"/>
+                                                                            </constraint>
                                                                         </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bHO-Vb-VJO" userLabel="Middle fav Stack View">
-                                                                <rect key="frame" x="122" y="0.0" width="72" height="86"/>
+                                                                <rect key="frame" x="101" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFZ-8T-4Sa">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFZ-8T-4Sa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteMiddleCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
@@ -155,7 +168,7 @@
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ly3-zr-gGp">
                                                                         <rect key="frame" x="0.0" y="38" width="72" height="48"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteRightCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                         </accessibility>
                                                                         <constraints>
@@ -166,11 +179,11 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-gj-A7c" userLabel="Right fav Stack View">
-                                                                <rect key="frame" x="244" y="0.0" width="72" height="86"/>
+                                                                <rect key="frame" x="202" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-rg-A1G">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-rg-A1G">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteRightCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
@@ -180,7 +193,7 @@
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4NH-dq-dGN">
                                                                         <rect key="frame" x="0.0" y="38" width="72" height="48"/>
-                                                                        <accessibility key="accessibilityConfiguration">
+                                                                        <accessibility key="accessibilityConfiguration" identifier="favoriteRightCountryImage">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                                         </accessibility>
                                                                         <constraints>
@@ -193,7 +206,8 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3z-ln-IeT">
-                                                        <rect key="frame" x="320" y="12" width="16" height="16"/>
+                                                        <rect key="frame" x="286" y="4" width="16" height="16"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="openAddFavoritesPage" label="Add New Favorites"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="DLx-Z3-m60"/>
                                                             <constraint firstAttribute="width" constant="16" id="yvz-Mw-ZGX"/>
@@ -206,27 +220,33 @@
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <accessibility key="accessibilityConfiguration">
+                                                <accessibility key="accessibilityConfiguration" identifier="favoriteView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstItem="WcM-Xg-svc" firstAttribute="leading" secondItem="DS7-Wh-k7o" secondAttribute="leading" constant="16" id="466-Bo-5DU"/>
-                                                    <constraint firstItem="u3z-ln-IeT" firstAttribute="top" secondItem="DS7-Wh-k7o" secondAttribute="top" constant="12" id="Fi6-KV-d4v"/>
-                                                    <constraint firstAttribute="trailing" secondItem="u3z-ln-IeT" secondAttribute="trailing" constant="12" id="fhi-38-daT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="WcM-Xg-svc" secondAttribute="trailing" constant="16" id="s3t-HL-7vi"/>
+                                                    <constraint firstItem="WcM-Xg-svc" firstAttribute="leading" secondItem="DS7-Wh-k7o" secondAttribute="leading" priority="750" constant="16" identifier="favStackViewLeading" id="466-Bo-5DU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="u3z-ln-IeT" secondAttribute="trailing" constant="4" identifier="addButtonTrailing" id="Ijf-td-tSl"/>
+                                                    <constraint firstItem="WcM-Xg-svc" firstAttribute="centerY" secondItem="DS7-Wh-k7o" secondAttribute="centerY" identifier="favStackViewAlign" id="PhC-jG-ysI"/>
+                                                    <constraint firstItem="u3z-ln-IeT" firstAttribute="top" secondItem="DS7-Wh-k7o" secondAttribute="top" constant="4" identifier="addButtonTop" id="r5U-Ex-vOi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WcM-Xg-svc" secondAttribute="trailing" priority="750" constant="16" identifier="favStackViewTrailing" id="s3t-HL-7vi"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="319" identifier="Top stack greater than 319" id="XaP-c6-bDa"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="397" identifier="top stack less than 397" id="ffg-qe-zpW"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Z6-t2-U6T" userLabel="Num Pad Stack View">
-                                        <rect key="frame" x="0.0" y="431" width="348" height="407"/>
+                                        <rect key="frame" x="0.0" y="329" width="306" height="225"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="EIN-bg-BSf">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="101"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="55.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5p-ua-b5Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="101"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="oneButton" label="One"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -236,8 +256,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76m-Uy-6gr">
-                                                        <rect key="frame" x="116.33333333333334" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="twoButton" label="Two"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -247,8 +268,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzD-K6-q6b">
-                                                        <rect key="frame" x="232.66666666666666" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="threeButton" label="Three"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -261,11 +283,12 @@
                                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oHY-5K-QoS">
-                                                <rect key="frame" x="0.0" y="102" width="348" height="101"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="306" height="55.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppC-Gu-F6H">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="101"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="fourButton" label="Four"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -275,8 +298,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4x-yM-t2g">
-                                                        <rect key="frame" x="116.33333333333334" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="fiveButton" label="Five"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -286,8 +310,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESy-63-nKE">
-                                                        <rect key="frame" x="232.66666666666666" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="sixButton" label="Six"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -300,11 +325,12 @@
                                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sL5-50-gqC">
-                                                <rect key="frame" x="0.0" y="204" width="348" height="101"/>
+                                                <rect key="frame" x="0.0" y="113" width="306" height="55.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNa-AR-L6W">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="101"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="sevenButton" label="Seven"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -314,8 +340,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvt-GZ-2VL">
-                                                        <rect key="frame" x="116.33333333333334" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="eightButton" label="Eight"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -325,8 +352,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-5E-KxU">
-                                                        <rect key="frame" x="232.66666666666666" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="nineButton" label="Nine"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -339,11 +367,12 @@
                                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="quD-1k-Ai0">
-                                                <rect key="frame" x="0.0" y="306" width="348" height="101"/>
+                                                <rect key="frame" x="0.0" y="169.5" width="306" height="55.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgH-AI-zlI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="101"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="decimalButton" label="Decimal"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -353,8 +382,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uz-Eu-YJE">
-                                                        <rect key="frame" x="116.33333333333334" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="zeroButton" label="Zero"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -364,8 +394,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFd-fd-dUe">
-                                                        <rect key="frame" x="232.66666666666666" y="0.0" width="115.33333333333334" height="101"/>
+                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="55.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="deleteButton" label="Delete"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="delete.left.fill" catalog="system"/>
@@ -378,117 +409,143 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="225" identifier="numPadHeight" id="asz-aq-9Lm"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="dch-6M-s4b" firstAttribute="leading" secondItem="Tkf-xw-uGV" secondAttribute="leading" id="GB8-Gs-QTg"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Z6-t2-U6T" secondAttribute="trailing" id="r4L-rb-itH"/>
+                                    <constraint firstItem="1Z6-t2-U6T" firstAttribute="leading" secondItem="Tkf-xw-uGV" secondAttribute="leading" id="wvA-zA-8fH"/>
+                                    <constraint firstAttribute="trailing" secondItem="dch-6M-s4b" secondAttribute="trailing" id="yor-z6-U0n"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xa1-ue-Lbb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tkf-xw-uGV" firstAttribute="leading" secondItem="xa1-ue-Lbb" secondAttribute="leading" constant="7" identifier="all stack leading" id="E6o-ag-Cu6"/>
+                            <constraint firstItem="Tkf-xw-uGV" firstAttribute="top" secondItem="xa1-ue-Lbb" secondAttribute="top" constant="7" identifier="all stack top" id="E7t-Oo-UUX"/>
+                            <constraint firstItem="xa1-ue-Lbb" firstAttribute="trailing" secondItem="Tkf-xw-uGV" secondAttribute="trailing" constant="7" identifier="All stack trailing" id="Ie0-iu-97M"/>
+                            <constraint firstItem="xa1-ue-Lbb" firstAttribute="bottom" secondItem="Tkf-xw-uGV" secondAttribute="bottom" constant="7" identifier="all stack bottom" id="SC3-ql-TGk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OJZ-aE-X3f"/>
                     <connections>
                         <outlet property="baseAmountLabel" destination="tUg-F9-j5k" id="9p2-iW-pni"/>
                         <outlet property="baseCurrencyCodeLabel" destination="iIz-Jq-6FB" id="dYw-vh-ja2"/>
+                        <outlet property="baseCurrencyUIView" destination="UCz-d4-iFc" id="Kvw-UM-HLd"/>
                         <outlet property="baseFlagImage" destination="ofu-5l-P0A" id="2AD-ih-yVf"/>
                         <outlet property="convertedAmountLabel" destination="YXV-Wx-gOJ" id="lst-8a-Oac"/>
                         <outlet property="convertedCurrencyCodeLabel" destination="TUA-oY-rM2" id="iu5-Aq-AR1"/>
+                        <outlet property="convertedCurrencyUIView" destination="ult-km-HeL" id="2P8-K5-7Tb"/>
                         <outlet property="convertedFlagImage" destination="knz-KT-0Tc" id="Mub-Yp-6Ut"/>
                         <outlet property="leftCountryImage" destination="H5i-BT-ZB4" id="Rnk-Hh-cNc"/>
                         <outlet property="leftCountryLabel" destination="eAu-DV-gI5" id="g9G-OP-dsp"/>
+                        <outlet property="leftFavView" destination="z3Y-7q-D34" id="zCD-zI-yTS"/>
                         <outlet property="middleCountryImage" destination="Ly3-zr-gGp" id="2GH-p6-Ynj"/>
                         <outlet property="middleCountryLabel" destination="AFZ-8T-4Sa" id="I61-do-u3S"/>
+                        <outlet property="middleFavView" destination="bHO-Vb-VJO" id="Jmh-IX-qrv"/>
                         <outlet property="rightCountryImage" destination="4NH-dq-dGN" id="bC2-J9-brd"/>
                         <outlet property="rightCountryLabel" destination="TFK-rg-A1G" id="ZIw-Pl-o5u"/>
+                        <outlet property="rightFavView" destination="WgJ-gj-A7c" id="wLR-NU-Tg3"/>
                         <segue destination="iMi-c9-KOX" kind="presentation" identifier="HomeToChange" modalPresentationStyle="pageSheet" id="Vjd-02-Zsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046.376811594203" y="136.60714285714286"/>
+            <point key="canvasLocation" x="1046.25" y="136.26760563380282"/>
         </scene>
         <!--ChangeFavoritesViewController-->
         <scene sceneID="1H8-8k-NkB">
             <objects>
                 <viewController id="iMi-c9-KOX" userLabel="ChangeFavoritesViewController" customClass="ChangeFavoritesViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AJC-Ye-GKX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-GY-cuc" userLabel="Fav Currency View">
-                                <rect key="frame" x="7" y="30" width="400" height="120"/>
+                                <rect key="frame" x="7" y="32" width="306" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-To-N1o">
-                                        <rect key="frame" x="16" y="16" width="65" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="65" id="Fi9-7u-ggZ"/>
-                                            <constraint firstAttribute="height" constant="32" id="vnl-GA-8Gf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVJ-eG-noE">
-                                        <rect key="frame" x="164" y="44" width="72" height="72"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="nze-ak-ujR"/>
-                                            <constraint firstAttribute="height" constant="72" id="yYE-Ev-JMH"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
-                                        <rect key="frame" x="167.66666666666666" y="16" width="65" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="qqM-qg-Cs4"/>
-                                            <constraint firstAttribute="width" constant="65" id="thN-CG-Xa9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-fl-I8D">
-                                        <rect key="frame" x="312" y="44" width="72" height="72"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="72" id="ezQ-f0-1LR"/>
-                                            <constraint firstAttribute="width" constant="72" id="xFd-02-D3c"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
-                                        <rect key="frame" x="319" y="16" width="65" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="Z7K-nh-NUT"/>
-                                            <constraint firstAttribute="width" constant="65" id="obR-CX-ZuQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUK-r1-FV5">
-                                        <rect key="frame" x="16" y="44" width="72" height="72"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="Fee-ob-QSa"/>
-                                            <constraint firstAttribute="height" constant="72" id="lB8-T2-lHT"/>
-                                        </constraints>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PWN-LD-r2X" userLabel="Fav Picker: Fav Stack View">
+                                        <rect key="frame" x="16" y="17" width="274" height="86"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-6K-WZq" userLabel="Fav Picker: Left fav Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-To-N1o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyLabel"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUK-r1-FV5">
+                                                        <rect key="frame" x="0.0" y="38" width="72" height="48"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyImage"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="72" id="Fee-ob-QSa"/>
+                                                            <constraint firstAttribute="height" constant="48" id="lB8-T2-lHT"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l13-jc-fdd" userLabel="Fav Picker: Middle fav Stack View">
+                                                <rect key="frame" x="101" y="0.0" width="72" height="86"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyLabel"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVJ-eG-noE">
+                                                        <rect key="frame" x="0.0" y="38" width="72" height="48"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyImage"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="72" id="nze-ak-ujR"/>
+                                                            <constraint firstAttribute="height" constant="48" id="yYE-Ev-JMH"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="otD-nb-lvW" userLabel="Fav Picker: Right fav Stack View">
+                                                <rect key="frame" x="202" y="0.0" width="72" height="86"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyLabel"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-fl-I8D">
+                                                        <rect key="frame" x="0.0" y="38" width="72" height="48"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyImage"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="ezQ-f0-1LR"/>
+                                                            <constraint firstAttribute="width" constant="72" id="xFd-02-D3c"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="favoritePickerView"/>
                                 <constraints>
-                                    <constraint firstItem="xl1-To-N1o" firstAttribute="leading" secondItem="QPr-GY-cuc" secondAttribute="leading" constant="16" id="3yx-0k-hp0"/>
-                                    <constraint firstAttribute="trailing" secondItem="7qA-dH-AVm" secondAttribute="trailing" constant="16" id="9vS-kC-CL8"/>
-                                    <constraint firstItem="7qA-dH-AVm" firstAttribute="top" secondItem="QPr-GY-cuc" secondAttribute="top" constant="16" id="ClF-7v-bai"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="JXo-TT-E84"/>
-                                    <constraint firstAttribute="bottom" secondItem="gUK-r1-FV5" secondAttribute="bottom" constant="4" id="JkJ-ap-Sfh"/>
-                                    <constraint firstAttribute="bottom" secondItem="AVJ-eG-noE" secondAttribute="bottom" constant="4" id="NG2-i2-cjH"/>
-                                    <constraint firstItem="gUK-r1-FV5" firstAttribute="leading" secondItem="QPr-GY-cuc" secondAttribute="leading" constant="16" id="TCG-wj-Ka8"/>
+                                    <constraint firstItem="PWN-LD-r2X" firstAttribute="centerY" secondItem="QPr-GY-cuc" secondAttribute="centerY" id="EVP-BC-H7P"/>
+                                    <constraint firstItem="PWN-LD-r2X" firstAttribute="leading" secondItem="QPr-GY-cuc" secondAttribute="leading" constant="16" id="M5t-HM-FCn"/>
                                     <constraint firstAttribute="height" constant="120" id="UAl-08-y0f"/>
-                                    <constraint firstItem="ymq-b0-3VG" firstAttribute="centerX" secondItem="QPr-GY-cuc" secondAttribute="centerX" id="UZC-Pa-mMH"/>
-                                    <constraint firstAttribute="bottom" secondItem="jZ4-fl-I8D" secondAttribute="bottom" constant="4" id="XFq-wi-Wwv"/>
-                                    <constraint firstItem="ymq-b0-3VG" firstAttribute="top" secondItem="QPr-GY-cuc" secondAttribute="top" constant="16" id="hKU-w3-1L5"/>
-                                    <constraint firstItem="xl1-To-N1o" firstAttribute="top" secondItem="QPr-GY-cuc" secondAttribute="top" constant="16" id="kSL-7p-MU6"/>
-                                    <constraint firstAttribute="trailing" secondItem="jZ4-fl-I8D" secondAttribute="trailing" constant="16" id="oCD-d9-AVV"/>
-                                    <constraint firstItem="AVJ-eG-noE" firstAttribute="centerX" secondItem="QPr-GY-cuc" secondAttribute="centerX" id="yJU-ac-dwt"/>
+                                    <constraint firstAttribute="trailing" secondItem="PWN-LD-r2X" secondAttribute="trailing" constant="16" id="kyk-Kh-zsC"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-ky-V2z">
-                                <rect key="frame" x="391" y="7" width="16" height="16"/>
+                                <rect key="frame" x="296" y="8" width="16" height="16"/>
+                                <accessibility key="accessibilityConfiguration" identifier="closeFavoritePicker" label="Close"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="Wer-Vj-l1O"/>
                                     <constraint firstAttribute="height" constant="16" id="dUJ-YK-XeJ"/>
@@ -497,7 +554,7 @@
                                 <state key="normal" image="xmark.circle.fill" catalog="system"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcf-aZ-EOD">
-                                <rect key="frame" x="7" y="157" width="400" height="658"/>
+                                <rect key="frame" x="7" y="159" width="306" height="396"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -505,14 +562,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dcf-aZ-EOD" firstAttribute="top" secondItem="QPr-GY-cuc" secondAttribute="bottom" constant="7" id="2cP-cE-b7V"/>
-                            <constraint firstItem="QPr-GY-cuc" firstAttribute="top" secondItem="cp7-ky-V2z" secondAttribute="bottom" constant="7" id="9ds-qU-lAl"/>
                             <constraint firstItem="dcf-aZ-EOD" firstAttribute="bottom" secondItem="jXA-WV-yRm" secondAttribute="bottom" constant="7" id="BQj-al-vO4"/>
-                            <constraint firstItem="jXA-WV-yRm" firstAttribute="trailing" secondItem="QPr-GY-cuc" secondAttribute="trailing" constant="7" id="Bbo-Cx-Pu5"/>
-                            <constraint firstItem="QPr-GY-cuc" firstAttribute="top" secondItem="cp7-ky-V2z" secondAttribute="bottom" constant="7" id="UNO-EZ-2qy"/>
+                            <constraint firstItem="QPr-GY-cuc" firstAttribute="top" secondItem="cp7-ky-V2z" secondAttribute="bottom" constant="8" id="UNO-EZ-2qy"/>
                             <constraint firstItem="jXA-WV-yRm" firstAttribute="trailing" secondItem="QPr-GY-cuc" secondAttribute="trailing" constant="7" id="aZd-pC-i85"/>
-                            <constraint firstItem="jXA-WV-yRm" firstAttribute="trailing" secondItem="cp7-ky-V2z" secondAttribute="trailing" constant="7" id="cLf-DV-9q5"/>
+                            <constraint firstItem="jXA-WV-yRm" firstAttribute="trailing" secondItem="cp7-ky-V2z" secondAttribute="trailing" constant="8" id="cLf-DV-9q5"/>
                             <constraint firstItem="dcf-aZ-EOD" firstAttribute="leading" secondItem="jXA-WV-yRm" secondAttribute="leading" constant="7" id="f2S-nG-3rI"/>
-                            <constraint firstItem="cp7-ky-V2z" firstAttribute="top" secondItem="jXA-WV-yRm" secondAttribute="top" constant="7" id="v9a-Oq-snu"/>
+                            <constraint firstItem="cp7-ky-V2z" firstAttribute="top" secondItem="jXA-WV-yRm" secondAttribute="top" constant="8" id="v9a-Oq-snu"/>
                             <constraint firstItem="jXA-WV-yRm" firstAttribute="trailing" secondItem="dcf-aZ-EOD" secondAttribute="trailing" constant="7" id="wlr-O1-pMM"/>
                             <constraint firstItem="QPr-GY-cuc" firstAttribute="leading" secondItem="jXA-WV-yRm" secondAttribute="leading" constant="7" id="wmb-em-mx2"/>
                         </constraints>
