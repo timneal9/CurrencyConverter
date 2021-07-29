@@ -16,14 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USD" translatesAutoresizingMaskIntoConstraints="NO" id="Ckp-iC-yuR">
-                        <rect key="frame" x="16" y="44" width="72" height="72"/>
-                        <color key="tintColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="72" id="nMg-df-N30"/>
-                            <constraint firstAttribute="height" constant="72" id="uyq-hX-2Xa"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-SW-ksg">
                         <rect key="frame" x="16" y="16" width="72" height="32"/>
                         <constraints>
@@ -34,8 +26,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-fO-Ayh">
-                        <rect key="frame" x="102" y="32" width="208" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-fO-Ayh">
+                        <rect key="frame" x="104" y="32" width="206" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="IqY-sE-Zxg"/>
                         </constraints>
@@ -43,8 +35,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csN-1N-5Q9">
-                        <rect key="frame" x="218.5" y="69" width="91.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csN-1N-5Q9">
+                        <rect key="frame" x="104" y="69" width="206" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Lvq-lX-H87"/>
                         </constraints>
@@ -60,19 +52,29 @@
                             <constraint firstAttribute="width" constant="24" id="M74-0c-Dwk"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USD" translatesAutoresizingMaskIntoConstraints="NO" id="Ckp-iC-yuR">
+                        <rect key="frame" x="16" y="56" width="72" height="48"/>
+                        <color key="tintColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="nMg-df-N30"/>
+                            <constraint firstAttribute="height" constant="48" id="uyq-hX-2Xa"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="p1C-fO-Ayh" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" constant="32" id="0Ha-th-pAc"/>
+                    <constraint firstItem="p1C-fO-Ayh" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="9zB-bb-r7t"/>
                     <constraint firstItem="pLU-SW-ksg" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="BZM-zX-sg2"/>
+                    <constraint firstItem="csN-1N-5Q9" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="BoQ-dH-11y"/>
                     <constraint firstItem="pLU-SW-ksg" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" constant="16" id="C5i-50-ZdK"/>
                     <constraint firstAttribute="trailing" secondItem="csN-1N-5Q9" secondAttribute="trailing" constant="50" id="D3D-6e-w27"/>
                     <constraint firstItem="7u1-YL-At8" firstAttribute="centerY" secondItem="fbA-2F-eQt" secondAttribute="centerY" id="I2y-4E-nGt"/>
                     <constraint firstAttribute="trailing" secondItem="p1C-fO-Ayh" secondAttribute="trailing" constant="50" id="Mas-kC-oTg"/>
                     <constraint firstAttribute="trailing" secondItem="7u1-YL-At8" secondAttribute="trailing" constant="7" id="WWd-fe-Pam"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="top" secondItem="p1C-fO-Ayh" secondAttribute="bottom" constant="7" id="h5u-wB-Rrt"/>
-                    <constraint firstAttribute="bottom" secondItem="Ckp-iC-yuR" secondAttribute="bottom" constant="4" id="hvA-Cp-de4"/>
-                    <constraint firstItem="Ckp-iC-yuR" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="uhA-Gh-PMP"/>
+                    <constraint firstItem="Ckp-iC-yuR" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="iVw-Co-B5l"/>
+                    <constraint firstItem="Ckp-iC-yuR" firstAttribute="top" secondItem="pLU-SW-ksg" secondAttribute="bottom" constant="8" id="sFs-cm-xxT"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -86,7 +88,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="USD" width="128" height="128"/>
+        <image name="USD" width="266.5" height="174.5"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
