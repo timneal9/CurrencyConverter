@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 class CurrencyListCell: UITableViewCell {
-    @IBOutlet weak var nibFileReusableCell: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var addButtonImage: UIImageView!
     @IBOutlet weak var currencyCodeLabel: UILabel!
     @IBOutlet weak var currencyExpandedLabel: UILabel!
     @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var countryNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
