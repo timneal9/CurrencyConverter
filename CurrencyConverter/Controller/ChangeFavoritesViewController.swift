@@ -70,6 +70,10 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     
     override func viewDidDisappear(_ animated: Bool) {
     }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -95,17 +99,55 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let currency = currencyArray[indexPath.section]        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCurrencyListCell") as! CurrencyListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCurrencyListCell", for: indexPath) as! CurrencyListCell
 
         cell.currencyCodeLabel.text = currency.currencyCode
         cell.currencyExpandedLabel.text = currency.currencyName
         cell.countryNameLabel.text = currency.countryName
         cell.flagImageView.image = UIImage(named: currency.currencyCode ?? "Err")
         cell.layer.cornerRadius = 4
+        
+        if currency.currencyCode == AppDelegate.shared().baseCurrency
+            || currency.currencyCode == AppDelegate.shared().convertedCurrency {
+            cell.isUserInteractionEnabled = false
+            cell.addButtonImage.alpha = 0.3
+            cell.countryNameLabel.alpha = 0.3
+            cell.currencyCodeLabel.alpha = 0.3
+            cell.currencyExpandedLabel.alpha = 0.3
+            cell.flagImageView.alpha = 0.3
+        } else {
+            cell.isUserInteractionEnabled = true
+            cell.addButtonImage.alpha = 1
+            cell.countryNameLabel.alpha = 1
+            cell.currencyCodeLabel.alpha = 1
+            cell.currencyExpandedLabel.alpha = 1
+            cell.flagImageView.alpha = 1
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
+    {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        UIView.animate(withDuration: 0.07) {
+
+            cell!.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
+    {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        UIView.animate(withDuration: 0.1) {
+
+            cell!.transform = .identity
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let tappedCurrency = currencyArray[indexPath.section].currencyCode ?? "Err"
         let currentFavs = [
             AppDelegate.shared().leftFavorite,
@@ -114,7 +156,9 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         ]
         
         
-        if !(currentFavs.contains(tappedCurrency)) {
+        if AppDelegate.shared().baseCurrency == tappedCurrency || (AppDelegate.shared().convertedCurrency == tappedCurrency) {
+            print("Tapped currency already in base or converted")
+        } else if !(currentFavs.contains(tappedCurrency)){
             AppDelegate.shared().rightFavorite = AppDelegate.shared().middleFavorite
             AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
             AppDelegate.shared().leftFavorite = tappedCurrency
@@ -137,8 +181,17 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
             AppDelegate.shared().rightFavorite
         ])
         AppDelegate.shared().setSavedCurrencyValues()
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            tableView.cellForRow(at: indexPath)?.backgroundColor = #colorLiteral(red: 0.9594495893, green: 0.9607769847, blue: 1, alpha: 1)
+//        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 }
+
+
 
 
 // MARK: Future feature, search bar

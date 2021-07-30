@@ -9,13 +9,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="PeM-Vh-doM" customClass="CurrencyListCell" customModule="CurrencyConverter" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="PeM-Vh-doM" customClass="CurrencyListCell" customModule="CurrencyConverter" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PeM-Vh-doM" id="fbA-2F-eQt">
                 <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scV-je-KJb" userLabel="Background View">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
+                        <color key="backgroundColor" red="0.96564465759999996" green="0.96632164720000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-SW-ksg">
                         <rect key="frame" x="16" y="16" width="72" height="32"/>
                         <constraints>
@@ -64,6 +68,8 @@
                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="p1C-fO-Ayh" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" constant="32" id="0Ha-th-pAc"/>
+                    <constraint firstAttribute="trailing" secondItem="scV-je-KJb" secondAttribute="trailing" id="2pJ-wB-IC3"/>
+                    <constraint firstItem="scV-je-KJb" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" id="97Y-fZ-i6K"/>
                     <constraint firstItem="p1C-fO-Ayh" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="9zB-bb-r7t"/>
                     <constraint firstItem="pLU-SW-ksg" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="BZM-zX-sg2"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="BoQ-dH-11y"/>
@@ -71,6 +77,8 @@
                     <constraint firstAttribute="trailing" secondItem="csN-1N-5Q9" secondAttribute="trailing" constant="50" id="D3D-6e-w27"/>
                     <constraint firstItem="7u1-YL-At8" firstAttribute="centerY" secondItem="fbA-2F-eQt" secondAttribute="centerY" id="I2y-4E-nGt"/>
                     <constraint firstAttribute="trailing" secondItem="p1C-fO-Ayh" secondAttribute="trailing" constant="50" id="Mas-kC-oTg"/>
+                    <constraint firstAttribute="bottom" secondItem="scV-je-KJb" secondAttribute="bottom" id="N7r-O2-2ta"/>
+                    <constraint firstItem="scV-je-KJb" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" id="RkI-tP-yha"/>
                     <constraint firstAttribute="trailing" secondItem="7u1-YL-At8" secondAttribute="trailing" constant="7" id="WWd-fe-Pam"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="top" secondItem="p1C-fO-Ayh" secondAttribute="bottom" constant="7" id="h5u-wB-Rrt"/>
                     <constraint firstItem="Ckp-iC-yuR" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="iVw-Co-B5l"/>
@@ -78,11 +86,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addButtonImage" destination="7u1-YL-At8" id="Z0f-rN-23R"/>
+                <outlet property="containerView" destination="scV-je-KJb" id="Ypl-oX-nBt"/>
                 <outlet property="countryNameLabel" destination="csN-1N-5Q9" id="0lv-Xd-b1t"/>
                 <outlet property="currencyCodeLabel" destination="pLU-SW-ksg" id="XDo-xI-g4L"/>
                 <outlet property="currencyExpandedLabel" destination="p1C-fO-Ayh" id="X7a-8x-riB"/>
                 <outlet property="flagImageView" destination="Ckp-iC-yuR" id="uC3-jT-zha"/>
-                <outlet property="nibFileReusableCell" destination="fbA-2F-eQt" id="ZOU-gd-3wQ"/>
             </connections>
             <point key="canvasLocation" x="155.07246376811597" y="83.705357142857139"/>
         </tableViewCell>

@@ -17,7 +17,8 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var convertedAmountLabel: UILabel!
     @IBOutlet weak var convertedCurrencyCodeLabel: UILabel!
     @IBOutlet weak var convertedFlagImage: UIImageView!
-    
+    @IBOutlet weak var swapArrowView: UIView!
+    @IBOutlet weak var swapSpacingView: UIView!
     
     @IBOutlet weak var leftCountryLabel: UILabel!
     @IBOutlet weak var middleCountryLabel: UILabel!
@@ -142,7 +143,11 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         let leftFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(leftCountryTapped(tapGestureRecognizer:)))
         let middleFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(middleCountryTapped(tapGestureRecognizer:)))
         let rightFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rightCountryTapped(tapGestureRecognizer:)))
+        let swapSpacingViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
         
+        swapArrowView.layer.cornerRadius = swapArrowView.frame.size.width/2
+        swapSpacingView.isUserInteractionEnabled = true
+        swapSpacingView.addGestureRecognizer(swapSpacingViewTapGestureRecognizer)
         baseCurrencyUIView.isUserInteractionEnabled = true
         baseCurrencyUIView.addGestureRecognizer(baseTapGestureRecognizer)
         convertedCurrencyUIView.isUserInteractionEnabled = true
