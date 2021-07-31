@@ -59,12 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if diffInDays > maxDays {
             lastCalledDate = today
             defaults.setValue(lastCalledDate, forKey: "ratesLastUpdated")
-            
             print("API was last called more than \(maxDays) days ago. Calling API...")
-            
             callAPI()
         }
-        
         return true
     }
     
@@ -89,31 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(leftFavorite, forKey:         "leftFavorite")
         defaults.setValue(middleFavorite, forKey:       "middleFavorite")
         defaults.setValue(rightFavorite, forKey:        "rightFavorite")
-    }
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CurrencyDataModel")
-        print(container.persistentStoreDescriptions.first?.url ?? "url unknown")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-//     MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-        } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
 }
 

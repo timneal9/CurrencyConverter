@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PS8-Ey-cpi">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,20 +16,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s6p-Pq-uTp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tkf-xw-uGV" userLabel="All Stack View">
-                                <rect key="frame" x="7" y="7" width="306" height="554"/>
+                                <rect key="frame" x="7" y="51" width="400" height="804"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dch-6M-s4b" userLabel="Top Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="306" height="348"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="397"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-d4-iFc" userLabel="Base Currency View">
-                                                <rect key="frame" x="0.0" y="0.0" width="306" height="110"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="125.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pM2-5q-Nkz" userLabel="Base Currency Stack View">
-                                                        <rect key="frame" x="16" y="12" width="274" height="86"/>
+                                                        <rect key="frame" x="16" y="20" width="368" height="86"/>
                                                         <subviews>
                                                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-vz-yy7" userLabel="Base Flag Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
@@ -37,7 +38,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="baseCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" name="text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-5l-P0A">
@@ -51,16 +52,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-F9-j5k">
-                                                                <rect key="frame" x="80" y="0.0" width="194" height="86"/>
+                                                                <rect key="frame" x="80" y="0.0" width="288" height="86"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="baseCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="text"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="mumfordIndigo"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="baseCurrencyView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                     <bool key="isElement" value="NO"/>
@@ -72,22 +73,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ult-km-HeL" userLabel="Converted Currency View">
-                                                <rect key="frame" x="0.0" y="118" width="306" height="111"/>
+                                                <rect key="frame" x="0.0" y="133.5" width="400" height="127.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPf-FK-qN9" userLabel="swapArrowView">
-                                                        <rect key="frame" x="244" y="-18" width="26" height="26"/>
+                                                        <rect key="frame" x="338" y="-18" width="26" height="26"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qM4-H6-GjY" userLabel="swapArrowImage">
-                                                                <rect key="frame" x="2" y="2" width="22" height="22"/>
+                                                                <rect key="frame" x="3" y="3" width="20" height="20"/>
                                                                 <color key="tintColor" red="0.96564465759999996" green="0.96632164720000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="22" id="Smp-nY-RQw"/>
-                                                                    <constraint firstAttribute="width" constant="22" id="q4X-qN-J5h"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="Smp-nY-RQw"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="q4X-qN-J5h"/>
                                                                 </constraints>
-                                                                <imageReference key="image" image="sort-white" symbolScale="default"/>
+                                                                <imageReference key="image" image="swap-arrows" symbolScale="default"/>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" name="jupiterIndigo"/>
                                                         <constraints>
                                                             <constraint firstItem="qM4-H6-GjY" firstAttribute="centerX" secondItem="gPf-FK-qN9" secondAttribute="centerX" id="Ts5-pg-wNC"/>
                                                             <constraint firstAttribute="width" constant="26" id="cU4-JV-NLJ"/>
@@ -96,7 +97,7 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qPh-g2-XJ5" userLabel="Converted Currency Stack">
-                                                        <rect key="frame" x="16" y="12.5" width="274" height="86"/>
+                                                        <rect key="frame" x="16" y="21" width="368" height="86"/>
                                                         <subviews>
                                                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-cn-yUY" userLabel="Converted flag Stack">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
@@ -105,7 +106,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" name="text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="knz-KT-0Tc">
@@ -119,16 +120,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Wx-gOJ">
-                                                                <rect key="frame" x="80" y="0.0" width="194" height="86"/>
+                                                                <rect key="frame" x="80" y="0.0" width="288" height="86"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="text"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="mumfordIndigo"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -141,10 +142,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-Wh-k7o" userLabel="Fav Currency View">
-                                                <rect key="frame" x="0.0" y="237" width="306" height="111"/>
+                                                <rect key="frame" x="0.0" y="269" width="400" height="128"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-Xg-svc" userLabel="Fav Stack View">
-                                                        <rect key="frame" x="16" y="12.5" width="274" height="86"/>
+                                                        <rect key="frame" x="16" y="21" width="368" height="86"/>
                                                         <subviews>
                                                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
@@ -156,7 +157,7 @@
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" name="text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-BT-ZB4">
@@ -178,7 +179,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bHO-Vb-VJO" userLabel="Middle fav Stack View">
-                                                                <rect key="frame" x="101" y="0.0" width="72" height="86"/>
+                                                                <rect key="frame" x="148" y="0.0" width="72" height="86"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFZ-8T-4Sa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
@@ -187,7 +188,7 @@
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" name="text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ly3-zr-gGp">
@@ -203,7 +204,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-gj-A7c" userLabel="Right fav Stack View">
-                                                                <rect key="frame" x="202" y="0.0" width="72" height="86"/>
+                                                                <rect key="frame" x="296" y="0.0" width="72" height="86"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-rg-A1G">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
@@ -212,7 +213,7 @@
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" name="text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4NH-dq-dGN">
@@ -230,20 +231,20 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3z-ln-IeT">
-                                                        <rect key="frame" x="286" y="4" width="16" height="16"/>
+                                                        <rect key="frame" x="376" y="4" width="20" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="openAddFavoritesPage" label="Add New Favorites"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="16" id="DLx-Z3-m60"/>
-                                                            <constraint firstAttribute="width" constant="16" id="yvz-Mw-ZGX"/>
+                                                            <constraint firstAttribute="height" constant="20" id="DLx-Z3-m60"/>
+                                                            <constraint firstAttribute="width" constant="20" id="yvz-Mw-ZGX"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" name="jupiterIndigo"/>
                                                         <state key="normal" image="plus.circle.fill" catalog="system"/>
                                                         <connections>
                                                             <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oMA-eS-WUB"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="mumfordIndigo"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="favoriteView">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
@@ -262,177 +263,179 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Z6-t2-U6T" userLabel="Num Pad Stack View">
-                                        <rect key="frame" x="0.0" y="358" width="306" height="196"/>
+                                        <rect key="frame" x="0.0" y="407" width="400" height="397"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="EIN-bg-BSf">
-                                                <rect key="frame" x="0.0" y="0.0" width="306" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="98.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5p-ua-b5Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="oneButton" label="One"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="1">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="oneNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nub-lN-erc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76m-Uy-6gr">
-                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="133.5" y="0.0" width="133" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="twoButton" label="Two"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="2">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="twoNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d4e-2f-Pe3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzD-K6-q6b">
-                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="267.5" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="threeButton" label="Three"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="3">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="threeNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cus-Uk-t0w"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="jupiterIndigo"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oHY-5K-QoS">
-                                                <rect key="frame" x="0.0" y="49.5" width="306" height="48"/>
+                                                <rect key="frame" x="0.0" y="99.5" width="400" height="98.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppC-Gu-F6H">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="fourButton" label="Four"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="4">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="fourNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dA-yT-3Gc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4x-yM-t2g">
-                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="133.5" y="0.0" width="133" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="fiveButton" label="Five"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="5">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="fiveNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gI3-gS-sEn"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESy-63-nKE">
-                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="267.5" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="sixButton" label="Six"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="6">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="sixNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rpk-vb-5cT"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="jupiterIndigo"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sL5-50-gqC">
-                                                <rect key="frame" x="0.0" y="98.5" width="306" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="199" width="400" height="98.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNa-AR-L6W">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="sevenButton" label="Seven"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="7">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="sevenNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iHU-KI-vgH"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvt-GZ-2VL">
-                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="133.5" y="0.0" width="133" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="eightButton" label="Eight"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="8">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="eightNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MaH-SO-i0C"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-5E-KxU">
-                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="48.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="267.5" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="nineButton" label="Nine"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="9">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="nineNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yVe-S6-8ti"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="jupiterIndigo"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="quD-1k-Ai0">
-                                                <rect key="frame" x="0.0" y="148" width="306" height="48"/>
+                                                <rect key="frame" x="0.0" y="298.5" width="400" height="98.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgH-AI-zlI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="decimalButton" label="Decimal"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title=".">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="decimalNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rwu-JZ-Jq7"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uz-Eu-YJE">
-                                                        <rect key="frame" x="102.5" y="0.0" width="101" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="133.5" y="0.0" width="133" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="zeroButton" label="Zero"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <state key="normal" title="0">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="text"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="zeroNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I5Z-YK-H6b"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFd-fd-dUe">
-                                                        <rect key="frame" x="204.5" y="0.0" width="101.5" height="48"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="267.5" y="0.0" width="132.5" height="98.5"/>
+                                                        <color key="backgroundColor" name="background"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="deleteButton" label="Delete"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="delete.left.fill" catalog="system"/>
+                                                        <color key="tintColor" name="text"/>
+                                                        <state key="normal" image="delete.left.fill" catalog="system">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="deleteNumButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cAY-Jm-Na2"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="jupiterIndigo"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="jupiterIndigo"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="225" identifier="numPadHeight" id="asz-aq-9Lm"/>
                                         </constraints>
@@ -446,14 +449,14 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pdy-9y-Fne" userLabel="SwapSpacingView">
-                                <rect key="frame" x="7" y="7" width="306" height="200"/>
+                                <rect key="frame" x="7" y="51" width="400" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Cop-C7-BsS"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xa1-ue-Lbb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="Tkf-xw-uGV" firstAttribute="leading" secondItem="xa1-ue-Lbb" secondAttribute="leading" constant="7" identifier="all stack leading" id="E6o-ag-Cu6"/>
                             <constraint firstItem="Tkf-xw-uGV" firstAttribute="top" secondItem="xa1-ue-Lbb" secondAttribute="top" constant="7" identifier="all stack top" id="E7t-Oo-UUX"/>
@@ -474,6 +477,7 @@
                         <outlet property="convertedCurrencyCodeLabel" destination="TUA-oY-rM2" id="iu5-Aq-AR1"/>
                         <outlet property="convertedCurrencyUIView" destination="ult-km-HeL" id="2P8-K5-7Tb"/>
                         <outlet property="convertedFlagImage" destination="knz-KT-0Tc" id="Mub-Yp-6Ut"/>
+                        <outlet property="favCurrencyUIView" destination="DS7-Wh-k7o" id="AqU-Ne-heo"/>
                         <outlet property="leftCountryImage" destination="H5i-BT-ZB4" id="Rnk-Hh-cNc"/>
                         <outlet property="leftCountryLabel" destination="eAu-DV-gI5" id="g9G-OP-dsp"/>
                         <outlet property="leftFavView" destination="z3Y-7q-D34" id="zCD-zI-yTS"/>
@@ -497,14 +501,14 @@
             <objects>
                 <viewController id="iMi-c9-KOX" userLabel="ChangeFavoritesViewController" customClass="ChangeFavoritesViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AJC-Ye-GKX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-GY-cuc" userLabel="Fav Currency View">
-                                <rect key="frame" x="7" y="32" width="306" height="120"/>
+                                <rect key="frame" x="7" y="36" width="400" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PWN-LD-r2X" userLabel="Fav Picker: Fav Stack View">
-                                        <rect key="frame" x="16" y="17" width="274" height="86"/>
+                                        <rect key="frame" x="16" y="17" width="368" height="86"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-6K-WZq" userLabel="Fav Picker: Left fav Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
@@ -513,7 +517,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUK-r1-FV5">
@@ -527,13 +531,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l13-jc-fdd" userLabel="Fav Picker: Middle fav Stack View">
-                                                <rect key="frame" x="101" y="0.0" width="72" height="86"/>
+                                                <rect key="frame" x="148" y="0.0" width="72" height="86"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVJ-eG-noE">
@@ -547,13 +551,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="otD-nb-lvW" userLabel="Fav Picker: Right fav Stack View">
-                                                <rect key="frame" x="202" y="0.0" width="72" height="86"/>
+                                                <rect key="frame" x="296" y="0.0" width="72" height="86"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-fl-I8D">
@@ -569,7 +573,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="mumfordIndigo"/>
                                 <accessibility key="accessibilityConfiguration" identifier="favoritePickerView"/>
                                 <constraints>
                                     <constraint firstItem="PWN-LD-r2X" firstAttribute="centerY" secondItem="QPr-GY-cuc" secondAttribute="centerY" id="EVP-BC-H7P"/>
@@ -579,20 +583,20 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-ky-V2z" userLabel="Close Button">
-                                <rect key="frame" x="296" y="8" width="16" height="16"/>
+                                <rect key="frame" x="386" y="8" width="20" height="20"/>
                                 <accessibility key="accessibilityConfiguration" identifier="closeFavoritePicker" label="Close"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="Wer-Vj-l1O"/>
-                                    <constraint firstAttribute="height" constant="16" id="dUJ-YK-XeJ"/>
+                                    <constraint firstAttribute="width" constant="20" id="Wer-Vj-l1O"/>
+                                    <constraint firstAttribute="height" constant="20" id="dUJ-YK-XeJ"/>
                                 </constraints>
-                                <color key="tintColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" name="jupiterIndigo"/>
                                 <state key="normal" image="xmark.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="closeButton:" destination="iMi-c9-KOX" eventType="touchUpInside" id="3ue-AV-w7A"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcf-aZ-EOD">
-                                <rect key="frame" x="7" y="159" width="306" height="396"/>
+                                <rect key="frame" x="7" y="163" width="400" height="652"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -615,6 +619,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="favCurrencyView" destination="QPr-GY-cuc" id="CAG-sO-89s"/>
                         <outlet property="leftCountryImage" destination="gUK-r1-FV5" id="xH0-ia-0B1"/>
                         <outlet property="leftCountryLabel" destination="xl1-To-N1o" id="tLH-dd-Vth"/>
                         <outlet property="middleCountryImage" destination="AVJ-eG-noE" id="fhV-zH-t3Y"/>
@@ -652,8 +657,23 @@
     <resources>
         <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="sort-white" width="128" height="128"/>
+        <image name="swap-arrows" width="128" height="128"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="background">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="jupiterIndigo">
+            <color red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="mumfordIndigo">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text">
+            <color red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

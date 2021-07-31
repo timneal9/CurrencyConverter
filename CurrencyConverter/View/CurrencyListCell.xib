@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +19,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scV-je-KJb" userLabel="Background View">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
-                        <color key="backgroundColor" red="0.96564465759999996" green="0.96632164720000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="mumfordIndigo"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-SW-ksg">
                         <rect key="frame" x="16" y="16" width="72" height="32"/>
@@ -27,7 +28,7 @@
                             <constraint firstAttribute="width" constant="72" id="igr-ys-bZm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="textColor" name="text"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-fO-Ayh">
@@ -36,7 +37,7 @@
                             <constraint firstAttribute="height" constant="30" id="IqY-sE-Zxg"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="textColor" name="text"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csN-1N-5Q9">
@@ -45,12 +46,12 @@
                             <constraint firstAttribute="height" constant="21" id="Lvq-lX-H87"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                        <color key="textColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" name="jupiterIndigo"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7u1-YL-At8">
                         <rect key="frame" x="329" y="48.5" width="24" height="23"/>
-                        <color key="tintColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" name="jupiterIndigo"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="BMq-kz-joC"/>
                             <constraint firstAttribute="width" constant="24" id="M74-0c-Dwk"/>
@@ -99,5 +100,14 @@
     <resources>
         <image name="USD" width="266.5" height="174.5"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="jupiterIndigo">
+            <color red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="mumfordIndigo">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text">
+            <color red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
