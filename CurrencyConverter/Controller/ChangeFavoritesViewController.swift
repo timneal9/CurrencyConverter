@@ -19,31 +19,34 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     @IBOutlet weak var leftCountryImage: UIImageView!
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
+    @IBOutlet weak var favCurrencyView: UIView!
     
-    var currencyArray = [CurrencyEntity]()
+    var currencyArray = [Currency]()
     //    var searchResults: Results<Item>?
     
     let cellSpacingHeight: CGFloat = 8
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func setFavoritesUI(currencies: [String]) {
         leftCountryLabel?.text = currencies[0]
         middleCountryLabel?.text = currencies[1]
         rightCountryLabel?.text = currencies[2]
 
-        leftCountryImage?.image = UIImage(named: currencies[0])
-        middleCountryImage?.image = UIImage(named: currencies[1])
-        rightCountryImage?.image = UIImage(named: currencies[2])
+        leftCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[0]))
+        middleCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[1]))
+        rightCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[2]))
+    }
+    
+    func validateCode(currencyCode: String) -> String {
+        if (UIImage(named: currencyCode) != nil) {
+            return currencyCode
+        } else {
+            return "ERR"
+        }
     }
     
     func fetchCurrencies() {
-        let request: NSFetchRequest<CurrencyEntity> = CurrencyEntity.fetchRequest()
-        do {
-            self.currencyArray = try context.fetch(request)
-        } catch {
-            print("Error fetching \(error)")
-        }
-        currencyArray = currencyArray.sorted(by: { $0.countryName! < $1.countryName! })
+        currencyArray = Currencies().currencyObjects
+        currencyArray = currencyArray.sorted(by: { $0.countryName < $1.countryName })
     }
     
     override func viewDidLoad() {
@@ -61,6 +64,7 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         tableView.delegate = self
         tableView.rowHeight = 120
         tableView.register(UINib(nibName: "CurrencyListCell", bundle: nil), forCellReuseIdentifier: "ReusableCurrencyListCell")
+        favCurrencyView.layer.cornerRadius = 10
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,8 +108,8 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         cell.currencyCodeLabel.text = currency.currencyCode
         cell.currencyExpandedLabel.text = currency.currencyName
         cell.countryNameLabel.text = currency.countryName
-        cell.flagImageView.image = UIImage(named: currency.currencyCode ?? "Err")
-        cell.layer.cornerRadius = 4
+        cell.flagImageView.image = UIImage(named: validateCode(currencyCode: currency.currencyCode))
+        cell.layer.cornerRadius = 10
         
         if currency.currencyCode == AppDelegate.shared().baseCurrency
             || currency.currencyCode == AppDelegate.shared().convertedCurrency {
@@ -148,13 +152,12 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let tappedCurrency = currencyArray[indexPath.section].currencyCode ?? "Err"
+        let tappedCurrency = currencyArray[indexPath.section].currencyCode
         let currentFavs = [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
             AppDelegate.shared().rightFavorite
         ]
-        
         
         if AppDelegate.shared().baseCurrency == tappedCurrency || (AppDelegate.shared().convertedCurrency == tappedCurrency) {
             print("Tapped currency already in base or converted")
@@ -181,18 +184,8 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
             AppDelegate.shared().rightFavorite
         ])
         AppDelegate.shared().setSavedCurrencyValues()
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//            tableView.cellForRow(at: indexPath)?.backgroundColor = #colorLiteral(red: 0.9594495893, green: 0.9607769847, blue: 1, alpha: 1)
-//        }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
     }
 }
-
-
-
 
 // MARK: Future feature, search bar
 

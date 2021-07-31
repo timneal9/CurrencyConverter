@@ -29,7 +29,8 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     @IBOutlet weak var baseCurrencyUIView: UIView!
     @IBOutlet weak var convertedCurrencyUIView: UIView!
-
+    @IBOutlet weak var favCurrencyUIView: UIView!
+    
     @IBOutlet weak var leftFavView: UIStackView!
     @IBOutlet weak var middleFavView: UIStackView!
     @IBOutlet weak var rightFavView: UIStackView!
@@ -42,12 +43,12 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func setBaseCurrencyUI(currencyCode: String) {
         baseCurrencyCodeLabel.text = currencyCode
-        baseFlagImage.image = UIImage(named: currencyCode)
+        baseFlagImage.image = UIImage(named: validateCode(currencyCode: currencyCode))
     }
     
     func setConvertedUI(currencyCode: String) {
         convertedCurrencyCodeLabel.text = currencyCode
-        convertedFlagImage.image = UIImage(named: currencyCode)
+        convertedFlagImage.image = UIImage(named: validateCode(currencyCode: currencyCode))
         updateConvertedAmount()
     }
     
@@ -56,10 +57,17 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         middleCountryLabel?.text = currencies[1]
         rightCountryLabel?.text = currencies[2]
 
-        leftCountryImage?.image = UIImage(named: currencies[0])
-        middleCountryImage?.image = UIImage(named: currencies[1])
-        rightCountryImage?.image = UIImage(named: currencies[2])
-        
+        leftCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[0]))
+        middleCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[1]))
+        rightCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[2]))
+    }
+    
+    func validateCode(currencyCode: String) -> String {
+        if (UIImage(named: currencyCode) != nil) {
+            return currencyCode
+        } else {
+            return "ERR"
+        }
     }
     
     func numButtonTapped(num: String) {
@@ -150,14 +158,17 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         swapSpacingView.addGestureRecognizer(swapSpacingViewTapGestureRecognizer)
         baseCurrencyUIView.isUserInteractionEnabled = true
         baseCurrencyUIView.addGestureRecognizer(baseTapGestureRecognizer)
+        baseCurrencyUIView.layer.cornerRadius = 10
         convertedCurrencyUIView.isUserInteractionEnabled = true
         convertedCurrencyUIView.addGestureRecognizer(convertedTapGestureRecognizer)
+        convertedCurrencyUIView.layer.cornerRadius = 10
         leftFavView.isUserInteractionEnabled = true
         leftFavView.addGestureRecognizer(leftFavTapGestureRecognizer)
         rightFavView.isUserInteractionEnabled = true
         rightFavView.addGestureRecognizer(rightFavTapGestureRecognizer)
         middleFavView.isUserInteractionEnabled = true
         middleFavView.addGestureRecognizer(middleFavTapGestureRecognizer)
+        favCurrencyUIView.layer.cornerRadius = 10
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
     }
