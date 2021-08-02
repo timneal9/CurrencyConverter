@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PS8-Ey-cpi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PS8-Ey-cpi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -490,6 +490,7 @@
                         <outlet property="swapArrowView" destination="gPf-FK-qN9" id="Z2a-6f-W57"/>
                         <outlet property="swapSpacingView" destination="Pdy-9y-Fne" id="ZXH-LE-K2X"/>
                         <segue destination="iMi-c9-KOX" kind="presentation" identifier="HomeToChange" modalPresentationStyle="pageSheet" id="Vjd-02-Zsu"/>
+                        <segue destination="w1I-QN-xSb" kind="show" identifier="HomeToPurchasePremium" id="iRH-a6-py5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -633,6 +634,86 @@
             </objects>
             <point key="canvasLocation" x="1931.8840579710147" y="136.60714285714286"/>
         </scene>
+        <!--Purchase Premium View Controller-->
+        <scene sceneID="EGf-qf-RA3">
+            <objects>
+                <viewController id="w1I-QN-xSb" customClass="PurchasePremiumViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1DK-LW-Pa6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqA-94-Oiv">
+                                <rect key="frame" x="16" y="92" width="382" height="603"/>
+                                <connections>
+                                    <segue destination="6D8-LD-3mU" kind="embed" id="eL3-TR-Q14"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TlV-Ax-Tsw">
+                                <rect key="frame" x="374" y="48" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="0LP-ag-vyJ"/>
+                                    <constraint firstAttribute="height" constant="24" id="sKr-44-f4v"/>
+                                </constraints>
+                                <color key="tintColor" name="jupiterIndigo"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="w1I-QN-xSb" eventType="touchUpInside" id="OEK-cQ-dAH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHg-Ow-dA0">
+                                <rect key="frame" x="105" y="752" width="204" height="54"/>
+                                <color key="backgroundColor" name="jupiterIndigo"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="hSk-RJ-b0v"/>
+                                </constraints>
+                                <color key="tintColor" name="mumfordIndigo"/>
+                                <state key="normal" title="Get Premium"/>
+                                <connections>
+                                    <action selector="buyPremiumButtonTapped:" destination="w1I-QN-xSb" eventType="touchUpInside" id="NDD-bv-dVV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5Q-XI-DtL">
+                                <rect key="frame" x="167" y="826" width="80" height="32"/>
+                                <color key="backgroundColor" name="mumfordIndigo"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="5gA-1Q-6Mi"/>
+                                    <constraint firstAttribute="height" constant="32" id="t7Z-dQ-02D"/>
+                                </constraints>
+                                <color key="tintColor" name="text"/>
+                                <state key="normal" title="Restore"/>
+                                <connections>
+                                    <action selector="restoreButtonTapped:" destination="w1I-QN-xSb" eventType="touchUpInside" id="et5-ih-f7t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yzZ-iW-eLw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="bottom" secondItem="T5Q-XI-DtL" secondAttribute="bottom" constant="4" id="0WR-W2-amZ"/>
+                            <constraint firstItem="T5Q-XI-DtL" firstAttribute="top" secondItem="LHg-Ow-dA0" secondAttribute="bottom" constant="20" id="9Pe-aE-ifX"/>
+                            <constraint firstItem="LHg-Ow-dA0" firstAttribute="leading" secondItem="yzZ-iW-eLw" secondAttribute="leading" constant="105" id="BAB-06-HbJ"/>
+                            <constraint firstItem="T5Q-XI-DtL" firstAttribute="centerX" secondItem="1DK-LW-Pa6" secondAttribute="centerX" id="FAe-Au-Fyf"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="centerX" secondItem="LHg-Ow-dA0" secondAttribute="centerX" id="LWq-KY-Vuu"/>
+                            <constraint firstItem="TlV-Ax-Tsw" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="4" id="NIy-di-rs8"/>
+                            <constraint firstItem="LHg-Ow-dA0" firstAttribute="top" secondItem="bqA-94-Oiv" secondAttribute="bottom" constant="57" id="NfB-CG-eeI"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="48" id="TXa-QK-cNf"/>
+                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="bqA-94-Oiv" secondAttribute="trailing" constant="16" id="d0u-S1-AC8"/>
+                            <constraint firstItem="T5Q-XI-DtL" firstAttribute="top" secondItem="LHg-Ow-dA0" secondAttribute="bottom" constant="20" id="ezl-Tt-HW6"/>
+                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="TlV-Ax-Tsw" secondAttribute="trailing" constant="16" id="fN3-L9-XhM"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="centerX" secondItem="1DK-LW-Pa6" secondAttribute="centerX" id="lnu-sx-LsC"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="leading" secondItem="yzZ-iW-eLw" secondAttribute="leading" constant="16" id="uVF-3t-rhb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="591-c9-QhO"/>
+                    <connections>
+                        <outlet property="buyPremiumButton" destination="LHg-Ow-dA0" id="e1U-H2-AP5"/>
+                        <outlet property="restorePurchasesButton" destination="T5Q-XI-DtL" id="z6g-yg-n4P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mz0-qp-O4r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1931.8840579710147" y="866.51785714285711"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="a4J-o3-mII">
             <objects>
@@ -653,6 +734,14 @@
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="136.60714285714286"/>
         </scene>
+        <!--Carousel Page View Controller-->
+        <scene sceneID="pcZ-zA-g5J">
+            <objects>
+                <viewController id="6D8-LD-3mU" customClass="CarouselPageViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvQ-M7-t0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2501" y="1512"/>
+        </scene>
     </scenes>
     <resources>
         <image name="delete.left.fill" catalog="system" width="128" height="104"/>
@@ -660,16 +749,16 @@
         <image name="swap-arrows" width="128" height="128"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="background">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="jupiterIndigo">
-            <color red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.21199999749660492" green="0.20399999618530273" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="mumfordIndigo">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
-            <color red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

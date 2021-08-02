@@ -18,6 +18,10 @@
 		26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */; };
 		26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */; };
 		26BAB1E52613F1A7003376B3 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */; };
+		26D7888926B74129002A5C77 /* CarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7888826B74129002A5C77 /* CarouselPageViewController.swift */; };
+		26D7888B26B74345002A5C77 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D7888A26B74345002A5C77 /* CarouselItem.xib */; };
+		26D7888D26B7484D002A5C77 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7888C26B7484D002A5C77 /* CarouselItem.swift */; };
+		26E7A53726B71E7300F975AF /* PurchasePremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7A53626B71E7300F975AF /* PurchasePremiumViewController.swift */; };
 		26ECCC6926B4A67F0038F84F /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECCC6826B4A67F0038F84F /* Currencies.swift */; };
 		26ECCC6C26B4A6D10038F84F /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECCC6B26B4A6D10038F84F /* CurrencyModel.swift */; };
 		26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1842260FBBB500BA1F7F /* RootViewController.swift */; };
@@ -37,6 +41,10 @@
 		26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFavoritesViewController.swift; sourceTree = "<group>"; };
 		26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListCell.xib; sourceTree = "<group>"; };
 		26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
+		26D7888826B74129002A5C77 /* CarouselPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPageViewController.swift; sourceTree = "<group>"; };
+		26D7888A26B74345002A5C77 /* CarouselItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselItem.xib; sourceTree = "<group>"; };
+		26D7888C26B7484D002A5C77 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
+		26E7A53626B71E7300F975AF /* PurchasePremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePremiumViewController.swift; sourceTree = "<group>"; };
 		26ECCC6826B4A67F0038F84F /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		26ECCC6B26B4A6D10038F84F /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		26FB1842260FBBB500BA1F7F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +109,8 @@
 				26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */,
 				2675AD7B260D6347000360AA /* Main.storyboard */,
 				26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */,
+				26D7888A26B74345002A5C77 /* CarouselItem.xib */,
+				26D7888C26B7484D002A5C77 /* CarouselItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,7 +120,9 @@
 			children = (
 				26FB1842260FBBB500BA1F7F /* RootViewController.swift */,
 				26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */,
+				26E7A53626B71E7300F975AF /* PurchasePremiumViewController.swift */,
 				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
+				26D7888826B74129002A5C77 /* CarouselPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +187,7 @@
 			files = (
 				26BAB1E22613E9D8003376B3 /* CurrencyListCell.xib in Resources */,
 				2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */,
+				26D7888B26B74345002A5C77 /* CarouselItem.xib in Resources */,
 				2675AD7F260D634A000360AA /* Assets.xcassets in Resources */,
 				2675AD7D260D6347000360AA /* Main.storyboard in Resources */,
 			);
@@ -192,10 +205,13 @@
 				26422DDB26165D7E0016E5C4 /* Notifications.swift in Sources */,
 				26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */,
 				26ECCC6926B4A67F0038F84F /* Currencies.swift in Sources */,
+				26E7A53726B71E7300F975AF /* PurchasePremiumViewController.swift in Sources */,
+				26D7888D26B7484D002A5C77 /* CarouselItem.swift in Sources */,
 				26BAB1BC26104433003376B3 /* CurrencyExchangeManager.swift in Sources */,
 				26ECCC6C26B4A6D10038F84F /* CurrencyModel.swift in Sources */,
 				2675AD76260D6347000360AA /* AppDelegate.swift in Sources */,
 				26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */,
+				26D7888926B74129002A5C77 /* CarouselPageViewController.swift in Sources */,
 				2675AD78260D6347000360AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

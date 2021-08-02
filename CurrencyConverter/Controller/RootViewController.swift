@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class RootViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    
     @IBOutlet weak var baseAmountLabel: UILabel!
     @IBOutlet weak var baseCurrencyCodeLabel: UILabel!
     @IBOutlet weak var baseFlagImage: UIImageView!
@@ -36,7 +37,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var rightFavView: UIStackView!
     
     let rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
-    var baseAmount: String = ""
+    var baseAmount: String = "0"
     var decimalActive: Bool = false
     var decimalString: String = ".00"
     var decimalActiveCount: Int = 0
@@ -133,7 +134,12 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         }
         convertedAmountLabel.text = formattedResult
     }
-  
+    
+    func isPremiumUser() -> Bool {
+        let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser")
+        return purchaseStatus
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -184,7 +190,12 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "HomeToChange", sender: self)
+        
+        if isPremiumUser() {
+            self.performSegue(withIdentifier: "HomeToChange", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "HomeToPurchasePremium", sender: self)
+        }
     }
     @IBAction func oneNumButtonTapped(_ sender: UIButton) {
         numButtonTapped(num: "1")
