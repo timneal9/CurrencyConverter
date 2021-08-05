@@ -139,6 +139,10 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser")
         return purchaseStatus
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

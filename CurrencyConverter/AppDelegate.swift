@@ -62,6 +62,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("API was last called more than \(maxDays) days ago. Calling API...")
             callAPI()
         }
+        
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithOpaqueBackground()
+        coloredAppearance.backgroundColor = UIColor(named: "background")
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "text") ?? .tertiaryLabel]
+               
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
         return true
     }
     
