@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scV-je-KJb" userLabel="Background View">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
+                        <rect key="frame" x="0.0" y="4" width="360" height="112"/>
                         <color key="backgroundColor" name="mumfordIndigo"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-SW-ksg">
@@ -66,11 +66,10 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="p1C-fO-Ayh" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" constant="32" id="0Ha-th-pAc"/>
                     <constraint firstAttribute="trailing" secondItem="scV-je-KJb" secondAttribute="trailing" id="2pJ-wB-IC3"/>
-                    <constraint firstItem="scV-je-KJb" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" id="97Y-fZ-i6K"/>
+                    <constraint firstItem="scV-je-KJb" firstAttribute="top" secondItem="fbA-2F-eQt" secondAttribute="top" constant="4" id="97Y-fZ-i6K"/>
                     <constraint firstItem="p1C-fO-Ayh" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="9zB-bb-r7t"/>
                     <constraint firstItem="pLU-SW-ksg" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="BZM-zX-sg2"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="leading" secondItem="Ckp-iC-yuR" secondAttribute="trailing" constant="16" id="BoQ-dH-11y"/>
@@ -78,7 +77,7 @@
                     <constraint firstAttribute="trailing" secondItem="csN-1N-5Q9" secondAttribute="trailing" constant="50" id="D3D-6e-w27"/>
                     <constraint firstItem="7u1-YL-At8" firstAttribute="centerY" secondItem="fbA-2F-eQt" secondAttribute="centerY" id="I2y-4E-nGt"/>
                     <constraint firstAttribute="trailing" secondItem="p1C-fO-Ayh" secondAttribute="trailing" constant="50" id="Mas-kC-oTg"/>
-                    <constraint firstAttribute="bottom" secondItem="scV-je-KJb" secondAttribute="bottom" id="N7r-O2-2ta"/>
+                    <constraint firstAttribute="bottom" secondItem="scV-je-KJb" secondAttribute="bottom" constant="4" id="N7r-O2-2ta"/>
                     <constraint firstItem="scV-je-KJb" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" id="RkI-tP-yha"/>
                     <constraint firstAttribute="trailing" secondItem="7u1-YL-At8" secondAttribute="trailing" constant="7" id="WWd-fe-Pam"/>
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="top" secondItem="p1C-fO-Ayh" secondAttribute="bottom" constant="7" id="h5u-wB-Rrt"/>
@@ -101,13 +100,13 @@
         <image name="USD" width="266.5" height="174.5"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="jupiterIndigo">
-            <color red="0.21176470589999999" green="0.20392156859999999" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.21199999749660492" green="0.20399999618530273" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="mumfordIndigo">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
-            <color red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

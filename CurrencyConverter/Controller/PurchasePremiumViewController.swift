@@ -26,7 +26,7 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
             setPremiumUser()
         }
         
-        buyPremiumButton.layer.cornerRadius = 24
+        buyPremiumButton.layer.cornerRadius = 16
         restorePurchasesButton.layer.cornerRadius = 16
         
     }
