@@ -9,5 +9,5 @@
 import Foundation
 
 struct ExchangeRateData: Codable {
-    let rates: [String: Float]
+    let rates: [String: Double]
 }

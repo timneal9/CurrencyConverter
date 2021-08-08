@@ -36,7 +36,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var middleFavView: UIStackView!
     @IBOutlet weak var rightFavView: UIStackView!
     
-    let rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
+    var rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
     var baseAmount: String = "0"
     var decimalActive: Bool = false
     var decimalString: String = ".00"
@@ -44,12 +44,12 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func setBaseCurrencyUI(currencyCode: String) {
         baseCurrencyCodeLabel.text = currencyCode
-        baseFlagImage.image = UIImage(named: validateCode(currencyCode: currencyCode))
+        baseFlagImage.image = fetchImage(currencyCode: currencyCode)
     }
     
     func setConvertedUI(currencyCode: String) {
         convertedCurrencyCodeLabel.text = currencyCode
-        convertedFlagImage.image = UIImage(named: validateCode(currencyCode: currencyCode))
+        convertedFlagImage.image = fetchImage(currencyCode: currencyCode)
         updateConvertedAmount()
     }
     
@@ -58,9 +58,9 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         middleCountryLabel?.text = currencies[1]
         rightCountryLabel?.text = currencies[2]
 
-        leftCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[0]))
-        middleCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[1]))
-        rightCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[2]))
+        leftCountryImage?.image = fetchImage(currencyCode: currencies[0])
+        middleCountryImage?.image = fetchImage(currencyCode: currencies[1])
+        rightCountryImage?.image = fetchImage(currencyCode: currencies[2])
     }
     
     func validateCode(currencyCode: String) -> String {
@@ -68,6 +68,14 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
             return currencyCode
         } else {
             return "ERR"
+        }
+    }
+    
+    func fetchImage(currencyCode: String) -> UIImage {
+        if let image = (UIImage(named: currencyCode)) {
+            return image
+        } else {
+            return UIImage(named: "ERR")!
         }
     }
     
@@ -114,16 +122,17 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func updateBaseAmount() {
         baseAmountLabel.text = baseAmount + decimalString
+        updateRates()
         updateConvertedAmount()
     }
     
-    func updateConvertedAmount() {
+    func updateConvertedAmount() { 
         let baseText = baseAmountLabel.text ?? "0.0"
-        let baseTextFloat = Float(baseText) ?? 0.0
-        let baseRateCode = baseCurrencyCodeLabel.text ?? "USD"
-        let conversionRateCode = convertedCurrencyCodeLabel.text ?? "USD"
-        guard let baseRate = rates?[baseRateCode] as? Float else { return }
-        guard let conversionRate = rates?[conversionRateCode] as? Float else { return }
+        let baseTextFloat = Double(baseText) ?? 0.0
+        let baseRateCode = validateCode(currencyCode: baseCurrencyCodeLabel.text ?? "USD")
+        let conversionRateCode = validateCode(currencyCode: convertedCurrencyCodeLabel.text ?? "USD")
+        guard let baseRate = rates?[baseRateCode] as? Double else { return }
+        guard let conversionRate = rates?[conversionRateCode] as? Double else { return }
         
         let multiplier = conversionRate / baseRate
         let result = baseTextFloat * multiplier
@@ -139,6 +148,13 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser")
         return purchaseStatus
     }
+    
+    func updateRates() {
+        if (rates == nil) {
+            print("updateRates found nil")
+            rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -147,6 +163,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateRates()
         setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
         
@@ -245,7 +262,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().convertedCurrency = tappedCurrency
         AppDelegate.shared().leftFavorite = currentConvertedCurrency
         
-        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().leftFavorite)
         leftCountryLabel.text = AppDelegate.shared().leftFavorite
         
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
@@ -260,9 +277,9 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
         AppDelegate.shared().leftFavorite = currentConvertedCurrency
         
-        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().leftFavorite)
         leftCountryLabel.text = AppDelegate.shared().leftFavorite
-        middleCountryImage.image = UIImage(named: AppDelegate.shared().middleFavorite)
+        middleCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().middleFavorite)
         middleCountryLabel.text = AppDelegate.shared().middleFavorite
 
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
@@ -278,11 +295,11 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
         AppDelegate.shared().leftFavorite = currentConvertedCurrency
         
-        leftCountryImage.image = UIImage(named: AppDelegate.shared().leftFavorite)
+        leftCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().leftFavorite)
         leftCountryLabel.text = AppDelegate.shared().leftFavorite
-        middleCountryImage.image = UIImage(named: AppDelegate.shared().middleFavorite)
+        middleCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().middleFavorite)
         middleCountryLabel.text = AppDelegate.shared().middleFavorite
-        rightCountryImage.image = UIImage(named: AppDelegate.shared().rightFavorite)
+        rightCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().rightFavorite)
         rightCountryLabel.text = AppDelegate.shared().rightFavorite
 
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)

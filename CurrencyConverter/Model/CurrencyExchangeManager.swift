@@ -19,6 +19,13 @@ struct CurrencyExchangeManager {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     print("Error with session.dataTask: \(error!)")
+                    
+                    let currentDate = Date()
+                    var dateComponent = DateComponents()
+                    dateComponent.day = -8
+                    let pastDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+                    print("Error with calling API, using default values")
+                    UserDefaults.standard.setValue(pastDate, forKey: "ratesLastUpdated")
                     return
                 }
                 if let safeData = data {
@@ -30,7 +37,7 @@ struct CurrencyExchangeManager {
         }
     }
     
-    func parseJSON(_ data: Data) -> [String: Float] {
+    func parseJSON(_ data: Data) -> [String: Double] {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(ExchangeRateData.self, from: data)
@@ -42,7 +49,7 @@ struct CurrencyExchangeManager {
         }
     }
     
-    func saveRates(rates: [String: Float]) {
+    func saveRates(rates: [String: Double]) {
         UserDefaults.standard.setValue(rates, forKey: "ratesDictionary")
     }
     
