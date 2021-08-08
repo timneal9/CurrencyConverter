@@ -9,7 +9,7 @@
 import Foundation
 
 struct Currency: Equatable {
-    var currencyCode: String
-    var currencyName: String
-    var countryName: String
+    let currencyCode: String
+    let currencyName: String
+    let countryName: String
 }
