@@ -34,10 +34,10 @@ class CarouselPageViewController: UIPageViewController, UIPageViewControllerData
 
         for i in 0 ... 2 {
             var viewController = UIViewController()
-            let textTitleArray = ["100+ Currencies", "Save Favorites", "Get Premium"]
-            let textSubtitleArray = ["Access to over 100 currencies", "Quick access to your top 3 countries", "Get access to all these premium features and help keep our app ad-free!"]
-            let imageNames = ["img1", "img2", "img3"]
-            
+            let textTitleArray = ["100+ Currencies", "Save Favorites", "Premium Features"]
+            let textSubtitleArray = ["Access to over 100 currencies", "Quick access to your top 3 countries", "Upgrade to Premium today!"]
+            let imageNames = ["img1", "img2", "premiumPage3"]
+
             viewController = createCarouselItemControler(with: textTitleArray[i], with: textSubtitleArray[i], with: imageNames[i])
             controllers.append(viewController)
         }

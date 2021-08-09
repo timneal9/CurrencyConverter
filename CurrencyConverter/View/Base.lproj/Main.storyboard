@@ -29,7 +29,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="125.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pM2-5q-Nkz" userLabel="Base Currency Stack View">
-                                                        <rect key="frame" x="16" y="19.666666666666671" width="382" height="86"/>
+                                                        <rect key="frame" x="16" y="20" width="382" height="86"/>
                                                         <subviews>
                                                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-vz-yy7" userLabel="Base Flag Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
@@ -590,7 +590,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcf-aZ-EOD">
                                 <rect key="frame" x="7" y="223" width="414" height="676"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="tintColor" name="background"/>
                                 <color key="separatorColor" name="jupiterIndigo"/>
                             </tableView>
                         </subviews>
@@ -633,7 +632,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqA-94-Oiv">
-                                <rect key="frame" x="16" y="92" width="396" height="686"/>
+                                <rect key="frame" x="0.0" y="72" width="428" height="706"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="412" id="nE1-jG-m8P"/>
                                 </constraints>
@@ -642,15 +641,16 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5Q-XI-DtL">
-                                <rect key="frame" x="174" y="846" width="80" height="30"/>
-                                <color key="backgroundColor" name="mumfordIndigo"/>
+                                <rect key="frame" x="153.66666666666666" y="846" width="120.99999999999997" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="5gA-1Q-6Mi"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="gVm-9U-5Yh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" name="text"/>
-                                <state key="normal" title="Restore"/>
+                                <state key="normal" title="Restore Purchase">
+                                    <color key="titleColor" name="jupiterIndigo"/>
+                                </state>
                                 <connections>
                                     <action selector="restoreButtonTapped:" destination="w1I-QN-xSb" eventType="touchUpInside" id="et5-ih-f7t"/>
                                 </connections>
@@ -670,7 +670,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TlV-Ax-Tsw">
-                                <rect key="frame" x="383" y="56" width="25" height="24"/>
+                                <rect key="frame" x="387" y="48" width="25" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="32" id="0LP-ag-vyJ"/>
                                     <constraint firstAttribute="width" secondItem="TlV-Ax-Tsw" secondAttribute="height" multiplier="25:24" id="IK7-D6-TL3"/>
@@ -686,19 +686,18 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yzZ-iW-eLw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="LHg-Ow-dA0" firstAttribute="centerX" secondItem="1DK-LW-Pa6" secondAttribute="centerX" id="2Jv-81-hnI"/>
                             <constraint firstItem="T5Q-XI-DtL" firstAttribute="top" secondItem="LHg-Ow-dA0" secondAttribute="bottom" constant="16" id="9Pe-aE-ifX"/>
                             <constraint firstItem="T5Q-XI-DtL" firstAttribute="centerX" secondItem="1DK-LW-Pa6" secondAttribute="centerX" id="FAe-Au-Fyf"/>
-                            <constraint firstItem="bqA-94-Oiv" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="48" id="TXa-QK-cNf"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="28" id="TXa-QK-cNf"/>
                             <constraint firstItem="yzZ-iW-eLw" firstAttribute="bottom" secondItem="T5Q-XI-DtL" secondAttribute="bottom" constant="16" id="VOE-VR-UtS"/>
                             <constraint firstItem="LHg-Ow-dA0" firstAttribute="top" secondItem="bqA-94-Oiv" secondAttribute="bottom" constant="16" id="c3X-IX-4fz"/>
-                            <constraint firstItem="bqA-94-Oiv" firstAttribute="top" secondItem="TlV-Ax-Tsw" secondAttribute="bottom" constant="12" id="cV4-8W-X3e"/>
-                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="bqA-94-Oiv" secondAttribute="trailing" constant="16" id="d0u-S1-AC8"/>
-                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="TlV-Ax-Tsw" secondAttribute="trailing" constant="20" id="scK-BV-8QT"/>
-                            <constraint firstItem="bqA-94-Oiv" firstAttribute="leading" secondItem="yzZ-iW-eLw" secondAttribute="leading" constant="16" id="uVF-3t-rhb"/>
-                            <constraint firstItem="TlV-Ax-Tsw" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="12" id="xgE-AY-TkQ"/>
+                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="bqA-94-Oiv" secondAttribute="trailing" id="d0u-S1-AC8"/>
+                            <constraint firstItem="yzZ-iW-eLw" firstAttribute="trailing" secondItem="TlV-Ax-Tsw" secondAttribute="trailing" constant="16" id="scK-BV-8QT"/>
+                            <constraint firstItem="bqA-94-Oiv" firstAttribute="leading" secondItem="yzZ-iW-eLw" secondAttribute="leading" id="uVF-3t-rhb"/>
+                            <constraint firstItem="TlV-Ax-Tsw" firstAttribute="top" secondItem="yzZ-iW-eLw" secondAttribute="top" constant="4" id="xgE-AY-TkQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="591-c9-QhO"/>
