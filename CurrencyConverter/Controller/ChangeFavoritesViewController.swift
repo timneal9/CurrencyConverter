@@ -85,11 +85,38 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         return searchController.isActive
     }
     
+    func setShadows() {
+        favCurrencyView.layer.cornerRadius = 10
+        favCurrencyView.clipsToBounds = false
+        favCurrencyView.layer.shadowColor = UIColor.black.cgColor
+        favCurrencyView.layer.shadowOpacity = 0.1
+        favCurrencyView.layer.shadowOffset = CGSize.zero
+        favCurrencyView.layer.shadowRadius = 2
+        
+        leftCountryImage.clipsToBounds = false
+        leftCountryImage.layer.shadowColor = UIColor.black.cgColor
+        leftCountryImage.layer.shadowOpacity = 0.2
+        leftCountryImage.layer.shadowOffset = CGSize.zero
+        leftCountryImage.layer.shadowRadius = 5
+        
+        middleCountryImage.clipsToBounds = false
+        middleCountryImage.layer.shadowColor = UIColor.black.cgColor
+        middleCountryImage.layer.shadowOpacity = 0.2
+        middleCountryImage.layer.shadowOffset = CGSize.zero
+        middleCountryImage.layer.shadowRadius = 5
+        
+        rightCountryImage.clipsToBounds = false
+        rightCountryImage.layer.shadowColor = UIColor.black.cgColor
+        rightCountryImage.layer.shadowOpacity = 0.2
+        rightCountryImage.layer.shadowOffset = CGSize.zero
+        rightCountryImage.layer.shadowRadius = 5
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchCurrencies()
-        
+        setShadows()
         setFavoritesUI(currencies: [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
@@ -100,7 +127,7 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         tableView.delegate = self
         tableView.rowHeight = 120
         tableView.register(UINib(nibName: "CurrencyListCell", bundle: nil), forCellReuseIdentifier: "ReusableCurrencyListCell")
-        favCurrencyView.layer.cornerRadius = 10
+        
         navigationItem.searchController = searchController
     }
     
@@ -149,6 +176,14 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         cell.countryNameLabel.text = currentCurrency.countryName
         cell.flagImageView.image = UIImage(named: validateCode(currencyCode: currentCurrency.currencyCode))
         cell.containerView.layer.cornerRadius = 10
+        
+        cell.flagImageView.clipsToBounds = false
+        cell.flagImageView.layer.shadowColor = UIColor.black.cgColor
+        cell.flagImageView.layer.shadowOpacity = 0.2
+        cell.flagImageView.layer.shadowOffset = CGSize.zero
+        cell.flagImageView.layer.shadowRadius = 5
+        
+        cell.backgroundColor = UIColor(named: "background")
         
         if currentCurrency.currencyCode == AppDelegate.shared().baseCurrency
             || currentCurrency.currencyCode == AppDelegate.shared().convertedCurrency {
