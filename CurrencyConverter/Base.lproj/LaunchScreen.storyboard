@@ -16,16 +16,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rounded-logo" translatesAutoresizingMaskIntoConstraints="NO" id="5tW-t6-mV6">
+                                <rect key="frame" x="135" y="376" width="144" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="FMf-eR-JUG"/>
+                                    <constraint firstAttribute="height" constant="144" id="eZH-m3-RH8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
+                        <constraints>
+                            <constraint firstItem="5tW-t6-mV6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="8fK-OF-xeb"/>
+                            <constraint firstItem="5tW-t6-mV6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mbY-ks-kcN"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="rounded-logo" width="768" height="768"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
