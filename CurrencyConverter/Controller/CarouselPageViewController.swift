@@ -23,10 +23,6 @@ class CarouselPageViewController: UIPageViewController, UIPageViewControllerData
         addChild(pageController)
         view.addSubview(pageController.view)
 
-//        let views = ["pageController": pageController.view] as [String: AnyObject]
-//        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
-//        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
-
         let appearance = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
         appearance.numberOfPages = 3
         appearance.pageIndicatorTintColor = UIColor(named: "mumfordIndigo")
@@ -34,8 +30,8 @@ class CarouselPageViewController: UIPageViewController, UIPageViewControllerData
 
         for i in 0 ... 2 {
             var viewController = UIViewController()
-            let textTitleArray = ["100+ Currencies", "Save Favorites", "Premium Features"]
-            let textSubtitleArray = ["Access to over 100 currencies", "Quick access to your top 3 countries", "Upgrade to Premium today!"]
+            let textTitleArray = ["150 Currencies", "Save Favorites", "Premium Features"]
+            let textSubtitleArray = ["Access to over 150 currencies", "Quick access to your top 3 countries", "Upgrade to Premium today!"]
             let imageNames = ["img1", "img2", "premiumPage3"]
 
             viewController = createCarouselItemControler(with: textTitleArray[i], with: textSubtitleArray[i], with: imageNames[i])
