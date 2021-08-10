@@ -29,7 +29,7 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Countries"
+        searchController.searchBar.placeholder = "Search Currencies"
         searchController.searchBar.sizeToFit()
         searchController.searchBar.searchBarStyle = .prominent
         searchController.searchBar.delegate = self
