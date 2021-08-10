@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "backgroundsmflow.jpg",
+      "filename" : "Page-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Page-2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Page-2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
