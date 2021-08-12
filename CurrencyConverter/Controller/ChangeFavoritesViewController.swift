@@ -18,6 +18,9 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     @IBOutlet weak var middleCountryImage: UIImageView!
     @IBOutlet weak var rightCountryImage: UIImageView!
     @IBOutlet weak var favCurrencyView: UIView!
+    @IBOutlet weak var leftFavStack: UIStackView!
+    @IBOutlet weak var middleFavStack: UIStackView!
+    @IBOutlet weak var rightFavStack: UIStackView!
     
     var currencyArray = [Currency]()
     var filteredCurrencies = [Currency]()
@@ -45,6 +48,8 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         leftCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[0]))
         middleCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[1]))
         rightCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[2]))
+        
+        updateAccessibilityLabels()
     }
     
     func validateCode(currencyCode: String) -> String {
@@ -112,11 +117,32 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         rightCountryImage.layer.shadowRadius = 5
     }
     
+    func setupAccessibility() {
+        leftCountryLabel.isAccessibilityElement = false
+        leftCountryImage.isAccessibilityElement = false
+        leftFavStack.isAccessibilityElement = true
+        
+        middleCountryLabel.isAccessibilityElement = false
+        middleCountryImage.isAccessibilityElement = false
+        middleFavStack.isAccessibilityElement = true
+        
+        rightCountryLabel.isAccessibilityElement = false
+        rightCountryImage.isAccessibilityElement = false
+        rightFavStack.isAccessibilityElement = true
+    }
+    
+    func updateAccessibilityLabels() {
+        leftFavStack.accessibilityLabel = "First favorite currency " + (leftCountryLabel.text ?? "")
+        middleFavStack.accessibilityLabel = "Second favorite currency " + (middleCountryLabel.text ?? "")
+        rightFavStack.accessibilityLabel = "Third favorite currency " + (rightCountryLabel.text ?? "")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchCurrencies()
         setShadows()
+        setupAccessibility()
         setFavoritesUI(currencies: [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
@@ -201,6 +227,10 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
             cell.currencyExpandedLabel.alpha = 1
             cell.flagImageView.alpha = 1
         }
+        
+        cell.isAccessibilityElement = true
+        cell.accessibilityHint = "Double tap to add " + (cell.currencyCodeLabel.text ?? "") + " to your favorites"
+        
         return cell
     }
     

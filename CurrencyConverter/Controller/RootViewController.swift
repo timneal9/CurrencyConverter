@@ -17,6 +17,10 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     @IBOutlet weak var baseFlagStack: UIStackView!
     @IBOutlet weak var convertedFlagStack: UIStackView!
+    @IBOutlet weak var leftFavStack: UIStackView!
+    @IBOutlet weak var middleFavStack: UIStackView!
+    @IBOutlet weak var rightFavStack: UIStackView!
+    
     @IBOutlet weak var convertedAmountLabel: UILabel!
     @IBOutlet weak var convertedCurrencyCodeLabel: UILabel!
     @IBOutlet weak var convertedFlagImage: UIImageView!
@@ -52,6 +56,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         convertedCurrencyCodeLabel.text = currencyCode
         convertedFlagImage.image = fetchImage(currencyCode: currencyCode)
         updateConvertedAmount()
+        updateAccessibilityLabels()
     }
     
     func setFavoritesUI(currencies: [String]) {
@@ -62,6 +67,8 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         leftCountryImage?.image = fetchImage(currencyCode: currencies[0])
         middleCountryImage?.image = fetchImage(currencyCode: currencies[1])
         rightCountryImage?.image = fetchImage(currencyCode: currencies[2])
+        
+        updateAccessibilityLabels()
     }
     
     func validateCode(currencyCode: String) -> String {
@@ -125,6 +132,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         baseAmountLabel.text = baseAmount + decimalString
         updateRates()
         updateConvertedAmount()
+        updateAccessibilityLabels()
     }
     
     func updateConvertedAmount() { 
@@ -147,7 +155,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func isPremiumUser() -> Bool {
         let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser")
-        return purchaseStatus
+        return true
     }
     
     func updateRates() {
@@ -206,6 +214,48 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         favCurrencyUIView.layer.shadowOffset = CGSize.zero
         favCurrencyUIView.layer.shadowRadius = 2
     }
+    
+    func setupAccessibility() {
+        baseCurrencyCodeLabel.isAccessibilityElement = false
+        baseFlagImage.isAccessibilityElement = false
+        baseFlagStack.isAccessibilityElement = true
+        baseFlagStack.accessibilityHint = "Double tap to swap base and quote currencies"
+        
+        convertedCurrencyCodeLabel.isAccessibilityElement = false
+        convertedFlagImage.isAccessibilityElement = false
+        convertedFlagStack.isAccessibilityElement = true
+        convertedFlagStack.accessibilityHint = "Double tap to swap base and quote currencies"
+        
+        leftCountryLabel.isAccessibilityElement = false
+        leftCountryImage.isAccessibilityElement = false
+        leftFavStack.isAccessibilityElement = true
+        
+        middleCountryLabel.isAccessibilityElement = false
+        middleCountryImage.isAccessibilityElement = false
+        middleFavStack.isAccessibilityElement = true
+        
+        rightCountryLabel.isAccessibilityElement = false
+        rightCountryImage.isAccessibilityElement = false
+        rightFavStack.isAccessibilityElement = true
+        
+        baseAmountLabel.isAccessibilityElement = true
+        convertedAmountLabel.isAccessibilityElement = true
+        
+        swapArrowView.isAccessibilityElement = true
+        swapArrowView.accessibilityLabel = "Swap currencies"
+        swapArrowView.accessibilityHint = "Double tap to swap base and quote currencies"
+        
+    }
+    
+    func updateAccessibilityLabels() {
+        baseFlagStack.accessibilityLabel = "Base currency " + (baseCurrencyCodeLabel.text ?? "")
+        convertedFlagStack.accessibilityLabel = "Quote currency " + (convertedCurrencyCodeLabel.text ?? "")
+        leftFavStack.accessibilityLabel = "First favorite currency " + (leftCountryLabel.text ?? "")
+        middleFavStack.accessibilityLabel = "Second favorite currency " + (middleCountryLabel.text ?? "")
+        rightFavStack.accessibilityLabel = "Third favorite currency " + (rightCountryLabel.text ?? "")
+        baseAmountLabel.accessibilityLabel = "Base currency amount " + (baseAmountLabel.text ?? "")
+        convertedAmountLabel.accessibilityLabel = "Quote currency amount " + (convertedAmountLabel.text ?? "")
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -223,6 +273,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
             AppDelegate.shared().rightFavorite
         ])
         setShadows()
+        setupAccessibility()
         
         let baseTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
         let convertedTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))

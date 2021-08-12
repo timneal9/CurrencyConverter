@@ -124,7 +124,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-Xg-svc" userLabel="Fav Stack View">
                                                         <rect key="frame" x="16" y="20.666666666666686" width="338" height="86"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-DV-gI5">
@@ -478,12 +478,15 @@
                         <outlet property="favCurrencyUIView" destination="DS7-Wh-k7o" id="AqU-Ne-heo"/>
                         <outlet property="leftCountryImage" destination="H5i-BT-ZB4" id="Rnk-Hh-cNc"/>
                         <outlet property="leftCountryLabel" destination="eAu-DV-gI5" id="g9G-OP-dsp"/>
+                        <outlet property="leftFavStack" destination="z3Y-7q-D34" id="2m2-Mn-IR4"/>
                         <outlet property="leftFavView" destination="z3Y-7q-D34" id="zCD-zI-yTS"/>
                         <outlet property="middleCountryImage" destination="Ly3-zr-gGp" id="2GH-p6-Ynj"/>
                         <outlet property="middleCountryLabel" destination="AFZ-8T-4Sa" id="I61-do-u3S"/>
+                        <outlet property="middleFavStack" destination="bHO-Vb-VJO" id="wXC-rQ-3RW"/>
                         <outlet property="middleFavView" destination="bHO-Vb-VJO" id="Jmh-IX-qrv"/>
                         <outlet property="rightCountryImage" destination="4NH-dq-dGN" id="bC2-J9-brd"/>
                         <outlet property="rightCountryLabel" destination="TFK-rg-A1G" id="ZIw-Pl-o5u"/>
+                        <outlet property="rightFavStack" destination="WgJ-gj-A7c" id="reF-zT-c71"/>
                         <outlet property="rightFavView" destination="WgJ-gj-A7c" id="wLR-NU-Tg3"/>
                         <outlet property="swapArrowView" destination="gPf-FK-qN9" id="Z2a-6f-W57"/>
                         <segue destination="iMi-c9-KOX" kind="show" identifier="HomeToChange" id="Vjd-02-Zsu"/>
@@ -508,12 +511,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PWN-LD-r2X" userLabel="Fav Picker: Fav Stack View">
                                         <rect key="frame" x="16" y="17" width="344" height="86"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-6K-WZq" userLabel="Fav Picker: Left fav Stack View">
+                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-6K-WZq" userLabel="Fav Picker: Left fav Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-To-N1o">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyLabel"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyLabel">
+                                                            <bool key="isElement" value="NO"/>
+                                                        </accessibility>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
@@ -533,7 +538,9 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyLabel"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyLabel">
+                                                            <bool key="isElement" value="NO"/>
+                                                        </accessibility>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
@@ -553,7 +560,9 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyLabel"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyLabel">
+                                                            <bool key="isElement" value="NO"/>
+                                                        </accessibility>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <color key="textColor" name="text"/>
                                                         <nil key="highlightedColor"/>
@@ -605,10 +614,13 @@
                         <outlet property="favCurrencyView" destination="QPr-GY-cuc" id="CAG-sO-89s"/>
                         <outlet property="leftCountryImage" destination="gUK-r1-FV5" id="xH0-ia-0B1"/>
                         <outlet property="leftCountryLabel" destination="xl1-To-N1o" id="tLH-dd-Vth"/>
+                        <outlet property="leftFavStack" destination="9a4-6K-WZq" id="a88-V3-bRN"/>
                         <outlet property="middleCountryImage" destination="AVJ-eG-noE" id="fhV-zH-t3Y"/>
                         <outlet property="middleCountryLabel" destination="ymq-b0-3VG" id="7C0-bo-HTy"/>
+                        <outlet property="middleFavStack" destination="l13-jc-fdd" id="Wxr-Ae-wZT"/>
                         <outlet property="rightCountryImage" destination="jZ4-fl-I8D" id="7Hg-r9-ejM"/>
                         <outlet property="rightCountryLabel" destination="7qA-dH-AVm" id="GzN-cb-fLi"/>
+                        <outlet property="rightFavStack" destination="otD-nb-lvW" id="QZx-0t-BKP"/>
                         <outlet property="tableView" destination="dcf-aZ-EOD" id="xZ0-9H-iM2"/>
                     </connections>
                 </viewController>

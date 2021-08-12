@@ -39,7 +39,6 @@ class CarouselPageViewController: UIPageViewController, UIPageViewControllerData
         }
         pageController.setViewControllers([controllers[0]], direction: .forward, animated: false)
     }
-
     
     func createCarouselItemControler(with titleText: String?, with subtitleText: String?, with itemImage: String?) -> UIViewController {
         let controller = UIViewController()
