@@ -167,51 +167,48 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func setShadows() {
         baseFlagImage.clipsToBounds = false
-        baseFlagImage.layer.shadowColor = UIColor.black.cgColor
+        baseFlagImage.layer.shadowPath = UIBezierPath(rect: baseFlagImage.bounds).cgPath
         baseFlagImage.layer.shadowOpacity = 0.2
-        baseFlagImage.layer.shadowOffset = CGSize.zero
+        baseFlagImage.layer.shadowOffset = .zero
         baseFlagImage.layer.shadowRadius = 5
         
         convertedFlagImage.clipsToBounds = false
-        convertedFlagImage.layer.shadowColor = UIColor.black.cgColor
+        convertedFlagImage.layer.shadowPath = UIBezierPath(rect: convertedFlagImage.bounds).cgPath
         convertedFlagImage.layer.shadowOpacity = 0.2
-        convertedFlagImage.layer.shadowOffset = CGSize.zero
+        convertedFlagImage.layer.shadowOffset = .zero
         convertedFlagImage.layer.shadowRadius = 5
         
         leftCountryImage.clipsToBounds = false
-        leftCountryImage.layer.shadowColor = UIColor.black.cgColor
+        leftCountryImage.layer.shadowPath = UIBezierPath(rect: leftCountryImage.bounds).cgPath
         leftCountryImage.layer.shadowOpacity = 0.2
-        leftCountryImage.layer.shadowOffset = CGSize.zero
+        leftCountryImage.layer.shadowOffset = .zero
         leftCountryImage.layer.shadowRadius = 5
         
         middleCountryImage.clipsToBounds = false
-        middleCountryImage.layer.shadowColor = UIColor.black.cgColor
+        middleCountryImage.layer.shadowPath = UIBezierPath(rect: middleCountryImage.bounds).cgPath
         middleCountryImage.layer.shadowOpacity = 0.2
-        middleCountryImage.layer.shadowOffset = CGSize.zero
+        middleCountryImage.layer.shadowOffset = .zero
         middleCountryImage.layer.shadowRadius = 5
         
         rightCountryImage.clipsToBounds = false
-        rightCountryImage.layer.shadowColor = UIColor.black.cgColor
+        rightCountryImage.layer.shadowPath = UIBezierPath(rect: rightCountryImage.bounds).cgPath
         rightCountryImage.layer.shadowOpacity = 0.2
-        rightCountryImage.layer.shadowOffset = CGSize.zero
+        rightCountryImage.layer.shadowOffset = .zero
         rightCountryImage.layer.shadowRadius = 5
         
         baseCurrencyUIView.clipsToBounds = false
-        baseCurrencyUIView.layer.shadowColor = UIColor.black.cgColor
         baseCurrencyUIView.layer.shadowOpacity = 0.1
-        baseCurrencyUIView.layer.shadowOffset = CGSize.zero
+        baseCurrencyUIView.layer.shadowOffset = .zero
         baseCurrencyUIView.layer.shadowRadius = 2
         
         convertedCurrencyUIView.clipsToBounds = false
-        convertedCurrencyUIView.layer.shadowColor = UIColor.black.cgColor
         convertedCurrencyUIView.layer.shadowOpacity = 0.1
-        convertedCurrencyUIView.layer.shadowOffset = CGSize.zero
+        convertedCurrencyUIView.layer.shadowOffset = .zero
         convertedCurrencyUIView.layer.shadowRadius = 2
         
         favCurrencyUIView.clipsToBounds = false
-        favCurrencyUIView.layer.shadowColor = UIColor.black.cgColor
         favCurrencyUIView.layer.shadowOpacity = 0.1
-        favCurrencyUIView.layer.shadowOffset = CGSize.zero
+        favCurrencyUIView.layer.shadowOffset = .zero
         favCurrencyUIView.layer.shadowRadius = 2
     }
     
