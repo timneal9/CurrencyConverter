@@ -15,11 +15,12 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var baseCurrencyCodeLabel: UILabel!
     @IBOutlet weak var baseFlagImage: UIImageView!
     
+    @IBOutlet weak var baseFlagStack: UIStackView!
+    @IBOutlet weak var convertedFlagStack: UIStackView!
     @IBOutlet weak var convertedAmountLabel: UILabel!
     @IBOutlet weak var convertedCurrencyCodeLabel: UILabel!
     @IBOutlet weak var convertedFlagImage: UIImageView!
     @IBOutlet weak var swapArrowView: UIView!
-    @IBOutlet weak var swapSpacingView: UIView!
     
     @IBOutlet weak var leftCountryLabel: UILabel!
     @IBOutlet weak var middleCountryLabel: UILabel!
@@ -228,24 +229,26 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         let leftFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(leftCountryTapped(tapGestureRecognizer:)))
         let middleFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(middleCountryTapped(tapGestureRecognizer:)))
         let rightFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rightCountryTapped(tapGestureRecognizer:)))
-        let swapSpacingViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
         
         swapArrowView.layer.cornerRadius = swapArrowView.frame.size.width/2
-        swapSpacingView.isUserInteractionEnabled = true
-        swapSpacingView.addGestureRecognizer(swapSpacingViewTapGestureRecognizer)
-        baseCurrencyUIView.isUserInteractionEnabled = true
-        baseCurrencyUIView.addGestureRecognizer(baseTapGestureRecognizer)
+        swapArrowView.isUserInteractionEnabled = true
+        swapArrowView.topAnchor.constraint(equalTo: baseCurrencyUIView.bottomAnchor, constant: -8.0).isActive = true
+        
+        baseFlagStack.isUserInteractionEnabled = true
+        baseFlagStack.addGestureRecognizer(baseTapGestureRecognizer)
+        convertedFlagStack.isUserInteractionEnabled = true
+        convertedFlagStack.addGestureRecognizer(convertedTapGestureRecognizer)
+        
         baseCurrencyUIView.layer.cornerRadius = 10
-        convertedCurrencyUIView.isUserInteractionEnabled = true
-        convertedCurrencyUIView.addGestureRecognizer(convertedTapGestureRecognizer)
         convertedCurrencyUIView.layer.cornerRadius = 10
+        favCurrencyUIView.layer.cornerRadius = 10
+        
         leftFavView.isUserInteractionEnabled = true
         leftFavView.addGestureRecognizer(leftFavTapGestureRecognizer)
         rightFavView.isUserInteractionEnabled = true
         rightFavView.addGestureRecognizer(rightFavTapGestureRecognizer)
         middleFavView.isUserInteractionEnabled = true
         middleFavView.addGestureRecognizer(middleFavTapGestureRecognizer)
-        favCurrencyUIView.layer.cornerRadius = 10
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
     }
@@ -260,6 +263,10 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         AppDelegate.shared().setSavedCurrencyValues()
     }
 
+    @IBAction func swapArrowsButton(_ sender: Any) {
+        swapCurrencies()
+    }
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         
         if isPremiumUser() {
@@ -358,6 +365,10 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
     
     @objc func swapCurrencies(tapGestureRecognizer: UITapGestureRecognizer) {
+        swapCurrencies()
+    }
+    
+    func swapCurrencies() {
         let currentBaseCountry = AppDelegate.shared().baseCurrency
         let currentConvertedCountry = AppDelegate.shared().convertedCurrency
         
