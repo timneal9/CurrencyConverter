@@ -93,27 +93,26 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     func setShadows() {
         favCurrencyView.layer.cornerRadius = 10
         favCurrencyView.clipsToBounds = false
-        favCurrencyView.layer.shadowColor = UIColor.black.cgColor
         favCurrencyView.layer.shadowOpacity = 0.1
-        favCurrencyView.layer.shadowOffset = CGSize.zero
+        favCurrencyView.layer.shadowOffset = .zero
         favCurrencyView.layer.shadowRadius = 2
         
         leftCountryImage.clipsToBounds = false
-        leftCountryImage.layer.shadowColor = UIColor.black.cgColor
+        leftCountryImage.layer.shadowPath = UIBezierPath(rect: rightCountryImage.bounds).cgPath
         leftCountryImage.layer.shadowOpacity = 0.2
-        leftCountryImage.layer.shadowOffset = CGSize.zero
+        leftCountryImage.layer.shadowOffset = .zero
         leftCountryImage.layer.shadowRadius = 5
         
         middleCountryImage.clipsToBounds = false
-        middleCountryImage.layer.shadowColor = UIColor.black.cgColor
+        middleCountryImage.layer.shadowPath = UIBezierPath(rect: rightCountryImage.bounds).cgPath
         middleCountryImage.layer.shadowOpacity = 0.2
-        middleCountryImage.layer.shadowOffset = CGSize.zero
+        middleCountryImage.layer.shadowOffset = .zero
         middleCountryImage.layer.shadowRadius = 5
         
         rightCountryImage.clipsToBounds = false
-        rightCountryImage.layer.shadowColor = UIColor.black.cgColor
+        rightCountryImage.layer.shadowPath = UIBezierPath(rect: rightCountryImage.bounds).cgPath
         rightCountryImage.layer.shadowOpacity = 0.2
-        rightCountryImage.layer.shadowOffset = CGSize.zero
+        rightCountryImage.layer.shadowOffset = .zero
         rightCountryImage.layer.shadowRadius = 5
     }
     
@@ -204,9 +203,8 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         cell.containerView.layer.cornerRadius = 10
         
         cell.flagImageView.clipsToBounds = false
-        cell.flagImageView.layer.shadowColor = UIColor.black.cgColor
         cell.flagImageView.layer.shadowOpacity = 0.2
-        cell.flagImageView.layer.shadowOffset = CGSize.zero
+        cell.flagImageView.layer.shadowOffset = .zero
         cell.flagImageView.layer.shadowRadius = 5
         
         cell.backgroundColor = UIColor(named: "background")
