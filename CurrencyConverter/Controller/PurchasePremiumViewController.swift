@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 import StoreKit
+import Network
 
 class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObserver {
     
     let productID = "me.timneal.CurrencyConverter"
+    var internetConnected = false
+    let monitor = NWPathMonitor()
     
     @IBOutlet weak var buyPremiumButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
@@ -21,7 +24,9 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
         super.viewDidLoad()
         
         SKPaymentQueue.default().add(self)
-
+        
+        startNetworkMonitoring()
+        
         if isPremiumUser() {
             setPremiumUser()
         }
@@ -29,6 +34,10 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
         buyPremiumButton.layer.cornerRadius = 16
         restorePurchasesButton.layer.cornerRadius = 16
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopNetworkMonitoring()
     }
     
     func returnToRootViewController() {
@@ -85,13 +94,43 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
         return purchaseStatus
     }
     
+    func startNetworkMonitoring() {
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                self.internetConnected = true
+            }
+            else {
+                self.internetConnected = false
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+    }
+    
+    func stopNetworkMonitoring() {
+        monitor.cancel()
+    }
+    
     @IBAction func buyPremiumButtonTapped(_ sender: Any) {
-        buyPremiumUser()
-        returnToRootViewController()
+        if internetConnected {
+            buyPremiumUser()
+            returnToRootViewController()
+        } else {
+            let alert = UIAlertController(title: "No Internet Connection", message: "Internet connection is required to make purchases. Please connect to internet and try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     @IBAction func restoreButtonTapped(_ sender: Any) {
-        SKPaymentQueue.default().restoreCompletedTransactions()
-        returnToRootViewController()
+        if internetConnected {
+            SKPaymentQueue.default().restoreCompletedTransactions()
+            returnToRootViewController()
+        } else {
+            let alert = UIAlertController(title: "No Internet Connection", message: "Internet connection is required to make restore purchases. Please connect to internet and try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     @IBAction func closeButtonTapped(_ sender: Any) {
         returnToRootViewController()
