@@ -25,14 +25,20 @@ class CarouselPageViewController: UIPageViewController, UIPageViewControllerData
 
         let appearance = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
         appearance.numberOfPages = 3
-        appearance.pageIndicatorTintColor = UIColor(named: "mumfordIndigo")
-        appearance.currentPageIndicatorTintColor = UIColor(named: "jupiterIndigo")
+        appearance.pageIndicatorTintColor = UIColor(named: Constants.lightMumfordIndigo)
+        appearance.currentPageIndicatorTintColor = UIColor(named: Constants.darkJupiterIndigo)
 
         for i in 0 ... 2 {
             var viewController = UIViewController()
-            let textTitleArray = ["Where will you go?", "Save Favorites", "Premium Features"]
-            let textSubtitleArray = ["Take over 150 currencies with you!", "Search and save your top 3 currencies", "Upgrade now to unlock!"]
-            let imageNames = ["premiumPage1", "premiumPage2", "premiumPage3"]
+            let textTitleArray = [Constants.carouselPage1Title,
+                                  Constants.carouselPage2Title,
+                                  Constants.carouselPage3Title]
+            let textSubtitleArray = [Constants.carouselPage1SubTitle,
+                                     Constants.carouselPage2SubTitle,
+                                     Constants.carouselPage3SubTitle]
+            let imageNames = [Constants.carouselPage1Image,
+                              Constants.carouselPage2Image,
+                              Constants.carouselPage3Image]
 
             viewController = createCarouselItemControler(with: textTitleArray[i], with: textSubtitleArray[i], with: imageNames[i])
             controllers.append(viewController)

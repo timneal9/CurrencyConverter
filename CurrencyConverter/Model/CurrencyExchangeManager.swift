@@ -9,12 +9,10 @@
 import Foundation
 
 struct CurrencyExchangeManager {
-    
-    let baseURL = "https://api.exchangerate.host/latest"
-    
+
     func getExchangeRate() {
         
-        if let url = URL(string: baseURL) {
+        if let url = URL(string: Constants.apiURL) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
@@ -25,7 +23,7 @@ struct CurrencyExchangeManager {
                     dateComponent.day = -8
                     let pastDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
                     print("Error with calling API, using default values")
-                    UserDefaults.standard.setValue(pastDate, forKey: "ratesLastUpdated")
+                    UserDefaults.standard.setValue(pastDate, forKey: Constants.ratesLastUpdatedKey)
                     return
                 }
                 if let safeData = data {
@@ -50,7 +48,8 @@ struct CurrencyExchangeManager {
     }
     
     func saveRates(rates: [String: Double]) {
-        UserDefaults.standard.setValue(rates, forKey: "ratesDictionary")
+        UserDefaults.standard.setValue(rates, forKey: Constants.ratesDictionaryKey)
+        print("Save rates completed")
     }
     
 }

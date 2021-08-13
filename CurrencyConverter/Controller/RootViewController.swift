@@ -41,7 +41,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBOutlet weak var middleFavView: UIStackView!
     @IBOutlet weak var rightFavView: UIStackView!
     
-    var rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
+    var rates = UserDefaults.standard.dictionary(forKey: Constants.ratesDictionaryKey)
     var baseAmount: String = "0"
     var decimalActive: Bool = false
     var decimalString: String = ".00"
@@ -154,14 +154,14 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     }
     
     func isPremiumUser() -> Bool {
-        let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser")
-        return true
+        let purchaseStatus = UserDefaults.standard.bool(forKey: Constants.premiumUserKey)
+        return purchaseStatus
     }
     
     func updateRates() {
         if (rates == nil) {
             print("updateRates found nil")
-            rates = UserDefaults.standard.dictionary(forKey: "ratesDictionary")
+            rates = UserDefaults.standard.dictionary(forKey: Constants.ratesDictionaryKey)
         }
     }
     
@@ -318,9 +318,9 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     @IBAction func addButtonTapped(_ sender: Any) {
         
         if isPremiumUser() {
-            self.performSegue(withIdentifier: "HomeToChange", sender: self)
+            self.performSegue(withIdentifier: Constants.homeToChangeSegue, sender: self)
         } else {
-            self.performSegue(withIdentifier: "HomeToPurchasePremium", sender: self)
+            self.performSegue(withIdentifier: Constants.homeToPurchasePremiumSegue, sender: self)
         }
     }
     @IBAction func oneNumButtonTapped(_ sender: UIButton) {

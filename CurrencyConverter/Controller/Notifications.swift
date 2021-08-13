@@ -9,5 +9,5 @@
 import Foundation
 
 class Notifications {
-    static let publishNotification = NSNotification.Name(rawValue: "VCPublishEvent")
+    static let publishNotification = NSNotification.Name(rawValue: Constants.notificationName)
 }
