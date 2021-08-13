@@ -34,7 +34,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-vz-yy7" userLabel="Base Flag Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-Jq-6FB">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-Jq-6FB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="baseCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -51,7 +51,7 @@
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-F9-j5k">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-F9-j5k">
                                                                 <rect key="frame" x="80" y="0.0" width="264" height="86"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="baseCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
@@ -81,7 +81,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-cn-yUY" userLabel="Converted flag Stack">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-oY-rM2">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-oY-rM2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyCodeLabel"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -98,7 +98,7 @@
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Wx-gOJ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Wx-gOJ">
                                                                 <rect key="frame" x="80" y="0.0" width="264" height="86"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="convertedCurrencyAmountLabel"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
@@ -127,7 +127,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-7q-D34" userLabel="Left fav Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-DV-gI5">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-DV-gI5">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="favoriteLeftCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -158,7 +158,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bHO-Vb-VJO" userLabel="Middle fav Stack View">
                                                                 <rect key="frame" x="133" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFZ-8T-4Sa">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFZ-8T-4Sa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="favoriteMiddleCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -183,7 +183,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-gj-A7c" userLabel="Right fav Stack View">
                                                                 <rect key="frame" x="266" y="0.0" width="72" height="86"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-rg-A1G">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-rg-A1G">
                                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="favoriteRightCountryLabel">
                                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -514,7 +514,7 @@
                                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-6K-WZq" userLabel="Fav Picker: Left fav Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="86"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-To-N1o">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-To-N1o">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerLeftCurrencyLabel">
                                                             <bool key="isElement" value="NO"/>
@@ -536,7 +536,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l13-jc-fdd" userLabel="Fav Picker: Middle fav Stack View">
                                                 <rect key="frame" x="136" y="0.0" width="72" height="86"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymq-b0-3VG">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerMiddleCurrencyLabel">
                                                             <bool key="isElement" value="NO"/>
@@ -558,7 +558,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="otD-nb-lvW" userLabel="Fav Picker: Right fav Stack View">
                                                 <rect key="frame" x="272" y="0.0" width="72" height="86"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qA-dH-AVm">
                                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="favoritePickerRightCurrencyLabel">
                                                             <bool key="isElement" value="NO"/>
