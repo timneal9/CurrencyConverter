@@ -32,7 +32,7 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Currencies"
+        searchController.searchBar.placeholder = Constants.searchBarPlaceholder
         searchController.searchBar.sizeToFit()
         searchController.searchBar.searchBarStyle = .prominent
         searchController.searchBar.delegate = self
@@ -151,7 +151,7 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
-        tableView.register(UINib(nibName: "CurrencyListCell", bundle: nil), forCellReuseIdentifier: "ReusableCurrencyListCell")
+        tableView.register(UINib(nibName: Constants.currencyListCellNib, bundle: nil), forCellReuseIdentifier: Constants.cellReuseIdentifier)
         
         navigationItem.searchController = searchController
     }
@@ -188,7 +188,7 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let currentCurrency: Currency
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCurrencyListCell", for: indexPath) as? CurrencyListCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath) as? CurrencyListCell else { return UITableViewCell() }
         
         if isFiltering() {
             currentCurrency = filteredCurrencies[indexPath.row]
@@ -207,7 +207,7 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         cell.flagImageView.layer.shadowOffset = .zero
         cell.flagImageView.layer.shadowRadius = 5
         
-        cell.backgroundColor = UIColor(named: "background")
+        cell.backgroundColor = UIColor(named: Constants.backgroundColor)
         
         if currentCurrency.currencyCode == AppDelegate.shared().baseCurrency
             || currentCurrency.currencyCode == AppDelegate.shared().convertedCurrency {

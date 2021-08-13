@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CarouselItem: UIView {
-    static let CAROUSEL_ITEM_NIB = "CarouselItem"
+    static let CAROUSEL_ITEM_NIB = Constants.CAROUSEL_ITEM_NIB
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!

@@ -13,7 +13,7 @@ import Network
 
 class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObserver {
     
-    let productID = "me.timneal.CurrencyConverter"
+    let productID = Constants.productID
     var internetConnected = false
     let monitor = NWPathMonitor()
     
@@ -60,13 +60,11 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
 
         for transaction in transactions {
             if transaction.transactionState == .purchased {
-                
                 print("Transaction successful")
                 setPremiumUser()
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
             } else if transaction.transactionState == .failed {
-                
                 if let error = transaction.error {
                     let errorDescription = error.localizedDescription
                     print("Transaction failed: \(errorDescription)")
@@ -75,7 +73,6 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
                 SKPaymentQueue.default().finishTransaction(transaction)
 
             } else if transaction.transactionState == .restored {
-                
                 setPremiumUser()
                 print("Transaction restored")
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -117,8 +114,12 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
             buyPremiumUser()
             returnToRootViewController()
         } else {
-            let alert = UIAlertController(title: "No Internet Connection", message: "Internet connection is required to make purchases. Please connect to internet and try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title: Constants.noInternetAlertTitle,
+                                          message: Constants.noInternetAlertPurchaseMessage,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.okButton,
+                                          style: .default,
+                                          handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -127,8 +128,12 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
             SKPaymentQueue.default().restoreCompletedTransactions()
             returnToRootViewController()
         } else {
-            let alert = UIAlertController(title: "No Internet Connection", message: "Internet connection is required to make restore purchases. Please connect to internet and try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title: Constants.noInternetAlertTitle,
+                                          message: Constants.noInternetAlertRestorePurchaseMessage,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.okButton,
+                                          style: .default,
+                                          handler: nil))
             self.present(alert, animated: true)
         }
     }

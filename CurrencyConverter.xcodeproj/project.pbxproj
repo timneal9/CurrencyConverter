@@ -13,6 +13,7 @@
 		2675AD7D260D6347000360AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD7B260D6347000360AA /* Main.storyboard */; };
 		2675AD7F260D634A000360AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD7E260D634A000360AA /* Assets.xcassets */; };
 		2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD80260D634A000360AA /* LaunchScreen.storyboard */; };
+		267A3EE826C5C347001FF7DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A3EE726C5C347001FF7DF /* Constants.swift */; };
 		26BAB1BC26104433003376B3 /* CurrencyExchangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */; };
 		26BAB1BF2610454D003376B3 /* ExchangeRateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */; };
 		26BAB1DF2613E55D003376B3 /* ChangeFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */; };
@@ -36,6 +37,7 @@
 		2675AD7E260D634A000360AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2675AD81260D634A000360AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2675AD83260D634A000360AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		267A3EE726C5C347001FF7DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeManager.swift; sourceTree = "<group>"; };
 		26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateData.swift; sourceTree = "<group>"; };
 		26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFavoritesViewController.swift; sourceTree = "<group>"; };
@@ -81,12 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				2675AD75260D6347000360AA /* AppDelegate.swift */,
-				2675AD77260D6347000360AA /* SceneDelegate.swift */,
-				2675AD89260D637E000360AA /* Model */,
-				2675AD8A260D638A000360AA /* View */,
+				267A3EE726C5C347001FF7DF /* Constants.swift */,
 				2675AD8B260D638F000360AA /* Controller */,
+				2675AD89260D637E000360AA /* Model */,
+				2675AD77260D6347000360AA /* SceneDelegate.swift */,
+				2675AD8A260D638A000360AA /* View */,
 				2675AD7E260D634A000360AA /* Assets.xcassets */,
-				2675AD80260D634A000360AA /* LaunchScreen.storyboard */,
 				2675AD83260D634A000360AA /* Info.plist */,
 			);
 			path = CurrencyConverter;
@@ -95,10 +97,12 @@
 		2675AD89260D637E000360AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */,
-				26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */,
+				26D7888C26B7484D002A5C77 /* CarouselItem.swift */,
 				26ECCC6826B4A67F0038F84F /* Currencies.swift */,
+				26BAB1BB26104433003376B3 /* CurrencyExchangeManager.swift */,
+				26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */,
 				26ECCC6B26B4A6D10038F84F /* CurrencyModel.swift */,
+				26BAB1BE2610454D003376B3 /* ExchangeRateData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,11 +110,10 @@
 		2675AD8A260D638A000360AA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				26BAB1E42613F1A7003376B3 /* CurrencyListCell.swift */,
-				2675AD7B260D6347000360AA /* Main.storyboard */,
-				26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */,
 				26D7888A26B74345002A5C77 /* CarouselItem.xib */,
-				26D7888C26B7484D002A5C77 /* CarouselItem.swift */,
+				26BAB1E12613E9D8003376B3 /* CurrencyListCell.xib */,
+				2675AD7B260D6347000360AA /* Main.storyboard */,
+				2675AD80260D634A000360AA /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,11 +121,11 @@
 		2675AD8B260D638F000360AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				26FB1842260FBBB500BA1F7F /* RootViewController.swift */,
-				26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */,
-				26E7A53626B71E7300F975AF /* PurchasePremiumViewController.swift */,
-				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
 				26D7888826B74129002A5C77 /* CarouselPageViewController.swift */,
+				26BAB1DE2613E55D003376B3 /* ChangeFavoritesViewController.swift */,
+				26422DDA26165D7E0016E5C4 /* Notifications.swift */,
+				26E7A53626B71E7300F975AF /* PurchasePremiumViewController.swift */,
+				26FB1842260FBBB500BA1F7F /* RootViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				26ECCC6C26B4A6D10038F84F /* CurrencyModel.swift in Sources */,
 				2675AD76260D6347000360AA /* AppDelegate.swift in Sources */,
 				26FB1843260FBBB500BA1F7F /* RootViewController.swift in Sources */,
+				267A3EE826C5C347001FF7DF /* Constants.swift in Sources */,
 				26D7888926B74129002A5C77 /* CarouselPageViewController.swift in Sources */,
 				2675AD78260D6347000360AA /* SceneDelegate.swift in Sources */,
 			);
