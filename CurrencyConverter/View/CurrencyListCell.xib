@@ -40,11 +40,8 @@
                         <color key="textColor" name="text"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="csN-1N-5Q9">
-                        <rect key="frame" x="104" y="69" width="206" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Lvq-lX-H87"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="csN-1N-5Q9">
+                        <rect key="frame" x="104" y="69" width="206" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         <color key="textColor" name="jupiterIndigo"/>
                         <nil key="highlightedColor"/>
@@ -83,6 +80,7 @@
                     <constraint firstItem="csN-1N-5Q9" firstAttribute="top" secondItem="p1C-fO-Ayh" secondAttribute="bottom" constant="7" id="h5u-wB-Rrt"/>
                     <constraint firstItem="Ckp-iC-yuR" firstAttribute="leading" secondItem="fbA-2F-eQt" secondAttribute="leading" constant="16" id="iVw-Co-B5l"/>
                     <constraint firstItem="Ckp-iC-yuR" firstAttribute="top" secondItem="pLU-SW-ksg" secondAttribute="bottom" constant="8" id="sFs-cm-xxT"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="csN-1N-5Q9" secondAttribute="bottom" constant="4" id="zae-nI-WNS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
