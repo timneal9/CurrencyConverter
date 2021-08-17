@@ -6,7 +6,6 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CurrencyListCell: UITableViewCell {

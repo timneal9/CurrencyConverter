@@ -6,10 +6,7 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
-
 class Currencies {
-
     var currencyObjects = [
         Currency(currencyCode: "AED", currencyName: "United Arab Emirates Dirham", countryName: "United Arab Emirates"),
         Currency(currencyCode: "AFN", currencyName: "Afghan Afghani", countryName: "Afghanistan"),

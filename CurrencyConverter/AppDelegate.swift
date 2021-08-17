@@ -11,7 +11,6 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     let defaults = UserDefaults.standard
     var baseCurrency:       String = "USD"
     var convertedCurrency:  String = "EUR"
@@ -22,9 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         baseCurrency = defaults.string(forKey: "baseCurrency") ?? "USD"
         convertedCurrency = defaults.string(forKey: "convertedCurrency") ?? "EUR"
         leftFavorite = defaults.string(forKey: "leftFavorite") ?? "GBP"
@@ -43,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         setSavedCurrencyValues()
-        }
+    }
     
     func setSavedCurrencyValues() {
         defaults.setValue(baseCurrency, forKey:         "baseCurrency")
@@ -54,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         setSavedCurrencyValues()
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)

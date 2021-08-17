@@ -9,9 +9,7 @@
 import Foundation
 
 struct CurrencyExchangeManager {
-
     func getExchangeRate() {
-        
         if let url = URL(string: Constants.apiURL) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
