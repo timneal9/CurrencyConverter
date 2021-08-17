@@ -6,7 +6,6 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CarouselItem: UIView {
@@ -18,7 +17,6 @@ class CarouselItem: UIView {
     @IBOutlet weak var itemImageView: UIImageView!
     
     // MARK: - Init
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()

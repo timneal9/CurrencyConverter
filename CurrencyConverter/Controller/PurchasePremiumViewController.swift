@@ -6,16 +6,15 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import StoreKit
 import Network
 
-class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObserver {
+class PurchasePremiumViewController: UIViewController {
     
     let productID = Constants.productID
-    var internetConnected = false
     let monitor = NWPathMonitor()
+    var internetConnected = false
     
     @IBOutlet weak var buyPremiumButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
@@ -33,7 +32,6 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
         
         buyPremiumButton.layer.cornerRadius = 16
         restorePurchasesButton.layer.cornerRadius = 16
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,55 +42,7 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
         navigationController?.popViewController(animated: true)
     }
     
-    func buyPremiumUser() {
-        if SKPaymentQueue.canMakePayments() {
-
-            let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID
-            SKPaymentQueue.default().add(paymentRequest)
-
-        } else {
-            print("User can't make payments")
-        }
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-
-        for transaction in transactions {
-            if transaction.transactionState == .purchased {
-                print("Transaction successful")
-                setPremiumUser()
-                SKPaymentQueue.default().finishTransaction(transaction)
-                
-            } else if transaction.transactionState == .failed {
-                if let error = transaction.error {
-                    let errorDescription = error.localizedDescription
-                    print("Transaction failed: \(errorDescription)")
-                }
-
-                SKPaymentQueue.default().finishTransaction(transaction)
-
-            } else if transaction.transactionState == .restored {
-                setPremiumUser()
-                print("Transaction restored")
-                SKPaymentQueue.default().finishTransaction(transaction)
-            }
-        }
-    }
-
-    func setPremiumUser() {
-//        UserDefaults.standard.set(true, forKey: productID)
-        UserDefaults.standard.set(true, forKey: "premiumUser") // remove once productID is setup
-    }
-
-    func isPremiumUser() -> Bool {
-//        let purchaseStatus = UserDefaults.standard.bool(forKey: productID)
-        let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser") // remove once productID is setup
-        return purchaseStatus
-    }
-    
     func startNetworkMonitoring() {
-        
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 self.internetConnected = true
@@ -139,5 +89,52 @@ class PurchasePremiumViewController: UIViewController, SKPaymentTransactionObser
     }
     @IBAction func closeButtonTapped(_ sender: Any) {
         returnToRootViewController()
+    }
+}
+
+// MARK: - SKPaymentTransactionObserver
+extension PurchasePremiumViewController: SKPaymentTransactionObserver {
+    func buyPremiumUser() {
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            
+            paymentRequest.productIdentifier = productID
+            SKPaymentQueue.default().add(paymentRequest)
+        } else {
+            print("User can't make payments")
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            if transaction.transactionState == .purchased {
+                print("Transaction successful")
+                setPremiumUser()
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+            } else if transaction.transactionState == .failed {
+                if let error = transaction.error {
+                    let errorDescription = error.localizedDescription
+                    print("Transaction failed: \(errorDescription)")
+                }
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+            } else if transaction.transactionState == .restored {
+                setPremiumUser()
+                print("Transaction restored")
+                SKPaymentQueue.default().finishTransaction(transaction)
+            }
+        }
+    }
+    
+    func setPremiumUser() {
+        //        UserDefaults.standard.set(true, forKey: productID)
+        UserDefaults.standard.set(true, forKey: "premiumUser") // remove once productID is setup
+    }
+    
+    func isPremiumUser() -> Bool {
+        //        let purchaseStatus = UserDefaults.standard.bool(forKey: productID)
+        let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser") // remove once productID is setup
+        return purchaseStatus
     }
 }

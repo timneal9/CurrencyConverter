@@ -6,10 +6,9 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationControllerDelegate, UISearchBarDelegate {
+class ChangeFavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftCountryLabel: UILabel!
     @IBOutlet weak var middleCountryLabel: UILabel!
@@ -40,11 +39,41 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         return searchController
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchCurrencies()
+        setShadows()
+        setupAccessibility()
+        setFavoritesUI(currencies: [
+            AppDelegate.shared().leftFavorite,
+            AppDelegate.shared().middleFavorite,
+            AppDelegate.shared().rightFavorite
+        ])
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 120
+        tableView.register(UINib(nibName: Constants.currencyListCellNib, bundle: nil), forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        
+        navigationItem.searchController = searchController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        AppDelegate.shared().setSavedCurrencyValues()
+        NotificationCenter.default.post(name: Notifications.publishNotification, object: nil, userInfo: nil)
+    }
+    
     func setFavoritesUI(currencies: [String]) {
         leftCountryLabel?.text = currencies[0]
         middleCountryLabel?.text = currencies[1]
         rightCountryLabel?.text = currencies[2]
-
+        
         leftCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[0]))
         middleCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[1]))
         rightCountryImage?.image = UIImage(named: validateCode(currencyCode: currencies[2]))
@@ -63,31 +92,6 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
     func fetchCurrencies() {
         currencyArray = Currencies().currencyObjects
         currencyArray = currencyArray.sorted(by: { $0.countryName < $1.countryName })
-    }
-    
-    func filterContentForSearchText(searchText: String) {
-        if isSearchBarEmpty() {
-            filteredCurrencies = currencyArray
-        } else {
-            filteredCurrencies = currencyArray.filter({ (currency: Currency) -> Bool in
-                if isSearchBarEmpty() {
-                    return false
-                } else {
-                    return currency.countryName.lowercased().contains(searchText.lowercased()) ||
-                        currency.currencyCode.lowercased().contains(searchText.lowercased()) ||
-                        currency.currencyName.lowercased().contains(searchText.lowercased())
-                }
-            })
-        }
-        tableView.reloadData()
-    }
-    
-    func isSearchBarEmpty() -> Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func isFiltering() -> Bool {
-        return searchController.isActive
     }
     
     func setShadows() {
@@ -135,126 +139,12 @@ class ChangeFavoritesViewController: UIViewController, UIAdaptivePresentationCon
         middleFavStack.accessibilityLabel = "Second favorite currency " + (middleCountryLabel.text ?? "")
         rightFavStack.accessibilityLabel = "Third favorite currency " + (rightCountryLabel.text ?? "")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        fetchCurrencies()
-        setShadows()
-        setupAccessibility()
-        setFavoritesUI(currencies: [
-            AppDelegate.shared().leftFavorite,
-            AppDelegate.shared().middleFavorite,
-            AppDelegate.shared().rightFavorite
-        ])
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 120
-        tableView.register(UINib(nibName: Constants.currencyListCellNib, bundle: nil), forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        
-        navigationItem.searchController = searchController
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        AppDelegate.shared().setSavedCurrencyValues()
-        NotificationCenter.default.post(name: Notifications.publishNotification, object: nil, userInfo: nil)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-    }
-    
-    @IBAction func closeButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
-extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDelegate {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering() { return filteredCurrencies.count }
-        return currencyArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let currentCurrency: Currency
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath) as? CurrencyListCell else { return UITableViewCell() }
-        
-        if isFiltering() {
-            currentCurrency = filteredCurrencies[indexPath.row]
-        } else {
-            currentCurrency = currencyArray[indexPath.row]
-        }
-
-        cell.currencyCodeLabel.text = currentCurrency.currencyCode
-        cell.currencyExpandedLabel.text = currentCurrency.currencyName
-        cell.countryNameLabel.text = currentCurrency.countryName
-        cell.flagImageView.image = UIImage(named: validateCode(currencyCode: currentCurrency.currencyCode))
-        cell.containerView.layer.cornerRadius = 10
-        
-        cell.flagImageView.clipsToBounds = false
-        cell.flagImageView.layer.shadowOpacity = 0.2
-        cell.flagImageView.layer.shadowOffset = .zero
-        cell.flagImageView.layer.shadowRadius = 5
-        
-        cell.backgroundColor = UIColor(named: Constants.backgroundColor)
-        
-        if currentCurrency.currencyCode == AppDelegate.shared().baseCurrency
-            || currentCurrency.currencyCode == AppDelegate.shared().convertedCurrency {
-            cell.isUserInteractionEnabled = false
-            cell.addButtonImage.alpha = 0.3
-            cell.countryNameLabel.alpha = 0.3
-            cell.currencyCodeLabel.alpha = 0.3
-            cell.currencyExpandedLabel.alpha = 0.3
-            cell.flagImageView.alpha = 0.3
-        } else {
-            cell.isUserInteractionEnabled = true
-            cell.addButtonImage.alpha = 1
-            cell.countryNameLabel.alpha = 1
-            cell.currencyCodeLabel.alpha = 1
-            cell.currencyExpandedLabel.alpha = 1
-            cell.flagImageView.alpha = 1
-        }
-        
-        cell.isAccessibilityElement = true
-        cell.accessibilityHint = "Double tap to add " + (cell.currencyCodeLabel.text ?? "") + " to your favorites"
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
-    {
-        let cell = tableView.cellForRow(at: indexPath)
-
-        UIView.animate(withDuration: 0.07) {
-
-            cell!.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
-    {
-        let cell = tableView.cellForRow(at: indexPath)
-
-        UIView.animate(withDuration: 0.1) {
-
-            cell!.transform = .identity
-        }
-    }
-    
+// MARK: - UITableViewDelegate
+extension ChangeFavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedCurrency: String
-        
         let currentFavs = [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
@@ -295,9 +185,113 @@ extension ChangeFavoritesViewController: UITableViewDataSource, UITableViewDeleg
         
         searchController.isActive = false
     }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        UIView.animate(withDuration: 0.07) {
+            
+            cell!.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        UIView.animate(withDuration: 0.1) {
+            
+            cell!.transform = .identity
+        }
+    }
 }
 
+// MARK: - UITableViewDataSource
+extension ChangeFavoritesViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() { return filteredCurrencies.count }
+        return currencyArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentCurrency: Currency
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath) as? CurrencyListCell else { return UITableViewCell() }
+        
+        if isFiltering() {
+            currentCurrency = filteredCurrencies[indexPath.row]
+        } else {
+            currentCurrency = currencyArray[indexPath.row]
+        }
+        
+        cell.currencyCodeLabel.text = currentCurrency.currencyCode
+        cell.currencyExpandedLabel.text = currentCurrency.currencyName
+        cell.countryNameLabel.text = currentCurrency.countryName
+        cell.flagImageView.image = UIImage(named: validateCode(currencyCode: currentCurrency.currencyCode))
+        cell.containerView.layer.cornerRadius = 10
+        
+        cell.flagImageView.clipsToBounds = false
+        cell.flagImageView.layer.shadowOpacity = 0.2
+        cell.flagImageView.layer.shadowOffset = .zero
+        cell.flagImageView.layer.shadowRadius = 5
+        
+        cell.backgroundColor = UIColor(named: Constants.backgroundColor)
+        
+        if currentCurrency.currencyCode == AppDelegate.shared().baseCurrency
+            || currentCurrency.currencyCode == AppDelegate.shared().convertedCurrency {
+            cell.isUserInteractionEnabled = false
+            cell.addButtonImage.alpha = 0.3
+            cell.countryNameLabel.alpha = 0.3
+            cell.currencyCodeLabel.alpha = 0.3
+            cell.currencyExpandedLabel.alpha = 0.3
+            cell.flagImageView.alpha = 0.3
+        } else {
+            cell.isUserInteractionEnabled = true
+            cell.addButtonImage.alpha = 1
+            cell.countryNameLabel.alpha = 1
+            cell.currencyCodeLabel.alpha = 1
+            cell.currencyExpandedLabel.alpha = 1
+            cell.flagImageView.alpha = 1
+        }
+        
+        cell.isAccessibilityElement = true
+        cell.accessibilityHint = "Double tap to add " + (cell.currencyCodeLabel.text ?? "") + " to your favorites"
+        
+        return cell
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension ChangeFavoritesViewController: UISearchBarDelegate {
+    func isSearchBarEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive
+    }
+}
+
+// MARK: - UISearchResultsUpdating
 extension ChangeFavoritesViewController: UISearchResultsUpdating {
+    func filterContentForSearchText(searchText: String) {
+        if isSearchBarEmpty() {
+            filteredCurrencies = currencyArray
+        } else {
+            filteredCurrencies = currencyArray.filter({ (currency: Currency) -> Bool in
+                if isSearchBarEmpty() {
+                    return false
+                } else {
+                    return currency.countryName.lowercased().contains(searchText.lowercased()) ||
+                        currency.currencyCode.lowercased().contains(searchText.lowercased()) ||
+                        currency.currencyName.lowercased().contains(searchText.lowercased())
+                }
+            })
+        }
+        tableView.reloadData()
+    }
     
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)

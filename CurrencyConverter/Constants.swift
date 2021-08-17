@@ -7,7 +7,6 @@
 //
 
 struct Constants {
-    
     // Identifiers, Nibs, etc
     static let productID = "me.timneal.CurrencyConverter" //update later
     static let CAROUSEL_ITEM_NIB = "CarouselItem"
@@ -46,7 +45,7 @@ struct Constants {
     static let noInternetAlertPurchaseMessage = "Internet connection is required to make purchases. Please connect to internet and try again."
     static let noInternetAlertRestorePurchaseMessage = "Internet connection is required to restore purchases. Please connect to internet and try again."
     static let okButton = "OK"
-
+    
     // Images
     static let carouselPage1Image = "premiumPage1"
     static let carouselPage2Image = "premiumPage2"

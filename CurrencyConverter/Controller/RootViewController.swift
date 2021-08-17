@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-class RootViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-    
+class RootViewController: UIViewController {
     @IBOutlet weak var baseAmountLabel: UILabel!
     @IBOutlet weak var baseCurrencyCodeLabel: UILabel!
     @IBOutlet weak var baseFlagImage: UIImageView!
@@ -47,6 +46,53 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     var decimalString: String = ".00"
     var decimalActiveCount: Int = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let baseTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
+        let convertedTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
+        let leftFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(leftCountryTapped(tapGestureRecognizer:)))
+        let middleFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(middleCountryTapped(tapGestureRecognizer:)))
+        let rightFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rightCountryTapped(tapGestureRecognizer:)))
+        
+        updateRates()
+        setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
+        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
+        setFavoritesUI(currencies: [
+            AppDelegate.shared().leftFavorite,
+            AppDelegate.shared().middleFavorite,
+            AppDelegate.shared().rightFavorite
+        ])
+        setShadows()
+        setupAccessibility()
+        
+        swapArrowView.layer.cornerRadius = swapArrowView.frame.size.width/2
+        swapArrowView.isUserInteractionEnabled = true
+        swapArrowView.topAnchor.constraint(equalTo: baseCurrencyUIView.bottomAnchor, constant: -8.0).isActive = true
+        
+        baseFlagStack.isUserInteractionEnabled = true
+        baseFlagStack.addGestureRecognizer(baseTapGestureRecognizer)
+        convertedFlagStack.isUserInteractionEnabled = true
+        convertedFlagStack.addGestureRecognizer(convertedTapGestureRecognizer)
+        
+        baseCurrencyUIView.layer.cornerRadius = 10
+        convertedCurrencyUIView.layer.cornerRadius = 10
+        favCurrencyUIView.layer.cornerRadius = 10
+        
+        leftFavView.isUserInteractionEnabled = true
+        leftFavView.addGestureRecognizer(leftFavTapGestureRecognizer)
+        rightFavView.isUserInteractionEnabled = true
+        rightFavView.addGestureRecognizer(rightFavTapGestureRecognizer)
+        middleFavView.isUserInteractionEnabled = true
+        middleFavView.addGestureRecognizer(middleFavTapGestureRecognizer)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
+    }
+    
     func setBaseCurrencyUI(currencyCode: String) {
         baseCurrencyCodeLabel.text = currencyCode
         baseFlagImage.image = fetchImage(currencyCode: currencyCode)
@@ -63,7 +109,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         leftCountryLabel?.text = currencies[0]
         middleCountryLabel?.text = currencies[1]
         rightCountryLabel?.text = currencies[2]
-
+        
         leftCountryImage?.image = fetchImage(currencyCode: currencies[0])
         middleCountryImage?.image = fetchImage(currencyCode: currencies[1])
         rightCountryImage?.image = fetchImage(currencyCode: currencies[2])
@@ -135,7 +181,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         updateAccessibilityLabels()
     }
     
-    func updateConvertedAmount() { 
+    func updateConvertedAmount() {
         let baseText = baseAmountLabel.text ?? "0.0"
         let baseTextFloat = Double(baseText) ?? 0.0
         let baseRateCode = validateCode(currencyCode: baseCurrencyCodeLabel.text ?? "USD")
@@ -155,7 +201,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
     
     func isPremiumUser() -> Bool {
         let purchaseStatus = UserDefaults.standard.bool(forKey: Constants.premiumUserKey)
-        return purchaseStatus
+        return true
     }
     
     func updateRates() {
@@ -241,7 +287,6 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         swapArrowView.isAccessibilityElement = true
         swapArrowView.accessibilityLabel = "Swap currencies"
         swapArrowView.accessibilityHint = "Double tap to swap base and quote currencies"
-        
     }
     
     func updateAccessibilityLabels() {
@@ -253,56 +298,20 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         baseAmountLabel.accessibilityLabel = "Base currency amount " + (baseAmountLabel.text ?? "")
         convertedAmountLabel.accessibilityLabel = "Quote currency amount " + (convertedAmountLabel.text ?? "")
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func swapCurrencies() {
+        let currentBaseCountry = AppDelegate.shared().baseCurrency
+        let currentConvertedCountry = AppDelegate.shared().convertedCurrency
         
-        updateRates()
+        AppDelegate.shared().baseCurrency = currentConvertedCountry
+        AppDelegate.shared().convertedCurrency = currentBaseCountry
+        
         setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
-        setFavoritesUI(currencies: [
-            AppDelegate.shared().leftFavorite,
-            AppDelegate.shared().middleFavorite,
-            AppDelegate.shared().rightFavorite
-        ])
-        setShadows()
-        setupAccessibility()
-        
-        let baseTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
-        let convertedTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(swapCurrencies(tapGestureRecognizer:)))
-        let leftFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(leftCountryTapped(tapGestureRecognizer:)))
-        let middleFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(middleCountryTapped(tapGestureRecognizer:)))
-        let rightFavTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rightCountryTapped(tapGestureRecognizer:)))
-        
-        swapArrowView.layer.cornerRadius = swapArrowView.frame.size.width/2
-        swapArrowView.isUserInteractionEnabled = true
-        swapArrowView.topAnchor.constraint(equalTo: baseCurrencyUIView.bottomAnchor, constant: -8.0).isActive = true
-        
-        baseFlagStack.isUserInteractionEnabled = true
-        baseFlagStack.addGestureRecognizer(baseTapGestureRecognizer)
-        convertedFlagStack.isUserInteractionEnabled = true
-        convertedFlagStack.addGestureRecognizer(convertedTapGestureRecognizer)
-        
-        baseCurrencyUIView.layer.cornerRadius = 10
-        convertedCurrencyUIView.layer.cornerRadius = 10
-        favCurrencyUIView.layer.cornerRadius = 10
-        
-        leftFavView.isUserInteractionEnabled = true
-        leftFavView.addGestureRecognizer(leftFavTapGestureRecognizer)
-        rightFavView.isUserInteractionEnabled = true
-        rightFavView.addGestureRecognizer(rightFavTapGestureRecognizer)
-        middleFavView.isUserInteractionEnabled = true
-        middleFavView.addGestureRecognizer(middleFavTapGestureRecognizer)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: Notifications.publishNotification, object: nil)
+        AppDelegate.shared().setSavedCurrencyValues()
     }
     
     @objc func notificationReceived(_ notification: Notification) {
-        
         setFavoritesUI(currencies: [
             AppDelegate.shared().leftFavorite,
             AppDelegate.shared().middleFavorite,
@@ -310,56 +319,8 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         ])
         AppDelegate.shared().setSavedCurrencyValues()
     }
-
-    @IBAction func swapArrowsButton(_ sender: Any) {
-        swapCurrencies()
-    }
     
-    @IBAction func addButtonTapped(_ sender: Any) {
-        
-        if isPremiumUser() {
-            self.performSegue(withIdentifier: Constants.homeToChangeSegue, sender: self)
-        } else {
-            self.performSegue(withIdentifier: Constants.homeToPurchasePremiumSegue, sender: self)
-        }
-    }
-    @IBAction func oneNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "1")
-    }
-    @IBAction func twoNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "2")
-    }
-    @IBAction func threeNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "3")
-    }
-    @IBAction func fourNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "4")
-    }
-    @IBAction func fiveNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "5")
-    }
-    @IBAction func sixNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "6")
-    }
-    @IBAction func sevenNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "7")
-    }
-    @IBAction func eightNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "8")
-    }
-    @IBAction func nineNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "9")
-    }
-    @IBAction func decimalNumButtonTapped(_ sender: UIButton) {
-        decimalActive = true
-    }
-    @IBAction func zeroNumButtonTapped(_ sender: UIButton) {
-        numButtonTapped(num: "0")
-    }
-    @IBAction func deleteNumButtonTapped(_ sender: UIButton) {
-        deleteNum()
-    }
-    
+    // MARK: - UITapGestureRecognizer
     @objc func leftCountryTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let currentConvertedCurrency = AppDelegate.shared().convertedCurrency
         let tappedCurrency = AppDelegate.shared().leftFavorite
@@ -386,7 +347,7 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         leftCountryLabel.text = AppDelegate.shared().leftFavorite
         middleCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().middleFavorite)
         middleCountryLabel.text = AppDelegate.shared().middleFavorite
-
+        
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
         AppDelegate.shared().setSavedCurrencyValues()
     }
@@ -406,25 +367,73 @@ class RootViewController: UIViewController, UIAdaptivePresentationControllerDele
         middleCountryLabel.text = AppDelegate.shared().middleFavorite
         rightCountryImage.image = fetchImage(currencyCode: AppDelegate.shared().rightFavorite)
         rightCountryLabel.text = AppDelegate.shared().rightFavorite
-
+        
         setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
         AppDelegate.shared().setSavedCurrencyValues()
-        
     }
     
     @objc func swapCurrencies(tapGestureRecognizer: UITapGestureRecognizer) {
         swapCurrencies()
     }
     
-    func swapCurrencies() {
-        let currentBaseCountry = AppDelegate.shared().baseCurrency
-        let currentConvertedCountry = AppDelegate.shared().convertedCurrency
-        
-        AppDelegate.shared().baseCurrency = currentConvertedCountry
-        AppDelegate.shared().convertedCurrency = currentBaseCountry
-
-        setBaseCurrencyUI(currencyCode: AppDelegate.shared().baseCurrency)
-        setConvertedUI(currencyCode: AppDelegate.shared().convertedCurrency)
-        AppDelegate.shared().setSavedCurrencyValues()
+    // MARK: - UIButton Actions
+    @IBAction func swapArrowsButton(_ sender: Any) {
+        swapCurrencies()
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        if isPremiumUser() {
+            self.performSegue(withIdentifier: Constants.homeToChangeSegue, sender: self)
+        } else {
+            self.performSegue(withIdentifier: Constants.homeToPurchasePremiumSegue, sender: self)
+        }
+    }
+    
+    @IBAction func oneNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "1")
+    }
+    
+    @IBAction func twoNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "2")
+    }
+    
+    @IBAction func threeNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "3")
+    }
+    
+    @IBAction func fourNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "4")
+    }
+    
+    @IBAction func fiveNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "5")
+    }
+    
+    @IBAction func sixNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "6")
+    }
+    
+    @IBAction func sevenNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "7")
+    }
+    
+    @IBAction func eightNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "8")
+    }
+    
+    @IBAction func nineNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "9")
+    }
+    
+    @IBAction func decimalNumButtonTapped(_ sender: UIButton) {
+        decimalActive = true
+    }
+    
+    @IBAction func zeroNumButtonTapped(_ sender: UIButton) {
+        numButtonTapped(num: "0")
+    }
+    
+    @IBAction func deleteNumButtonTapped(_ sender: UIButton) {
+        deleteNum()
     }
 }

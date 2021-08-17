@@ -6,8 +6,6 @@
 //  Copyright © 2021 Tim Neal. All rights reserved.
 //
 
-import Foundation
-
 struct ExchangeRateData: Codable {
     let rates: [String: Double]
 }
