@@ -66,11 +66,15 @@
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                     <bool key="isElement" value="NO"/>
                                                 </accessibility>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="pM2-5q-Nkz" firstAttribute="leading" secondItem="UCz-d4-iFc" secondAttribute="leading" constant="16" identifier="Base currency stack leading" id="35G-sS-4hl"/>
                                                     <constraint firstItem="pM2-5q-Nkz" firstAttribute="centerY" secondItem="UCz-d4-iFc" secondAttribute="centerY" identifier="Base currency stack Y alignment" id="94C-hX-E26"/>
                                                     <constraint firstAttribute="trailing" secondItem="pM2-5q-Nkz" secondAttribute="trailing" priority="750" constant="16" identifier="Base currency trailing" id="wjR-cg-FYD"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="YuQ-dr-1n5" appends="YES" id="9Jf-dK-4uY"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ult-km-HeL" userLabel="Converted Currency View">
                                                 <rect key="frame" x="0.0" y="133.66666666666663" width="376" height="128.33333333333337"/>
@@ -494,6 +498,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="YuQ-dr-1n5">
+                    <connections>
+                        <action selector="swipedLeft:" destination="BYZ-38-t0r" id="sXD-72-UZT"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1145" y="137"/>
         </scene>

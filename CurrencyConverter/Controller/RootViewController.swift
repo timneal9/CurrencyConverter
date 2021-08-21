@@ -135,6 +135,9 @@ class RootViewController: UIViewController {
     
     func numButtonTapped(num: String) {
         if decimalActive {
+            if decimalActiveCount == 0 {
+                decimalString = ".00"
+            }
             let index = decimalString.index(decimalString.startIndex, offsetBy: 1)
             decimalString.remove(at: index)
             decimalString.append(num)
@@ -152,9 +155,13 @@ class RootViewController: UIViewController {
     
     func checkDecimalCount() {
         if decimalActiveCount >= 2 {
-            decimalActive = false
-            decimalActiveCount = 0
+            resetDecimalCount()
         }
+    }
+    
+    func resetDecimalCount() {
+        decimalActive = false
+        decimalActiveCount = 0
     }
     
     func deleteNum() {
@@ -171,6 +178,7 @@ class RootViewController: UIViewController {
         } else {
             decimalString = ".00"
         }
+        resetDecimalCount()
         updateBaseAmount()
     }
     
@@ -434,6 +442,9 @@ class RootViewController: UIViewController {
     }
     
     @IBAction func deleteNumButtonTapped(_ sender: UIButton) {
+        deleteNum()
+    }
+    @IBAction func swipedLeft(_ sender: Any) {
         deleteNum()
     }
 }
