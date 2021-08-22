@@ -208,8 +208,8 @@ class RootViewController: UIViewController {
     }
     
     func isPremiumUser() -> Bool {
-        let purchaseStatus = UserDefaults.standard.bool(forKey: Constants.premiumUserKey)
-        return true
+        let isPremiumUser = UserDefaults.standard.bool(forKey: Constants.premiumUserKey)
+        return isPremiumUser
     }
     
     func updateRates() {

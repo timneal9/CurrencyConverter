@@ -29,6 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         middleFavorite = defaults.string(forKey: "middleFavorite") ?? "CAD"
         rightFavorite = defaults.string(forKey: "rightFavorite") ?? "MXN"
         
+        let previouslyLaunched = defaults.bool(forKey: Constants.previouslyLaunched)
+        
+        if previouslyLaunched {
+            print("Not first launch")
+        } else {
+            print("First launch")
+            defaults.set(true, forKey: Constants.previouslyLaunched)
+        }
+        
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithOpaqueBackground()
         coloredAppearance.backgroundColor = UIColor(named: "background")

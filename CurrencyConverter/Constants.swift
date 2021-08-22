@@ -8,11 +8,11 @@
 
 struct Constants {
     // Identifiers, Nibs, etc
-    static let productID = "me.timneal.CurrencyConverter" //update later
     static let CAROUSEL_ITEM_NIB = "CarouselItem"
     static let currencyListCellNib = "CurrencyListCell"
     static let cellReuseIdentifier = "ReusableCurrencyListCell"
     static let notificationName = "VCPublishEvent"
+    static let premiumProductID = "com.timnealdev.CurrencyConverter.Premium"
     
     // API
     static let apiURL = "https://api.exchangerate.host/latest"
@@ -25,6 +25,7 @@ struct Constants {
     static let ratesLastUpdatedKey = "ratesLastUpdated"
     static let ratesDictionaryKey = "ratesDictionary"
     static let premiumUserKey = "premiumUser"
+    static let previouslyLaunched = "previouslyLaunched"
     
     // Colors
     static let lightMumfordIndigo = "mumfordIndigo"
@@ -44,6 +45,12 @@ struct Constants {
     static let noInternetAlertTitle = "No Internet Connection"
     static let noInternetAlertPurchaseMessage = "Internet connection is required to make purchases. Please connect to internet and try again."
     static let noInternetAlertRestorePurchaseMessage = "Internet connection is required to restore purchases. Please connect to internet and try again."
+    static let purchaseSuccessfulTitle = "Purchse successful!"
+    static let purchaseSuccessfulMessage = "Premium features are now unlocked. Enjoy!"
+    static let restoreSuccessfulTitle = "Restore successful!"
+    static let restoreSuccessfulMessage = "Welcome back, enjoy!"
+    static let failedPurchaseTitle = "Uh oh"
+    static let failedPurchsaeMessage = "Something went wrong during purchasing. Please try again."
     static let okButton = "OK"
     
     // Images

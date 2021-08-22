@@ -12,7 +12,7 @@ import Network
 
 class PurchasePremiumViewController: UIViewController {
     
-    let productID = Constants.productID
+    let productID = Constants.premiumProductID
     let monitor = NWPathMonitor()
     var internetConnected = false
     
@@ -21,15 +21,8 @@ class PurchasePremiumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         SKPaymentQueue.default().add(self)
-        
         startNetworkMonitoring()
-        
-        if isPremiumUser() {
-            setPremiumUser()
-        }
-        
         buyPremiumButton.layer.cornerRadius = 16
         restorePurchasesButton.layer.cornerRadius = 16
     }
@@ -62,31 +55,19 @@ class PurchasePremiumViewController: UIViewController {
     @IBAction func buyPremiumButtonTapped(_ sender: Any) {
         if internetConnected {
             buyPremiumUser()
-            returnToRootViewController()
         } else {
-            let alert = UIAlertController(title: Constants.noInternetAlertTitle,
-                                          message: Constants.noInternetAlertPurchaseMessage,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: Constants.okButton,
-                                          style: .default,
-                                          handler: nil))
-            self.present(alert, animated: true)
+            displayAlert(title: Constants.noInternetAlertTitle, message: Constants.noInternetAlertPurchaseMessage)
         }
     }
+    
     @IBAction func restoreButtonTapped(_ sender: Any) {
         if internetConnected {
-            SKPaymentQueue.default().restoreCompletedTransactions()
-            returnToRootViewController()
+                SKPaymentQueue.default().restoreCompletedTransactions()
         } else {
-            let alert = UIAlertController(title: Constants.noInternetAlertTitle,
-                                          message: Constants.noInternetAlertRestorePurchaseMessage,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: Constants.okButton,
-                                          style: .default,
-                                          handler: nil))
-            self.present(alert, animated: true)
+            displayAlert(title: Constants.noInternetAlertTitle, message: Constants.noInternetAlertRestorePurchaseMessage)
         }
     }
+    
     @IBAction func closeButtonTapped(_ sender: Any) {
         returnToRootViewController()
     }
@@ -107,34 +88,55 @@ extension PurchasePremiumViewController: SKPaymentTransactionObserver {
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
-            if transaction.transactionState == .purchased {
-                print("Transaction successful")
+            switch transaction.transactionState {
+            case .purchased:
+                print("Transaction state is: Purchased")
                 setPremiumUser()
                 
                 SKPaymentQueue.default().finishTransaction(transaction)
-            } else if transaction.transactionState == .failed {
+                displayAlert(title: Constants.purchaseSuccessfulTitle, message: Constants.purchaseSuccessfulMessage)
+            case .failed:
+                print("Transaction state is: Failed")
                 if let error = transaction.error {
                     let errorDescription = error.localizedDescription
                     print("Transaction failed: \(errorDescription)")
                 }
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .restored:
+                print("Transaction state is: Restored")
+                setPremiumUser()
                 
                 SKPaymentQueue.default().finishTransaction(transaction)
-            } else if transaction.transactionState == .restored {
-                setPremiumUser()
-                print("Transaction restored")
-                SKPaymentQueue.default().finishTransaction(transaction)
+                displayAlert(title: Constants.restoreSuccessfulTitle, message: Constants.restoreSuccessfulMessage)
+            default:
+                print("Transaction state is: \(transaction.transactionState.rawValue)")
             }
         }
     }
     
-    func setPremiumUser() {
-        //        UserDefaults.standard.set(true, forKey: productID)
-        UserDefaults.standard.set(true, forKey: "premiumUser") // remove once productID is setup
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("Restore complete")
     }
     
-    func isPremiumUser() -> Bool {
-        //        let purchaseStatus = UserDefaults.standard.bool(forKey: productID)
-        let purchaseStatus = UserDefaults.standard.bool(forKey: "premiumUser") // remove once productID is setup
-        return purchaseStatus
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print("Restore failed with error")
+        if let error = error as? SKError {
+            print("IAP Restore Error:", error.localizedDescription)
+        }
+    }
+    
+    func setPremiumUser() {
+        UserDefaults.standard.set(true, forKey: Constants.premiumUserKey)
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.okButton,
+                                      style: .default,
+                                      handler: { action in
+                                        self.returnToRootViewController()}))
+        self.present(alert, animated: true)
     }
 }
