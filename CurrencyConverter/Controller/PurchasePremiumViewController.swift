@@ -92,9 +92,8 @@ extension PurchasePremiumViewController: SKPaymentTransactionObserver {
             case .purchased:
                 print("Transaction state is: Purchased")
                 setPremiumUser()
-                
                 SKPaymentQueue.default().finishTransaction(transaction)
-                displayAlert(title: Constants.purchaseSuccessfulTitle, message: Constants.purchaseSuccessfulMessage)
+                returnToRootViewController()
             case .failed:
                 print("Transaction state is: Failed")
                 if let error = transaction.error {

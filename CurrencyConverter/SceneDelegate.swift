@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let today = Date()
         let maxDays: Int
         let diffInDays: Int
+        let formatter = DateFormatter()
         let premiumUser = defaults.bool(forKey: Constants.premiumUserKey)
+        let premiumUserSettingsString = premiumUser ? "Yes" : "No"
+        let ratesLastUpdatedString: String
         var lastCalledDate: Date
-        
-        print("Premium status: \(premiumUser)")
         
         if (defaults.object(forKey: Constants.ratesLastUpdatedKey) != nil) {
             lastCalledDate = (defaults.object(forKey: Constants.ratesLastUpdatedKey) as! Date)
-            print("API was last called on: \(lastCalledDate)")
         } else {
             print("ratesLastUpdated returned as nil. Calling API...")
             lastCalledDate = today
@@ -34,6 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         diffInDays = Calendar.current.dateComponents([.day], from: lastCalledDate, to: today).day ?? 0
+        formatter.dateFormat = "h:mm a, M/d/y"
+        ratesLastUpdatedString = formatter.string(from: lastCalledDate)
+
+        UserDefaults.standard.setValue(ratesLastUpdatedString, forKey: Constants.ratesLastUpdatedStringKey)
+        UserDefaults.standard.setValue(premiumUserSettingsString, forKey: Constants.premiumUserSettingsStringKey)
         
         if premiumUser {
             maxDays = 1

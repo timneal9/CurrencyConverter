@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rounded-logo" width="768" height="768"/>
+        <image name="rounded-logo" width="256" height="256"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
