@@ -26,6 +26,9 @@ struct Constants {
     static let ratesDictionaryKey = "ratesDictionary"
     static let premiumUserKey = "premiumUser"
     static let previouslyLaunched = "previouslyLaunched"
+    static let ratesLastUpdatedStringKey = "ratesLastUpdatedString"
+    static let premiumUserSettingsStringKey = "premiumUserSettingsString"
+    static let appVersionKey = "appVersion"
     
     // Colors
     static let lightMumfordIndigo = "mumfordIndigo"
@@ -45,8 +48,6 @@ struct Constants {
     static let noInternetAlertTitle = "No Internet Connection"
     static let noInternetAlertPurchaseMessage = "Internet connection is required to make purchases. Please connect to internet and try again."
     static let noInternetAlertRestorePurchaseMessage = "Internet connection is required to restore purchases. Please connect to internet and try again."
-    static let purchaseSuccessfulTitle = "Purchse successful!"
-    static let purchaseSuccessfulMessage = "Premium features are now unlocked. Enjoy!"
     static let restoreSuccessfulTitle = "Restore successful!"
     static let restoreSuccessfulMessage = "Welcome back, enjoy!"
     static let failedPurchaseTitle = "Uh oh"

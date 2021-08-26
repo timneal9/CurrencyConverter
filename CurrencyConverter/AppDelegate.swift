@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
+        UserDefaults.standard.setValue(UIApplication.appVersion ?? "", forKey: Constants.appVersionKey)
         return true
     }
     
@@ -64,6 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         setSavedCurrencyValues()
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+}
+
+extension UIApplication {
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
 

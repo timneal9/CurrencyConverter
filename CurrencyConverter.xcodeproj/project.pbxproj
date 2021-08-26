@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26422DDB26165D7E0016E5C4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26422DDA26165D7E0016E5C4 /* Notifications.swift */; };
+		266071D626D709D5007302A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 266071D526D709D5007302A8 /* Settings.bundle */; };
 		2675AD76260D6347000360AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675AD75260D6347000360AA /* AppDelegate.swift */; };
 		2675AD78260D6347000360AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675AD77260D6347000360AA /* SceneDelegate.swift */; };
 		2675AD7D260D6347000360AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675AD7B260D6347000360AA /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		26422DDA26165D7E0016E5C4 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		266071D526D709D5007302A8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2675AD72260D6347000360AA /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2675AD75260D6347000360AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2675AD77260D6347000360AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		2675AD69260D6347000360AA = {
 			isa = PBXGroup;
 			children = (
+				266071D526D709D5007302A8 /* Settings.bundle */,
 				2675AD74260D6347000360AA /* CurrencyConverter */,
 				2675AD73260D6347000360AA /* Products */,
 			);
@@ -192,6 +195,7 @@
 				2675AD82260D634A000360AA /* LaunchScreen.storyboard in Resources */,
 				26D7888B26B74345002A5C77 /* CarouselItem.xib in Resources */,
 				2675AD7F260D634A000360AA /* Assets.xcassets in Resources */,
+				266071D626D709D5007302A8 /* Settings.bundle in Resources */,
 				2675AD7D260D6347000360AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 462J77AUG2;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -370,6 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.timnealdev.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -382,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 462J77AUG2;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -389,6 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.timnealdev.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
