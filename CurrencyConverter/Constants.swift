@@ -29,6 +29,8 @@ struct Constants {
     static let ratesLastUpdatedStringKey = "ratesLastUpdatedString"
     static let premiumUserSettingsStringKey = "premiumUserSettingsString"
     static let appVersionKey = "appVersion"
+    static let launchCounterKey = "launchCounter"
+    static let defaultRatesSetKey = "defaultRatesSet"
     
     // Colors
     static let lightMumfordIndigo = "mumfordIndigo"
