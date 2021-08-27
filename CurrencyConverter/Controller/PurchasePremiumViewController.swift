@@ -62,7 +62,7 @@ class PurchasePremiumViewController: UIViewController {
     
     @IBAction func restoreButtonTapped(_ sender: Any) {
         if internetConnected {
-                SKPaymentQueue.default().restoreCompletedTransactions()
+            SKPaymentQueue.default().restoreCompletedTransactions()
         } else {
             displayAlert(title: Constants.noInternetAlertTitle, message: Constants.noInternetAlertRestorePurchaseMessage)
         }
@@ -122,6 +122,11 @@ extension PurchasePremiumViewController: SKPaymentTransactionObserver {
         if let error = error as? SKError {
             print("IAP Restore Error:", error.localizedDescription)
         }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment
+                        payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
     }
     
     func setPremiumUser() {

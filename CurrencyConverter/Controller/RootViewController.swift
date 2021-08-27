@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class RootViewController: UIViewController {
     @IBOutlet weak var baseAmountLabel: UILabel!
@@ -213,10 +212,7 @@ class RootViewController: UIViewController {
     }
     
     func updateRates() {
-        if (rates == nil) {
-            print("updateRates found nil")
-            rates = UserDefaults.standard.dictionary(forKey: Constants.ratesDictionaryKey)
-        }
+        rates = UserDefaults.standard.dictionary(forKey: Constants.ratesDictionaryKey)
     }
     
     func setShadows() {

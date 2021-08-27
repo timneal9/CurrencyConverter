@@ -30,11 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let previouslyLaunched = defaults.bool(forKey: Constants.previouslyLaunched)
         
-        if previouslyLaunched {
-            print("Not first launch")
-        } else {
-            print("First launch")
+        if !previouslyLaunched {
             defaults.set(true, forKey: Constants.previouslyLaunched)
+            defaults.setValue(1, forKey: Constants.launchCounterKey)
         }
         
         let coloredAppearance = UINavigationBarAppearance()
