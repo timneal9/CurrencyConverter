@@ -8,16 +8,24 @@
 
 import Foundation
 
+let currentDate = Date()
+let formatter = DateFormatter()
+var dateComponent = DateComponents()
+
 struct CurrencyExchangeManager {
     func getExchangeRate() {
-        if let url = URL(string: Constants.apiURL) {
+        let todayString: String
+        let url: String
+        
+        formatter.dateFormat = "YYYY-MM-dd"
+        todayString = formatter.string(from: currentDate)
+        url = Constants.apiURL + todayString
+        
+        if let url = URL(string: url) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     print("Error with session.dataTask: \(error!)")
-                    
-                    let currentDate = Date()
-                    var dateComponent = DateComponents()
                     dateComponent.day = -8
                     let pastDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
                     print("Error with calling API, using default values")
