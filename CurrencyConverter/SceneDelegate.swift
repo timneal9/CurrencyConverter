@@ -16,12 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidBecomeActive(_ scene: UIScene) {
         let today = Date()
-        let maxDays: Int
         let diffInDays: Int
         let formatter = DateFormatter()
         let premiumUser = defaults.bool(forKey: Constants.premiumUserKey)
         let defaultRatesSet = defaults.bool(forKey: Constants.defaultRatesSetKey)
         let premiumUserSettingsString = premiumUser ? "Yes" : "No"
+        let maxDays = premiumUser ? 1 : 7
         let ratesLastUpdatedString: String
         var lastCalledDate: Date
         
@@ -47,14 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UserDefaults.standard.setValue(ratesLastUpdatedString, forKey: Constants.ratesLastUpdatedStringKey)
         UserDefaults.standard.setValue(premiumUserSettingsString, forKey: Constants.premiumUserSettingsStringKey)
         
-        if premiumUser {
-            maxDays = 1
-        } else {
-            maxDays = 7
-        }
-        if diffInDays > maxDays {
-            lastCalledDate = today
-            defaults.setValue(lastCalledDate, forKey: Constants.ratesLastUpdatedKey)
+        if diffInDays >= maxDays {
             callAPI()
         }
         requestReviews()

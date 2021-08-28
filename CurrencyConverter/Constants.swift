@@ -15,7 +15,7 @@ struct Constants {
     static let premiumProductID = "com.timnealdev.CurrencyConverter.Premium"
     
     // API
-    static let apiURL = "https://api.exchangerate.host/latest"
+    static let apiURL = "https://api.exchangerate.host/"
     
     // Segues
     static let homeToChangeSegue = "HomeToChange"
