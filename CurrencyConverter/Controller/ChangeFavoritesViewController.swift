@@ -82,11 +82,10 @@ class ChangeFavoritesViewController: UIViewController {
     }
     
     func validateCode(currencyCode: String) -> String {
-        if (UIImage(named: currencyCode) != nil) {
-            return currencyCode
-        } else {
+        if (UIImage(named: currencyCode) == nil) {
             return "ERR"
         }
+        return currencyCode
     }
     
     func fetchCurrencies() {
