@@ -117,19 +117,17 @@ class RootViewController: UIViewController {
     }
     
     func validateCode(currencyCode: String) -> String {
-        if (UIImage(named: currencyCode) != nil) {
-            return currencyCode
-        } else {
+        if (UIImage(named: currencyCode) == nil) {
             return "ERR"
         }
+        return currencyCode
     }
     
     func fetchImage(currencyCode: String) -> UIImage {
         if let image = (UIImage(named: currencyCode)) {
             return image
-        } else {
-            return UIImage(named: "ERR")!
         }
+        return UIImage(named: "ERR")!
     }
     
     func numButtonTapped(num: String) {
