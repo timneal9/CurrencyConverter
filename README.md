@@ -7,7 +7,7 @@
 - Built in Swift using Xcode
 - Available to download in the App Store
 
-![16x9PromoCard](https://user-images.githubusercontent.com/42158251/145737587-f0f67cdd-ea47-470d-8366-3759ba073bb1.png)
+<img align='center' src='https://user-images.githubusercontent.com/42158251/145737587-f0f67cdd-ea47-470d-8366-3759ba073bb1.png' width='500"'>
  
 ## Features
 
@@ -26,6 +26,8 @@ As xkckyle writes in their App Store review:
 
 > Love the simplicity and quickness of this app!
 It’s refreshing to go back to how apps used to be, fast!
+
+<img align='center' src='https://user-images.githubusercontent.com/42158251/145743113-64a9617b-9b66-4df0-9aef-16a98e06fb88.png' width='500"'>
 
 ## Tech
 
