@@ -7,6 +7,8 @@
 - Built in Swift using Xcode
 - Available to download in the App Store
 
+![16x9PromoCard](https://user-images.githubusercontent.com/42158251/145737587-f0f67cdd-ea47-470d-8366-3759ba073bb1.png)
+ 
 ## Features
 
 - Convert an amount from one currency to another
