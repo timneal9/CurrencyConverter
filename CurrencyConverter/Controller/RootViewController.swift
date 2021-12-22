@@ -188,14 +188,14 @@ class RootViewController: UIViewController {
     
     func updateConvertedAmount() {
         let baseText = baseAmountLabel.text ?? "0.0"
-        let baseTextFloat = Double(baseText) ?? 0.0
-        let baseRateCode = validateCode(currencyCode: baseCurrencyCodeLabel.text ?? "USD")
-        let conversionRateCode = validateCode(currencyCode: convertedCurrencyCodeLabel.text ?? "USD")
+        let baseTextDouble = Double(baseText) ?? 0.0
+        let baseRateCode = validateCode(currencyCode: baseCurrencyCodeLabel.text ?? "ERR")
+        let conversionRateCode = validateCode(currencyCode: convertedCurrencyCodeLabel.text ?? "ERR")
         guard let baseRate = rates?[baseRateCode] as? Double else { return }
         guard let conversionRate = rates?[conversionRateCode] as? Double else { return }
         
         let multiplier = conversionRate / baseRate
-        let result = baseTextFloat * multiplier
+        let result = baseTextDouble * multiplier
         var formattedResult = String(format: "%.2f", result)
         
         if formattedResult.count <= 2 {
