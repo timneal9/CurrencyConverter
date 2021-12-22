@@ -156,9 +156,7 @@ extension ChangeFavoritesViewController: UITableViewDelegate {
             tappedCurrency = currencyArray[indexPath.row].currencyCode
         }
         
-        if AppDelegate.shared().baseCurrency == tappedCurrency || (AppDelegate.shared().convertedCurrency == tappedCurrency) {
-            print("Tapped currency already in base or converted")
-        } else if !(currentFavs.contains(tappedCurrency)){
+        if !(currentFavs.contains(tappedCurrency)) {
             AppDelegate.shared().rightFavorite = AppDelegate.shared().middleFavorite
             AppDelegate.shared().middleFavorite = AppDelegate.shared().leftFavorite
             AppDelegate.shared().leftFavorite = tappedCurrency
